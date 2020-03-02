@@ -9,12 +9,19 @@
 import UIKit
 
 class FirstViewController: UIViewController {
-
+    var forKey : String?;
+    
+    @IBOutlet weak var textInPut: UITextField!
+    @IBOutlet weak var OutPUT: UILabel!
+    
+    @IBAction func Button(_ sender: Any) {
+        OutPUT.text = textInPut.text;
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-
+    
 
 }
-
