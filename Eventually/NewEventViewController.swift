@@ -8,21 +8,49 @@
 
 import UIKit
 
-class NewEventViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class NewEventViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
+    //MARK: - Variables
+    
+    //variables for the date
     @IBOutlet weak var dateInput: UITextField!
     private var datePicker: UIDatePicker?
     
+    //variables for the publicity
     @IBOutlet weak var publicityInput: UITextField!
     private var pubPicker: UIPickerView?
+    
+    //variables for the event image
+    @IBOutlet weak var imageView: UIImageView!
+    
+    //MARK: - Main
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         DatePicking()
         PublicityPicking()
+    }
+    
+    //MARK: - Image
+    
+    @IBAction func importImage(_ sender: Any) {
+        let image = UIImagePickerController()
+        image.delegate = self
         
-        // Do any additional setup after loading the view.
+        image.sourceType = UIImagePickerController.SourceType.photoLibrary
+        
+        image.allowsEditing = false
+        
+        self.present(image, animated: true)
+    }
+    
+    internal func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            imageView.image = image
+        }
+        
+        self.dismiss(animated: true, completion: nil)
     }
     
     //MARK: - Publicity Picker

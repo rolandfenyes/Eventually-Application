@@ -147,7 +147,14 @@
                                 <rect key="frame" x="96" y="360" width="223" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Kép hozzáadása az eseményhez"/>
+                                <connections>
+                                    <action selector="importImage:" destination="N6H-X7-ndm" eventType="touchUpInside" id="TAZ-b1-Bvj"/>
+                                </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="photo" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="gCx-r5-RbB">
+                                <rect key="frame" x="20" y="398" width="374" height="200"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="3V7-Dv-vHW"/>
@@ -155,6 +162,7 @@
                     <tabBarItem key="tabBarItem" title="New Event" image="plus.circle.fill" catalog="system" id="365-B8-Ktd"/>
                     <connections>
                         <outlet property="dateInput" destination="THV-YH-b5O" id="iBK-bC-Lhw"/>
+                        <outlet property="imageView" destination="gCx-r5-RbB" id="9SM-ng-65w"/>
                         <outlet property="publicityInput" destination="JXp-Zh-CCn" id="ZmD-hK-eao"/>
                     </connections>
                 </viewController>
@@ -274,6 +282,7 @@
         <image name="clock" catalog="system" width="64" height="60"/>
         <image name="house" catalog="system" width="64" height="54"/>
         <image name="person" catalog="system" width="64" height="58"/>
+        <image name="photo" catalog="system" width="64" height="46"/>
         <image name="plus.circle.fill" catalog="system" width="64" height="60"/>
     </resources>
 </document>
