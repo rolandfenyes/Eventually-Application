@@ -21,7 +21,7 @@ class NewEventViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    func DatePicking() {
+    func DatePicking(){
         datePicker = UIDatePicker()
         datePicker?.datePickerMode = .dateAndTime
         datePicker?.addTarget(self, action: #selector(NewEventViewController.DateChanged(datePicker:)), for: .valueChanged)

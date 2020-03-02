@@ -155,7 +155,6 @@
                     <tabBarItem key="tabBarItem" title="New Event" image="plus.circle.fill" catalog="system" id="365-B8-Ktd"/>
                     <connections>
                         <outlet property="dateInput" destination="THV-YH-b5O" id="iBK-bC-Lhw"/>
-                        <outlet property="publicity" destination="JXp-Zh-CCn" id="Nwc-tG-lo0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="66q-zv-Zk9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
