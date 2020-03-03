@@ -11,6 +11,10 @@ import UIKit
 class NewEventViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
     //MARK: - Variables
+    @IBOutlet weak var eventName: UITextField!
+    @IBOutlet weak var location: UITextField!
+    @IBOutlet weak var numOfPeople: UITextField!
+    @IBOutlet weak var shortDesc: UITextField!
     
     //variables for the date
     @IBOutlet weak var dateInput: UITextField!
@@ -22,6 +26,7 @@ class NewEventViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     //variables for the event image
     @IBOutlet weak var imageView: UIImageView!
+    private var image: UIImage?
     
     //MARK: - Main
     
@@ -31,6 +36,13 @@ class NewEventViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         DatePicking()
         PublicityPicking()
     }
+    
+    //MARK: - Event Created Button Pressed
+    
+    @IBAction func eventCreatedButtonPressed(_ sender: Any) {
+        NewEventHandler.Instance(eventName: eventName.text ?? "eventName", eventLocation: location.text ?? "location", numberOfPeople: numOfPeople.text ?? "0", shortDescription: shortDesc.text ?? "this is a description", dateOfEvent: dateInput.text ?? "no time", publicity: publicityInput.text ?? ":(", image: image)
+    }
+    
     
     //MARK: - Image Picker
     
@@ -48,6 +60,7 @@ class NewEventViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     internal func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             imageView.image = image
+            self.image = image
         }
         
         self.dismiss(animated: true, completion: nil)

@@ -31,11 +31,29 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lOS-ed-40u">
+                                <rect key="frame" x="186" y="438" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mxM-bv-bKU">
+                                <rect key="frame" x="181" y="783" width="53" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Refresh"/>
+                                <connections>
+                                    <action selector="refreshButton:" destination="9pv-A4-QxB" eventType="touchUpInside" id="0Q2-p7-orq"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" image="house" catalog="system" id="acW-dT-cKf"/>
+                    <connections>
+                        <outlet property="eventName" destination="lOS-ed-40u" id="neL-8j-NcC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
@@ -44,7 +62,7 @@
         <!--New Event-->
         <scene sceneID="JbC-jm-XUf">
             <objects>
-                <viewController id="N6H-X7-ndm" customClass="NewEventViewController" customModule="Eventually" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="N6H-X7-ndm" customClass="NewEventViewController" customModule="Eventually" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jSu-gP-fqD">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -162,6 +180,9 @@
                                 <state key="normal" title="Esemény létrehozása">
                                     <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="eventCreatedButtonPressed:" destination="N6H-X7-ndm" eventType="touchUpInside" id="cCe-AM-JgJ"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -170,8 +191,12 @@
                     <tabBarItem key="tabBarItem" title="New Event" image="plus.circle.fill" catalog="system" id="365-B8-Ktd"/>
                     <connections>
                         <outlet property="dateInput" destination="THV-YH-b5O" id="iBK-bC-Lhw"/>
+                        <outlet property="eventName" destination="GNz-Sl-vfL" id="OG9-1o-Bc7"/>
                         <outlet property="imageView" destination="gCx-r5-RbB" id="9SM-ng-65w"/>
+                        <outlet property="location" destination="6oO-gJ-Jd2" id="wWN-Ki-GlX"/>
+                        <outlet property="numOfPeople" destination="c9a-dF-sVh" id="Eq6-z0-pNm"/>
                         <outlet property="publicityInput" destination="JXp-Zh-CCn" id="ZmD-hK-eao"/>
+                        <outlet property="shortDesc" destination="62m-Zo-0Zu" id="i5J-en-F9h"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="66q-zv-Zk9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

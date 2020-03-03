@@ -13,13 +13,13 @@ class Event {
     
     private var eventName: String
     private var eventLocation: String
-    private var numberOfPeople: Int
+    private var numberOfPeople: String // int
     private var shortDescription: String
     private var dateOfEvent: String
     private var publicity: String
-    private var image: UIImage
+    private var image: UIImage?
     
-    init(eventName: String, eventLocation: String, numberOfPeople: Int, shortDescription: String, dateOfEvent: String, publicity: String, image: UIImage) {
+    init(eventName: String, eventLocation: String, numberOfPeople: String, shortDescription: String, dateOfEvent: String, publicity: String, image: UIImage?) {
         self.eventName = eventName
         self.eventLocation = eventLocation
         self.numberOfPeople = numberOfPeople
@@ -27,5 +27,9 @@ class Event {
         self.dateOfEvent = dateOfEvent
         self.publicity = publicity
         self.image = image
+    }
+    
+    func getName() -> String {
+        return eventName
     }
 }
