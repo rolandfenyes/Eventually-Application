@@ -32,7 +32,7 @@ class NewEventViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         PublicityPicking()
     }
     
-    //MARK: - Image
+    //MARK: - Image Picker
     
     @IBAction func importImage(_ sender: Any) {
         let image = UIImagePickerController()
@@ -126,15 +126,4 @@ class NewEventViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     @objc func DoneButtonPressed(sender: UIBarButtonItem) {
         self.view.endEditing(true)
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
