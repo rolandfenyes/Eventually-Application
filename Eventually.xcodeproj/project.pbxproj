@@ -103,13 +103,10 @@
 		53B00A0823FF163F00F915D5 /* Eventually */ = {
 			isa = PBXGroup;
 			children = (
+				53F246CE240E49F100BE9F0C /* View */,
 				53F246CD240E48CB00BE9F0C /* Model */,
 				53F246CC240E483000BE9F0C /* ViewControllers */,
 				53B00A0923FF163F00F915D5 /* AppDelegate.swift */,
-				53B00A0B23FF163F00F915D5 /* SceneDelegate.swift */,
-				53B00A1123FF163F00F915D5 /* Main.storyboard */,
-				53B00A1423FF164500F915D5 /* Assets.xcassets */,
-				53B00A1623FF164500F915D5 /* LaunchScreen.storyboard */,
 				53B00A1923FF164500F915D5 /* Info.plist */,
 			);
 			path = Eventually;
@@ -148,6 +145,17 @@
 			children = (
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		53F246CE240E49F100BE9F0C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				53B00A0B23FF163F00F915D5 /* SceneDelegate.swift */,
+				53B00A1123FF163F00F915D5 /* Main.storyboard */,
+				53B00A1423FF164500F915D5 /* Assets.xcassets */,
+				53B00A1623FF164500F915D5 /* LaunchScreen.storyboard */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
