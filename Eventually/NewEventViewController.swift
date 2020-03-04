@@ -7,14 +7,18 @@
 //
 
 import UIKit
+import MapKit
 
 class NewEventViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
     //MARK: - Variables
     @IBOutlet weak var eventName: UITextField!
-    @IBOutlet weak var location: UITextField!
     @IBOutlet weak var numOfPeople: UITextField!
     @IBOutlet weak var shortDesc: UITextField!
+    
+    //variables for the location
+    @IBOutlet weak var location: UITextField!
+    private var locationPicker: MKMapView?
     
     //variables for the date
     @IBOutlet weak var dateInput: UITextField!
@@ -32,6 +36,8 @@ class NewEventViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        publicityInput.text = dataSourceOfPubPicker[0]
 
         DatePicking()
         PublicityPicking()
@@ -41,7 +47,7 @@ class NewEventViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     @IBAction func eventCreatedButtonPressed(_ sender: Any) {
         NewEventHandler.Instance(eventName: eventName.text ?? "eventName", eventLocation: location.text ?? "location", numberOfPeople: numOfPeople.text ?? "0", shortDescription: shortDesc.text ?? "this is a description", dateOfEvent: dateInput.text ?? "no time", publicity: publicityInput.text ?? ":(", image: image)
-    }
+     }
     
     
     //MARK: - Image Picker
@@ -68,7 +74,7 @@ class NewEventViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     //MARK: - Publicity Picker
     
-    private let dataSourceOfPubPicker = ["Publikus", "Privát", "Közeli ismerősök"]
+    private let dataSourceOfPubPicker = ["Publikus", "Privát"]
     
     func PublicityPicking() {
         pubPicker = UIPickerView()
@@ -122,7 +128,7 @@ class NewEventViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(DoneButtonPressed(sender: )))
         doneButton.tintColor = UIColor.black
-        toolBar.setItems([space, doneButton], animated: false)
+        toolBar.setItems([space, doneButton], animated: true)
         toolBar.sizeToFit()
         AddDoneButton(doneButton: toolBar, pickerType: pickerType)
     }
