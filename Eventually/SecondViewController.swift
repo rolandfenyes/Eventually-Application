@@ -10,9 +10,18 @@ import UIKit
 
 class SecondViewController: UIViewController {
 
+    @IBOutlet weak var label: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        if let url = URL(string: "http://eventually.site/jsonexample"){
+            do {
+                let contents = try String(contentsOf: url)
+                print(contents)
+            } catch{
+                
+            }
+        }
     }
 
 

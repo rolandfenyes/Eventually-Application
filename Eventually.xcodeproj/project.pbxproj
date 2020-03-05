@@ -19,6 +19,11 @@
 		53B00A2E23FF164500F915D5 /* EventuallyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B00A2D23FF164500F915D5 /* EventuallyUITests.swift */; };
 		53F246D0240E4AA200BE9F0C /* NewEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F246CF240E4AA200BE9F0C /* NewEventHandler.swift */; };
 		53F246D2240E4CE100BE9F0C /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F246D1240E4CE100BE9F0C /* Event.swift */; };
+		53F246DC2411AF8C00BE9F0C /* PlaceAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F246D72411AF8B00BE9F0C /* PlaceAnnotation.swift */; };
+		53F246DD2411AF8C00BE9F0C /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F246D82411AF8C00BE9F0C /* MapViewController.swift */; };
+		53F246DE2411AF8C00BE9F0C /* SuggestionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F246D92411AF8C00BE9F0C /* SuggestionsTableViewController.swift */; };
+		53F246DF2411AF8C00BE9F0C /* SearchResultTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F246DA2411AF8C00BE9F0C /* SearchResultTableViewController.swift */; };
+		53F246E02411AF8C00BE9F0C /* MKPlacemark+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F246DB2411AF8C00BE9F0C /* MKPlacemark+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +62,11 @@
 		53B00A2F23FF164500F915D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		53F246CF240E4AA200BE9F0C /* NewEventHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEventHandler.swift; sourceTree = "<group>"; };
 		53F246D1240E4CE100BE9F0C /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		53F246D72411AF8B00BE9F0C /* PlaceAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceAnnotation.swift; sourceTree = "<group>"; };
+		53F246D82411AF8C00BE9F0C /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		53F246D92411AF8C00BE9F0C /* SuggestionsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestionsTableViewController.swift; sourceTree = "<group>"; };
+		53F246DA2411AF8C00BE9F0C /* SearchResultTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewController.swift; sourceTree = "<group>"; };
+		53F246DB2411AF8C00BE9F0C /* MKPlacemark+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MKPlacemark+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +117,11 @@
 		53B00A0823FF163F00F915D5 /* Eventually */ = {
 			isa = PBXGroup;
 			children = (
+				53F246D82411AF8C00BE9F0C /* MapViewController.swift */,
+				53F246DB2411AF8C00BE9F0C /* MKPlacemark+Extension.swift */,
+				53F246D72411AF8B00BE9F0C /* PlaceAnnotation.swift */,
+				53F246DA2411AF8C00BE9F0C /* SearchResultTableViewController.swift */,
+				53F246D92411AF8C00BE9F0C /* SuggestionsTableViewController.swift */,
 				53B00A0D23FF163F00F915D5 /* FirstViewController.swift */,
 				53B00A0F23FF163F00F915D5 /* SecondViewController.swift */,
 				532EB460240D2803007892E5 /* NewEventViewController.swift */,
@@ -295,12 +310,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				53F246DE2411AF8C00BE9F0C /* SuggestionsTableViewController.swift in Sources */,
 				53B00A1023FF163F00F915D5 /* SecondViewController.swift in Sources */,
+				53F246DC2411AF8C00BE9F0C /* PlaceAnnotation.swift in Sources */,
 				53B00A0E23FF163F00F915D5 /* FirstViewController.swift in Sources */,
+				53F246DD2411AF8C00BE9F0C /* MapViewController.swift in Sources */,
 				53F246D0240E4AA200BE9F0C /* NewEventHandler.swift in Sources */,
 				532EB461240D2803007892E5 /* NewEventViewController.swift in Sources */,
+				53F246DF2411AF8C00BE9F0C /* SearchResultTableViewController.swift in Sources */,
 				53B00A0A23FF163F00F915D5 /* AppDelegate.swift in Sources */,
 				53F246D2240E4CE100BE9F0C /* Event.swift in Sources */,
+				53F246E02411AF8C00BE9F0C /* MKPlacemark+Extension.swift in Sources */,
 				53B00A0C23FF163F00F915D5 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
