@@ -54,6 +54,11 @@ class LocationSearchViewController: UIViewController, UISearchBarDelegate {
                 print("Error")
             }
             else {
+                let annotations = self.myMapView.annotations
+                if annotations.count > 0 {
+                    self.myMapView.removeAnnotations(annotations)
+                }
+                
                 let latitude = response!.boundingRegion.center.latitude
                 let longitude = response!.boundingRegion.center.longitude
                 
@@ -67,13 +72,58 @@ class LocationSearchViewController: UIViewController, UISearchBarDelegate {
                 let region = MKCoordinateRegion(center: coordinate, span: span)
                 
                 self .myMapView.setRegion(region, animated: true)
+                
+                self.convertLatLongToAddress(latitude: latitude, longitude: longitude)
+                
+                
+                //LocationSingleton.shared().setLocation(coordinates: coordinate, text: searchBar.text!)
             }
             
         }
         
+    }
+    
+    func convertLatLongToAddress(latitude:Double,longitude:Double){
+
+        let geoCoder = CLGeocoder()
+        let location = CLLocation(latitude: latitude, longitude: longitude)
+        var locationText: String = ""
         
-        
-        
+        geoCoder.reverseGeocodeLocation(location, completionHandler: { (placemarks, error) -> Void in
+
+            // Place details
+            var placeMark: CLPlacemark!
+            placeMark = placemarks?[0]
+
+            // Location name
+            if let locationName = placeMark.location {
+                print(locationName)
+            }
+            // Street address
+            if let street = placeMark.thoroughfare {
+                print(street)
+                locationText += street
+            }
+            // City
+            if let city = placeMark.subAdministrativeArea {
+                print(city)
+                locationText += "/ " + city
+            }
+            // Zip code
+            if let zip = placeMark.isoCountryCode {
+                print(zip)
+                locationText += "/ " + zip
+            }
+            // Country
+            if let country = placeMark.country {
+                print(country)
+                locationText += "/ " + country
+            }
+            
+            
+            LocationSingleton.shared().setLocation(coordinates: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), text: locationText)
+        })
+
     }
     
 }

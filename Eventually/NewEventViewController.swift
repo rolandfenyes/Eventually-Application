@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class NewEventViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class NewEventViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UINavigationControllerDelegate, UIImagePickerControllerDelegate, PObserver {
 
     //MARK: - Variables
     @IBOutlet weak var eventName: UITextField!
@@ -18,7 +18,8 @@ class NewEventViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     //variables for the location
     @IBOutlet weak var location: UITextField!
-    private var locationPicker: MKMapView?
+    private var locationCoordinates: CLLocationCoordinate2D?
+    @IBOutlet weak var locationName: UILabel!
     
     //variables for the date
     @IBOutlet weak var dateInput: UITextField!
@@ -41,6 +42,11 @@ class NewEventViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
 
         DatePicking()
         PublicityPicking()
+        LocationSingleton.shared().attach(observer: self)
+    }
+    
+    func update() {
+        locationName.text = LocationSingleton.shared().getText()
     }
     
     //MARK: - Event Created Button Pressed
@@ -146,3 +152,4 @@ class NewEventViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         self.view.endEditing(true)
     }
 }
+
