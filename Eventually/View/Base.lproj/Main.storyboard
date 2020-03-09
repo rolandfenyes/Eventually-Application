@@ -183,7 +183,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Helyszín hozzáadása"/>
                                 <connections>
-                                    <segue destination="Cnz-xX-fO1" kind="presentation" id="qn0-bE-4PL"/>
+                                    <segue destination="MV6-v8-JCn" kind="show" id="yGu-lN-1G4"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -204,35 +204,43 @@
             </objects>
             <point key="canvasLocation" x="1492.753623188406" y="0.0"/>
         </scene>
-        <!--Map Search View Controller-->
-        <scene sceneID="VUQ-a6-xBx">
+        <!--Location Search View Controller-->
+        <scene sceneID="twm-3p-Utt">
             <objects>
-                <viewController id="Cnz-xX-fO1" customClass="MapSearchViewController" customModule="Eventually" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="B21-8m-tYO">
+                <viewController id="MV6-v8-JCn" customClass="LocationSearchViewController" customModule="Eventually" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gmJ-le-kKi">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" fixedFrame="YES" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GIS-Bw-huF">
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ua6-EQ-3xB">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="d5Q-vh-cHT">
-                                <rect key="frame" x="0.0" y="44" width="414" height="798"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Keresés" id="Bhy-Ts-sLi">
+                                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="s34-AQ-I5F">
+                                            <connections>
+                                                <action selector="searchButton:" destination="MV6-v8-JCn" id="n87-Vf-0aL"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="BJ8-9W-nbr">
+                                <rect key="frame" x="0.0" y="60" width="414" height="782"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="6pq-1h-Br3"/>
+                        <viewLayoutGuide key="safeArea" id="4rN-ed-k88"/>
                     </view>
+                    <navigationItem key="navigationItem" id="YC3-sX-4Xu"/>
                     <connections>
-                        <outlet property="mapView" destination="d5Q-vh-cHT" id="L2S-z5-CcE"/>
-                        <outlet property="searchBar" destination="GIS-Bw-huF" id="p0Q-cq-VRU"/>
+                        <outlet property="myMapView" destination="BJ8-9W-nbr" id="w7v-yd-5sI"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="96e-sB-Xud" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TF6-sE-kwg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2231.8840579710145" y="359.59821428571428"/>
+            <point key="canvasLocation" x="2230.434782608696" y="359.59821428571428"/>
         </scene>
         <!--Profile-->
         <scene sceneID="zUG-a4-j00">
