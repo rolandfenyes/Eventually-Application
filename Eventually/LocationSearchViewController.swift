@@ -86,7 +86,6 @@ class LocationSearchViewController: UIViewController, UISearchBarDelegate {
                 self.convertLatLongToAddress(latitude: latitude, longitude: longitude)
                 }
         }
-        
     }
     
     

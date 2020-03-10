@@ -19,7 +19,7 @@ class NewEventViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     //variables for the location
     @IBOutlet weak var location: UIButton!
     private var locationCoordinates: CLLocationCoordinate2D?
-    @IBOutlet weak var locationName: UILabel!
+    @IBOutlet weak var showLocationOnMap: MKMapView!
     
     //variables for the date
     @IBOutlet weak var dateInput: UITextField!
@@ -46,7 +46,19 @@ class NewEventViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     }
     
     func update() {
-        location.setTitle(LocationSingleton.shared().getText(), for: .normal)
+        var title = LocationSingleton.shared().getText()
+        var coordinates = LocationSingleton.shared().getCoordinates()
+        location.setTitle(title, for: .normal)
+        let annotation = MKPointAnnotation()
+        annotation.title = title
+        annotation.coordinate = CLLocationCoordinate2DMake(coordinates.latitude, coordinates.longitude)
+        self.showLocationOnMap.addAnnotation(annotation)
+        
+        let coordinate:CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: coordinates.latitude, longitude: coordinates.longitude)
+        let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+        let region = MKCoordinateRegion(center: coordinate, span: span)
+        
+        self .showLocationOnMap.setRegion(region, animated: false)
     }
     
     //MARK: - Event Created Button Pressed
