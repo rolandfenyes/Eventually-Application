@@ -11,10 +11,12 @@ import MapKit
 
 class LocationSingleton : MyObserverForAddress {
     
+    //MARK: - Variables
     private var coordinates: CLLocationCoordinate2D?
     private var baseLocationText: String
     private var locationAlreadyLoaded: Bool! = false
     
+    //MARK: - Set up Singleton
     private static var sharedLocation: LocationSingleton = {
         let locationManager = LocationSingleton(baseLocationText: "Budapest")
         return locationManager
@@ -23,6 +25,8 @@ class LocationSingleton : MyObserverForAddress {
     private init(baseLocationText: String) {
         self.baseLocationText = baseLocationText
     }
+    
+    //MARK: - Functions
 
     func getCoordinates() -> CLLocationCoordinate2D {
         return coordinates!

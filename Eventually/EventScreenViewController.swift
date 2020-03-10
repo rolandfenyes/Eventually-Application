@@ -32,8 +32,8 @@ class EventScreenViewController: UIViewController {
         desc.text = event.getDescription()
         location.text = event.getAddress()
         
-        var title = event.getAddress()
-        var coordinates = event.getEventLocation()
+        let title = event.getAddress()
+        let coordinates = event.getEventLocation()
         let annotation = MKPointAnnotation()
         annotation.title = title
         annotation.coordinate = CLLocationCoordinate2DMake(coordinates.latitude, coordinates.longitude)

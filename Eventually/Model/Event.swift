@@ -12,6 +12,7 @@ import MapKit
 
 class Event {
     
+    //MARK: - Variables
     private var eventName: String
     private var eventLocation: CLLocationCoordinate2D
     private var address: String
@@ -21,6 +22,7 @@ class Event {
     private var publicity: String
     private var image: UIImage?
     
+    //MARK: - Init
     init(eventName: String, eventLocation: CLLocationCoordinate2D, numberOfPeople: String, shortDescription: String, dateOfEvent: String, publicity: String, image: UIImage?, address: String) {
         self.eventName = eventName
         self.eventLocation = eventLocation
@@ -32,6 +34,7 @@ class Event {
         self.address = address
     }
     
+    //MARK: - Getters
     func getName() -> String {
         return eventName
     }

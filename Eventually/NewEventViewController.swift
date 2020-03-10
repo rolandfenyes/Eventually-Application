@@ -18,6 +18,7 @@ class NewEventViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     //variables for the location
     @IBOutlet weak var location: UIButton!
+    private var map: MapLoader!
     //private var locationCoordinates: CLLocationCoordinate2D?
     @IBOutlet weak var showLocationOnMap: MKMapView!
     
@@ -43,22 +44,15 @@ class NewEventViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         DatePicking()
         PublicityPicking()
         LocationSingleton.shared().attach(observer: self)
+        map = MapLoader(map: showLocationOnMap)
     }
     
     func update() {
-        var title = LocationSingleton.shared().getText()
-        var coordinates = LocationSingleton.shared().getCoordinates()
+        
+        let title = LocationSingleton.shared().getText()
         location.setTitle(title, for: .normal)
-        let annotation = MKPointAnnotation()
-        annotation.title = title
-        annotation.coordinate = CLLocationCoordinate2DMake(coordinates.latitude, coordinates.longitude)
-        self.showLocationOnMap.addAnnotation(annotation)
+        map.showMap(coordinates: LocationSingleton.shared().getCoordinates(), animation: false, title: title, mapRange: 0.01)
         
-        let coordinate:CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: coordinates.latitude, longitude: coordinates.longitude)
-        let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
-        let region = MKCoordinateRegion(center: coordinate, span: span)
-        
-        self .showLocationOnMap.setRegion(region, animated: false)
     }
     
     //MARK: - Event Created Button Pressed

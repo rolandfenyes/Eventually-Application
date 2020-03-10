@@ -11,15 +11,20 @@ import MapKit
 
 class LocationSearchViewController: UIViewController, UISearchBarDelegate {
 
+    //MARK: - Variables
     @IBOutlet weak var myMapView: MKMapView!
+    private var map: MapLoader!
     
-    
+    //MARK: - Main
     override func viewDidLoad() {
         super.viewDidLoad()
+        map = MapLoader(map: myMapView)
         if LocationSingleton.shared().isLocationAlreadyLoaded() {
             activeSearch(search: LocationSingleton.shared().getText())
         }
     }
+    
+    //MARK: - Set up Search Button
     
     @IBAction func searchButton(_ sender: Any) {
         let searchController = UISearchController(searchResultsController: nil)
@@ -37,6 +42,7 @@ class LocationSearchViewController: UIViewController, UISearchBarDelegate {
         activeSearch(search: searchBar.text ?? "")
     }
     
+    //MARK: - Searching on Map
     func activeSearch(search: String){
         let activityIndicator = UIActivityIndicatorView()
         activityIndicator.style = UIActivityIndicatorView.Style.medium
@@ -64,31 +70,16 @@ class LocationSearchViewController: UIViewController, UISearchBarDelegate {
                 print("Error")
             }
             else {
-                let annotations = self.myMapView.annotations
-                if annotations.count > 0 {
-                    self.myMapView.removeAnnotations(annotations)
-                }
-                
                 let latitude = response!.boundingRegion.center.latitude
                 let longitude = response!.boundingRegion.center.longitude
-                
-                let annotation = MKPointAnnotation()
-                annotation.title = search
-                annotation.coordinate = CLLocationCoordinate2DMake(latitude, longitude)
-                self.myMapView.addAnnotation(annotation)
-                
-                let coordinate:CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-                let span = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
-                let region = MKCoordinateRegion(center: coordinate, span: span)
-                
-                self .myMapView.setRegion(region, animated: true)
+                self.map.showMap(coordinates: response!.boundingRegion.center.self, animation: true, title: search, mapRange: 0.1)
                 
                 self.convertLatLongToAddress(latitude: latitude, longitude: longitude)
                 }
         }
     }
     
-    
+    //MARK: - Convert coordinates to Address
     func convertLatLongToAddress(latitude:Double,longitude:Double){
 
         let geoCoder = CLGeocoder()
