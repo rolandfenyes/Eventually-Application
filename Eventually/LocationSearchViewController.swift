@@ -13,10 +13,11 @@ class LocationSearchViewController: UIViewController, UISearchBarDelegate {
 
     @IBOutlet weak var myMapView: MKMapView!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if LocationSingleton.shared().isLocationAlreadyLoaded() {
-            
+            activeSearch(search: LocationSingleton.shared().getText())
         }
     }
     
@@ -30,6 +31,13 @@ class LocationSearchViewController: UIViewController, UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.view.isUserInteractionEnabled = false
         
+        searchBar.resignFirstResponder()
+        dismiss(animated: true, completion: nil)
+        
+        activeSearch(search: searchBar.text ?? "")
+    }
+    
+    func activeSearch(search: String){
         let activityIndicator = UIActivityIndicatorView()
         activityIndicator.style = UIActivityIndicatorView.Style.medium
         activityIndicator.center = self.view.center
@@ -38,11 +46,11 @@ class LocationSearchViewController: UIViewController, UISearchBarDelegate {
         
         self.view.addSubview(activityIndicator)
         
-        searchBar.resignFirstResponder()
-        dismiss(animated: true, completion: nil)
         
         let searchRequest = MKLocalSearch.Request()
-        searchRequest.naturalLanguageQuery = searchBar.text
+        
+        searchRequest.naturalLanguageQuery = search
+        LocationSingleton.shared().setLocationAlreadyLoadedTrue()
         
         let activeSearch = MKLocalSearch(request: searchRequest)
         
@@ -65,7 +73,7 @@ class LocationSearchViewController: UIViewController, UISearchBarDelegate {
                 let longitude = response!.boundingRegion.center.longitude
                 
                 let annotation = MKPointAnnotation()
-                annotation.title = searchBar.text
+                annotation.title = search
                 annotation.coordinate = CLLocationCoordinate2DMake(latitude, longitude)
                 self.myMapView.addAnnotation(annotation)
                 
@@ -78,11 +86,9 @@ class LocationSearchViewController: UIViewController, UISearchBarDelegate {
                 self.convertLatLongToAddress(latitude: latitude, longitude: longitude)
                 }
         }
-    }
-    
-    func activeSearch() {
         
     }
+    
     
     func convertLatLongToAddress(latitude:Double,longitude:Double){
 
