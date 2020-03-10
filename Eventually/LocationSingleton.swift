@@ -13,7 +13,7 @@ class LocationSingleton : MyObserverForAddress {
     
     private var coordinates: CLLocationCoordinate2D?
     private var baseLocationText: String
-
+    private var locationAlreadyLoaded: Bool! = false
     
     private static var sharedLocation: LocationSingleton = {
         let locationManager = LocationSingleton(baseLocationText: "Budapest")
@@ -36,6 +36,14 @@ class LocationSingleton : MyObserverForAddress {
         self.baseLocationText = text
         print(baseLocationText)
         notify()
+    }
+    
+    func setLocationAlreadyLoadedTrue() {
+        self.locationAlreadyLoaded = true
+    }
+    
+    func isLocationAlreadyLoaded() -> Bool {
+        return self.locationAlreadyLoaded
     }
     
     class func shared() -> LocationSingleton {

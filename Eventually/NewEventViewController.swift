@@ -17,7 +17,7 @@ class NewEventViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     @IBOutlet weak var shortDesc: UITextField!
     
     //variables for the location
-    @IBOutlet weak var location: UITextField!
+    @IBOutlet weak var location: UIButton!
     private var locationCoordinates: CLLocationCoordinate2D?
     @IBOutlet weak var locationName: UILabel!
     
@@ -46,13 +46,13 @@ class NewEventViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     }
     
     func update() {
-        locationName.text = LocationSingleton.shared().getText()
+        location.setTitle(LocationSingleton.shared().getText(), for: .normal)
     }
     
     //MARK: - Event Created Button Pressed
     
     @IBAction func eventCreatedButtonPressed(_ sender: Any) {
-        NewEventHandler.Instance(eventName: eventName.text ?? "eventName", eventLocation: location.text ?? "location", numberOfPeople: numOfPeople.text ?? "0", shortDescription: shortDesc.text ?? "this is a description", dateOfEvent: dateInput.text ?? "no time", publicity: publicityInput.text ?? ":(", image: image)
+        
      }
     
     

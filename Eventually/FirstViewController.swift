@@ -18,11 +18,4 @@ class FirstViewController: UIViewController {
         
     }
     
-    @IBAction func refreshButton(_ sender: Any) {
-        let events = NewEventHandler.getEventsFromList()
-        if events.count > 0 {
-            eventName.text = events[0].getName()
-        }
-    }
-    
 }

@@ -8,18 +8,19 @@
 
 import Foundation
 import UIKit
+import MapKit
 
 class Event {
     
     private var eventName: String
-    private var eventLocation: String
+    private var eventLocation: CLLocationCoordinate2D
     private var numberOfPeople: String // int
     private var shortDescription: String
     private var dateOfEvent: String
     private var publicity: String
     private var image: UIImage?
     
-    init(eventName: String, eventLocation: String, numberOfPeople: String, shortDescription: String, dateOfEvent: String, publicity: String, image: UIImage?) {
+    init(eventName: String, eventLocation: CLLocationCoordinate2D, numberOfPeople: String, shortDescription: String, dateOfEvent: String, publicity: String, image: UIImage?) {
         self.eventName = eventName
         self.eventLocation = eventLocation
         self.numberOfPeople = numberOfPeople

@@ -15,7 +15,9 @@ class LocationSearchViewController: UIViewController, UISearchBarDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("Hát elkezdődött...")
+        if LocationSingleton.shared().isLocationAlreadyLoaded() {
+            
+        }
     }
     
     @IBAction func searchButton(_ sender: Any) {
@@ -74,12 +76,11 @@ class LocationSearchViewController: UIViewController, UISearchBarDelegate {
                 self .myMapView.setRegion(region, animated: true)
                 
                 self.convertLatLongToAddress(latitude: latitude, longitude: longitude)
-                
-                
-                //LocationSingleton.shared().setLocation(coordinates: coordinate, text: searchBar.text!)
-            }
-            
+                }
         }
+    }
+    
+    func activeSearch() {
         
     }
     
@@ -95,31 +96,13 @@ class LocationSearchViewController: UIViewController, UISearchBarDelegate {
             var placeMark: CLPlacemark!
             placeMark = placemarks?[0]
 
-            // Location name
-            if let locationName = placeMark.location {
-                print(locationName)
-            }
-            // Street address
-            if let street = placeMark.thoroughfare {
-                print(street)
-                locationText += street
-            }
-            // City
-            if let city = placeMark.subAdministrativeArea {
-                print(city)
-                locationText += "/ " + city
-            }
-            // Zip code
-            if let zip = placeMark.isoCountryCode {
-                print(zip)
-                locationText += "/ " + zip
-            }
-            // Country
-            if let country = placeMark.country {
-                print(country)
-                locationText += "/ " + country
+            if let name = placeMark.name {
+                locationText += name
             }
             
+            if let locality = placeMark.locality {
+                locationText += locality
+            }
             
             LocationSingleton.shared().setLocation(coordinates: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), text: locationText)
         })
