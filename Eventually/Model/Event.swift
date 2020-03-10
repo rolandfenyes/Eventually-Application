@@ -14,13 +14,14 @@ class Event {
     
     private var eventName: String
     private var eventLocation: CLLocationCoordinate2D
+    private var address: String
     private var numberOfPeople: String // int
     private var shortDescription: String
     private var dateOfEvent: String
     private var publicity: String
     private var image: UIImage?
     
-    init(eventName: String, eventLocation: CLLocationCoordinate2D, numberOfPeople: String, shortDescription: String, dateOfEvent: String, publicity: String, image: UIImage?) {
+    init(eventName: String, eventLocation: CLLocationCoordinate2D, numberOfPeople: String, shortDescription: String, dateOfEvent: String, publicity: String, image: UIImage?, address: String) {
         self.eventName = eventName
         self.eventLocation = eventLocation
         self.numberOfPeople = numberOfPeople
@@ -28,9 +29,35 @@ class Event {
         self.dateOfEvent = dateOfEvent
         self.publicity = publicity
         self.image = image
+        self.address = address
     }
     
     func getName() -> String {
         return eventName
+    }
+    
+    func getEventName() -> String {
+        return self.eventName
+    }
+    func getEventLocation() -> CLLocationCoordinate2D {
+        return self.eventLocation
+    }
+    func getGuests() -> String {
+        return self.numberOfPeople
+    }
+    func getDescription() -> String {
+        return self.shortDescription
+    }
+    func getDate() -> String {
+        return self.dateOfEvent
+    }
+    func getPub() -> String {
+        return self.publicity
+    }
+    func getImage() ->UIImage {
+        return self.image!
+    }
+    func getAddress() -> String {
+        return self.address
     }
 }

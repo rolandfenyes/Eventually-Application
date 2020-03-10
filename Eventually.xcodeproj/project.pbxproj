@@ -22,6 +22,8 @@
 		53E5491E24169F40004CF8CE /* PObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E5491D24169F40004CF8CE /* PObserver.swift */; };
 		53E549232416AADC004CF8CE /* MyObserverForAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E549222416AADC004CF8CE /* MyObserverForAddress.swift */; };
 		53F246D2240E4CE100BE9F0C /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F246D1240E4CE100BE9F0C /* Event.swift */; };
+		53FB7F0B24180041009634B6 /* EventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53FB7F0A24180041009634B6 /* EventHandler.swift */; };
+		53FB7F0D24180474009634B6 /* EventScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53FB7F0C24180474009634B6 /* EventScreenViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +65,8 @@
 		53E5491D24169F40004CF8CE /* PObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PObserver.swift; sourceTree = "<group>"; };
 		53E549222416AADC004CF8CE /* MyObserverForAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyObserverForAddress.swift; sourceTree = "<group>"; };
 		53F246D1240E4CE100BE9F0C /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		53FB7F0A24180041009634B6 /* EventHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventHandler.swift; sourceTree = "<group>"; };
+		53FB7F0C24180474009634B6 /* EventScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventScreenViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +129,7 @@
 				53E5491924165B69004CF8CE /* LocationSingleton.swift */,
 				53E5491D24169F40004CF8CE /* PObserver.swift */,
 				53E549222416AADC004CF8CE /* MyObserverForAddress.swift */,
+				53FB7F0C24180474009634B6 /* EventScreenViewController.swift */,
 			);
 			path = Eventually;
 			sourceTree = "<group>";
@@ -158,6 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				53F246D1240E4CE100BE9F0C /* Event.swift */,
+				53FB7F0A24180041009634B6 /* EventHandler.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -311,6 +317,8 @@
 				53F246D2240E4CE100BE9F0C /* Event.swift in Sources */,
 				53E5491E24169F40004CF8CE /* PObserver.swift in Sources */,
 				53B00A0C23FF163F00F915D5 /* SceneDelegate.swift in Sources */,
+				53FB7F0D24180474009634B6 /* EventScreenViewController.swift in Sources */,
+				53FB7F0B24180041009634B6 /* EventHandler.swift in Sources */,
 				53E5491A24165B69004CF8CE /* LocationSingleton.swift in Sources */,
 				53E54918241632CC004CF8CE /* LocationSearchViewController.swift in Sources */,
 				53E549232416AADC004CF8CE /* MyObserverForAddress.swift in Sources */,

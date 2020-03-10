@@ -18,7 +18,7 @@ class NewEventViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     //variables for the location
     @IBOutlet weak var location: UIButton!
-    private var locationCoordinates: CLLocationCoordinate2D?
+    //private var locationCoordinates: CLLocationCoordinate2D?
     @IBOutlet weak var showLocationOnMap: MKMapView!
     
     //variables for the date
@@ -64,7 +64,16 @@ class NewEventViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     //MARK: - Event Created Button Pressed
     
     @IBAction func eventCreatedButtonPressed(_ sender: Any) {
-        
+        print("gomb lenyomva")
+        print(eventName.text!)
+        print(LocationSingleton.shared().getCoordinates())
+        print(numOfPeople.text!)
+        print(shortDesc.text!)
+        print(dateInput.text!)
+        print(publicityInput.text!)
+        print(LocationSingleton.shared().getText())
+        let event = Event(eventName: eventName.text!, eventLocation: LocationSingleton.shared().getCoordinates(), numberOfPeople: numOfPeople.text!, shortDescription: shortDesc.text!, dateOfEvent: dateInput.text!, publicity: publicityInput.text!, image: imageView.image, address: LocationSingleton.shared().getText())
+        EventHandler.shared().addEvent(event: event)
      }
     
     
