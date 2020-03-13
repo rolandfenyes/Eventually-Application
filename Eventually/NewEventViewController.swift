@@ -102,9 +102,6 @@ class NewEventViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
             let event = Event(eventName: eventName.text!, eventLocation: LocationSingleton.shared().getCoordinates()!, numberOfPeople: numOfPeople.text!, shortDescription: shortDesc.text!, dateOfEvent: startDate.text!, publicity: publicityInput.text!, image: imageView.image, address: LocationSingleton.shared().getText())
             EventHandler.shared().addEvent(event: event)
         }
-        else {
-            
-        }
      }
     
     

@@ -15,11 +15,69 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7AC-ar-IKU">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="414" horizontalCompressionResistancePriority="1000" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TyP-OH-9DF">
+                                <rect key="frame" x="0.0" y="100" width="414" height="198"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="400" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="czk-Dd-t1K">
+                                        <rect key="frame" x="0.0" y="9" width="830" height="160"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="beers" translatesAutoresizingMaskIntoConstraints="NO" id="9zm-tn-ivT">
+                                                <rect key="frame" x="0.0" y="0.0" width="200" height="160"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="200" id="488-wb-RlP"/>
+                                                    <constraint firstAttribute="height" constant="160" id="PK5-jm-I7h"/>
+                                                </constraints>
+                                            </imageView>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hamburger" translatesAutoresizingMaskIntoConstraints="NO" id="mIh-jk-WlH">
+                                                <rect key="frame" x="210" y="0.0" width="200" height="160"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="200" id="6gC-vU-cB6"/>
+                                                    <constraint firstAttribute="height" constant="160" id="903-fu-EvS"/>
+                                                </constraints>
+                                            </imageView>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kayaking" translatesAutoresizingMaskIntoConstraints="NO" id="0e7-VX-zet">
+                                                <rect key="frame" x="420" y="0.0" width="200" height="160.00000000000011"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="200" id="RaY-kZ-J6m"/>
+                                                    <constraint firstAttribute="height" constant="160" id="Y0G-Hg-f1s"/>
+                                                </constraints>
+                                            </imageView>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="beers" translatesAutoresizingMaskIntoConstraints="NO" id="d6M-Ob-Oil">
+                                                <rect key="frame" x="630" y="0.0" width="200" height="160"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="160" id="Fvy-hb-X4N"/>
+                                                    <constraint firstAttribute="width" constant="200" id="XJC-vS-22H"/>
+                                                </constraints>
+                                            </imageView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="mIh-jk-WlH" firstAttribute="leading" secondItem="9zm-tn-ivT" secondAttribute="trailing" constant="10" id="15o-L6-B79"/>
+                                            <constraint firstItem="mIh-jk-WlH" firstAttribute="leading" secondItem="9zm-tn-ivT" secondAttribute="trailing" constant="10" id="4BH-2c-Ubj"/>
+                                            <constraint firstItem="d6M-Ob-Oil" firstAttribute="leading" secondItem="0e7-VX-zet" secondAttribute="trailing" constant="10" id="5Ge-Kk-RXt"/>
+                                            <constraint firstItem="d6M-Ob-Oil" firstAttribute="leading" secondItem="0e7-VX-zet" secondAttribute="trailing" constant="10" id="J2I-AP-9lX"/>
+                                            <constraint firstItem="0e7-VX-zet" firstAttribute="leading" secondItem="mIh-jk-WlH" secondAttribute="trailing" constant="10" id="QBv-TA-SSm"/>
+                                            <constraint firstItem="0e7-VX-zet" firstAttribute="leading" secondItem="mIh-jk-WlH" secondAttribute="trailing" constant="10" id="kzF-p5-WdS"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="czk-Dd-t1K" firstAttribute="leading" secondItem="TyP-OH-9DF" secondAttribute="leading" id="IjF-KB-aK8"/>
+                                    <constraint firstAttribute="trailing" secondItem="czk-Dd-t1K" secondAttribute="trailing" constant="-36" id="QoL-Um-iCR"/>
+                                    <constraint firstItem="czk-Dd-t1K" firstAttribute="top" secondItem="Uze-fP-aEp" secondAttribute="top" constant="9" id="Vi8-8C-VLK"/>
+                                    <constraint firstItem="Uze-fP-aEp" firstAttribute="bottom" secondItem="czk-Dd-t1K" secondAttribute="bottom" constant="29" id="aNM-g9-4ar"/>
+                                    <constraint firstAttribute="bottom" secondItem="czk-Dd-t1K" secondAttribute="bottom" constant="109" id="xTY-67-a02"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="K7X-GJ-uxy"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="Uze-fP-aEp"/>
+                            </scrollView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7AC-ar-IKU">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.89090096949999997" green="0.3556731045" blue="0.3216511011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="0Xc-T2-v0x"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="414" id="7U0-2p-cnQ"/>
+                                </constraints>
                                 <attributedString key="attributedText">
                                     <fragment content="  Közelgő események">
                                         <attributes>
@@ -33,6 +91,19 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="TyP-OH-9DF" firstAttribute="top" secondItem="7AC-ar-IKU" secondAttribute="bottom" id="7wO-Pb-sKM"/>
+                            <constraint firstItem="7AC-ar-IKU" firstAttribute="trailing" secondItem="PQr-Ze-W5v" secondAttribute="trailing" id="8Hl-mA-ulb"/>
+                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="TyP-OH-9DF" secondAttribute="trailing" id="Ar4-3s-urZ"/>
+                            <constraint firstItem="TyP-OH-9DF" firstAttribute="top" secondItem="7AC-ar-IKU" secondAttribute="bottom" id="Ndd-nT-ehA"/>
+                            <constraint firstItem="7AC-ar-IKU" firstAttribute="top" secondItem="tsR-hK-woN" secondAttribute="top" id="ShB-Hu-Z1H"/>
+                            <constraint firstItem="7AC-ar-IKU" firstAttribute="top" secondItem="tsR-hK-woN" secondAttribute="top" id="dhm-Bl-vcf"/>
+                            <constraint firstItem="7AC-ar-IKU" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="gBm-xC-Mwq"/>
+                            <constraint firstItem="7AC-ar-IKU" firstAttribute="trailing" secondItem="PQr-Ze-W5v" secondAttribute="trailing" id="mmg-e6-01h"/>
+                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="bottom" secondItem="TyP-OH-9DF" secondAttribute="bottom" constant="515" id="oe8-yN-ZUl"/>
+                            <constraint firstItem="7AC-ar-IKU" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="qND-RU-NIc"/>
+                            <constraint firstItem="TyP-OH-9DF" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="ygs-of-BG6"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" image="house" catalog="system" id="acW-dT-cKf"/>
@@ -490,8 +561,11 @@
         </scene>
     </scenes>
     <resources>
+        <image name="beers" width="600" height="418"/>
         <image name="clock" catalog="system" width="64" height="60"/>
+        <image name="hamburger" width="600" height="420"/>
         <image name="house" catalog="system" width="64" height="54"/>
+        <image name="kayaking" width="600" height="417"/>
         <image name="map" catalog="system" width="64" height="56"/>
         <image name="person" catalog="system" width="64" height="58"/>
         <image name="photo" catalog="system" width="64" height="46"/>
