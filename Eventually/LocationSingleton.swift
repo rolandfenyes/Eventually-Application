@@ -28,8 +28,8 @@ class LocationSingleton : MyObserverForAddress {
     
     //MARK: - Functions
 
-    func getCoordinates() -> CLLocationCoordinate2D {
-        return coordinates!
+    func getCoordinates() -> CLLocationCoordinate2D? {
+        return coordinates
     }
     func getText() -> String {
         return baseLocationText

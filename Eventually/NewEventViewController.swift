@@ -23,8 +23,10 @@ class NewEventViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     @IBOutlet weak var showLocationOnMap: MKMapView!
     
     //variables for the date
-    @IBOutlet weak var dateInput: UITextField!
-    private var datePicker: UIDatePicker?
+    @IBOutlet weak var startDate: UITextField!
+    private var startDatePicker: UIDatePicker?
+    @IBOutlet weak var endDate: UITextField!
+    private var endDatePicker: UIDatePicker?
     
     //variables for the publicity
     @IBOutlet weak var publicityInput: UITextField!
@@ -34,14 +36,19 @@ class NewEventViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     @IBOutlet weak var imageView: UIImageView!
     private var image: UIImage?
     
+    //variable for error message
+    @IBOutlet weak var errorMessage: UILabel!
+    
     //MARK: - Main
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        errorMessage.isHidden = true
         
         publicityInput.text = dataSourceOfPubPicker[0]
 
-        DatePicking()
+        startDatePicking()
+        endDatePicking()
         PublicityPicking()
         LocationSingleton.shared().attach(observer: self)
         map = MapLoader(map: showLocationOnMap)
@@ -51,23 +58,53 @@ class NewEventViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         
         let title = LocationSingleton.shared().getText()
         location.setTitle(title, for: .normal)
-        map.showMap(coordinates: LocationSingleton.shared().getCoordinates(), animation: false, title: title, mapRange: 0.01)
+        map.showMap(coordinates: LocationSingleton.shared().getCoordinates()!, animation: false, title: title, mapRange: 0.01)
         
+    }
+    
+    //MARK: - Check inputs
+    
+    func checkInputsValidaton() -> Bool {
+        if (eventName.text!.count > 3 &&
+            LocationSingleton.shared().getCoordinates() != nil &&
+            Int(numOfPeople.text!) ?? -1 > 0 &&
+            shortDesc.text!.count > 10) {
+            return true
+        }else {
+            setErrorMessageDependingOnError()
+            return false
+        }
+    }
+    
+    func setErrorMessageDependingOnError() {
+        errorMessage.isHidden = false
+        if eventName.text!.count <= 2 {
+            errorMessage.text = "Adj címet az eseménynek!"
+        }
+        else if eventName.text!.count > 15 {
+            errorMessage.text = "Túl hosszú cím!"
+        }
+        else if Int(numOfPeople.text!) ?? -1 < 0 {
+            errorMessage.text = "Valós számot adj meg!"
+        }
+        else if shortDesc.text!.count < 10 {
+            errorMessage.text = "A leírás legalább 10 karakter!"
+        }
+        else {
+            errorMessage.text = "Minden kötelező* mezőt tölts ki!"
+        }
     }
     
     //MARK: - Event Created Button Pressed
     
     @IBAction func eventCreatedButtonPressed(_ sender: Any) {
-        print("gomb lenyomva")
-        print(eventName.text!)
-        print(LocationSingleton.shared().getCoordinates())
-        print(numOfPeople.text!)
-        print(shortDesc.text!)
-        print(dateInput.text!)
-        print(publicityInput.text!)
-        print(LocationSingleton.shared().getText())
-        let event = Event(eventName: eventName.text!, eventLocation: LocationSingleton.shared().getCoordinates(), numberOfPeople: numOfPeople.text!, shortDescription: shortDesc.text!, dateOfEvent: dateInput.text!, publicity: publicityInput.text!, image: imageView.image, address: LocationSingleton.shared().getText())
-        EventHandler.shared().addEvent(event: event)
+        if checkInputsValidaton(){
+            let event = Event(eventName: eventName.text!, eventLocation: LocationSingleton.shared().getCoordinates()!, numberOfPeople: numOfPeople.text!, shortDescription: shortDesc.text!, dateOfEvent: startDate.text!, publicity: publicityInput.text!, image: imageView.image, address: LocationSingleton.shared().getText())
+            EventHandler.shared().addEvent(event: event)
+        }
+        else {
+            
+        }
      }
     
     
@@ -123,20 +160,36 @@ class NewEventViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     //MARK: - Date Picker
     
-    func DatePicking(){
-        datePicker = UIDatePicker()
-        datePicker?.datePickerMode = .dateAndTime
-        datePicker?.addTarget(self, action: #selector(NewEventViewController.DateChanged(datePicker:)), for: .valueChanged)
-        dateInput.inputView = datePicker
+    func startDatePicking() {
+        startDatePicker = UIDatePicker()
+        startDatePicker?.datePickerMode = .dateAndTime
+        startDatePicker?.addTarget(self, action: #selector(startDateChanged(datePicker:)), for: .valueChanged)
+        startDate.inputView = startDatePicker
         SetUpDoneButton(pickerType: "DatePicker")
     }
     
-    @objc func DateChanged(datePicker: UIDatePicker) {
+    func endDatePicking() {
+        endDatePicker = UIDatePicker()
+        endDatePicker?.datePickerMode = .dateAndTime
+        endDatePicker?.addTarget(self, action: #selector(endDateChanged(datePicker:)), for: .valueChanged)
+        endDate.inputView = endDatePicker
+        SetUpDoneButton(pickerType: "DatePicker")
+    }
+    
+    @objc func startDateChanged(datePicker: UIDatePicker) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM/dd '-' hh:mm a"  //"hh:mm a 'on' dd"
         dateFormatter.amSymbol = "AM"
         dateFormatter.pmSymbol = "PM"
-        dateInput.text = dateFormatter.string(from: datePicker.date)
+        startDate.text = dateFormatter.string(from: datePicker.date)
+    }
+    
+    @objc func endDateChanged(datePicker: UIDatePicker) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM/dd '-' hh:mm a"  //"hh:mm a 'on' dd"
+        dateFormatter.amSymbol = "AM"
+        dateFormatter.pmSymbol = "PM"
+        endDate.text = dateFormatter.string(from: datePicker.date)
     }
     
     // MARK: - Done Button
@@ -156,8 +209,11 @@ class NewEventViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     func AddDoneButton(doneButton : UIToolbar, pickerType: String) {
         switch (pickerType) {
-        case "DatePicker": dateInput.inputAccessoryView = doneButton
-        case "PubPicker": publicityInput.inputAccessoryView = doneButton
+        case "DatePicker":  startDate.inputAccessoryView = doneButton
+                            endDate.inputAccessoryView = doneButton
+                            break
+        case "PubPicker":   publicityInput.inputAccessoryView = doneButton
+                            break
         default: break
         }
         
