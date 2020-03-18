@@ -25,7 +25,6 @@ class EventHandler {
     }
     
     func addEvent(event: Event) {
-        print("event added")
         events.append(event)
     }
     

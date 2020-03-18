@@ -56,6 +56,7 @@ class NewEventViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     func update() {
         
+        print(LocationSingleton.shared().getCoordinates())
         let title = LocationSingleton.shared().getText()
         location.setTitle(title, for: .normal)
         map.showMap(coordinates: LocationSingleton.shared().getCoordinates()!, animation: false, title: title, mapRange: 0.01)
