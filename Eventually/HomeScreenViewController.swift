@@ -25,8 +25,13 @@ class HomeScreenViewController: UIViewController {
     @IBOutlet weak var eventImage4: UIImageView!
     @IBOutlet weak var eventTitle4: UILabel!
     
+    @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.delegate = self
+        tableView.dataSource = self
         
         let event1 = Event(eventName: "Mozizás", eventLocation: CLLocationCoordinate2D(latitude: 47.474838443055546, longitude: 19.049048381857574), numberOfPeople: "3", shortDescription: "Szeretnék mozizni menni pár emberrel.", dateOfEvent: "holnap", publicity: "publikus", image: UIImage(named: "cinema"), address: "Allee")
         
@@ -80,5 +85,21 @@ class HomeScreenViewController: UIViewController {
         eventScreen.setEvent(event: event)
         self.present(eventScreen, animated: true, completion: nil)
     }
-}
+} //end of the class
 
+extension HomeScreenViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let event = EventHandler.shared().getEvents()[indexPath.row]
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell") as! EventCell
+        
+        cell.setEvent(event: event)
+         
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return EventHandler.shared().getEvents().count
+    }
+}
