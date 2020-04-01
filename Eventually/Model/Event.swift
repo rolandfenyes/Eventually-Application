@@ -22,6 +22,7 @@ class Event {
     private var endDate: String
     private var publicity: String
     private var image: UIImage?
+    private var joined: Bool! = false
     
     //MARK: - Init
     init(eventName: String, eventLocation: CLLocationCoordinate2D, numberOfPeople: String, shortDescription: String, startDate: String, endDate: String, publicity: String, image: UIImage?, address: String) {
@@ -36,11 +37,14 @@ class Event {
         self.address = address
     }
     
+    func setJoined(status: Bool) {
+        self.joined = status
+    }
+    
     //MARK: - Getters
     func getName() -> String {
         return eventName
     }
-    
     func getEventName() -> String {
         return self.eventName
     }
@@ -67,5 +71,8 @@ class Event {
     }
     func getAddress() -> String {
         return self.address
+    }
+    func getIsJoined() -> Bool {
+        return self.joined
     }
 }

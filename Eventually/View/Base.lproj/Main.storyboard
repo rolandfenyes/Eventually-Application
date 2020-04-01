@@ -87,7 +87,7 @@
                                                 <rect key="frame" x="250" y="0.0" width="240" height="200"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kayaking" translatesAutoresizingMaskIntoConstraints="NO" id="y79-NC-HPi">
-                                                        <rect key="frame" x="10" y="10" width="220" height="160.00000000000011"/>
+                                                        <rect key="frame" x="10" y="10" width="220" height="160"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="awa-dj-QoJ">
                                                         <rect key="frame" x="8" y="171.5" width="224" height="20.5"/>
@@ -235,6 +235,12 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="checkmark" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="bMa-Te-Ykw">
+                                                    <rect key="frame" x="355" y="13" width="19" height="20"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="tintColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="aeG-cf-SRN" firstAttribute="top" secondItem="g9u-7e-9Kz" secondAttribute="topMargin" constant="5" id="4Ue-kq-67E"/>
@@ -252,6 +258,7 @@
                                             <outlet property="eventDurationLabel" destination="HL7-Ir-WKd" id="TYN-MD-H4Y"/>
                                             <outlet property="eventImageView" destination="g8q-Sk-XhL" id="bVx-uY-tBK"/>
                                             <outlet property="eventTitleLabel" destination="aeG-cf-SRN" id="xb4-cA-dtG"/>
+                                            <outlet property="joinedTicket" destination="bMa-Te-Ykw" id="PF5-Ra-vd5"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -601,6 +608,16 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SAC-Vw-XhJ">
+                                <rect key="frame" x="132" y="785" width="150" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.93229508400000005" green="0.1650608039" blue="0.1332686035" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="joinButtonClicked:" destination="S1m-ng-Fd7" eventType="touchUpInside" id="BiP-aK-h0i"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="SQv-3V-Opp"/>
@@ -612,6 +629,7 @@
                         <outlet property="eventName" destination="Urv-Yq-Mo2" id="mEZ-49-bam"/>
                         <outlet property="guests" destination="F4x-am-zL7" id="ARc-RO-e5a"/>
                         <outlet property="image" destination="ScH-Ov-WBz" id="Fat-PG-kpW"/>
+                        <outlet property="joinButton" destination="SAC-Vw-XhJ" id="OEc-Wq-t2V"/>
                         <outlet property="location" destination="TFP-5N-km8" id="6by-1S-1y7"/>
                         <outlet property="map" destination="IEN-3s-WFt" id="2Fw-7H-TDx"/>
                         <outlet property="publicity" destination="cpF-lR-fVS" id="ViH-Zw-sYb"/>
@@ -752,6 +770,7 @@
     </scenes>
     <resources>
         <image name="beers" width="600" height="418"/>
+        <image name="checkmark" catalog="system" width="64" height="56"/>
         <image name="cinema" width="600" height="603"/>
         <image name="clock" catalog="system" width="64" height="60"/>
         <image name="hamburger" width="600" height="420"/>

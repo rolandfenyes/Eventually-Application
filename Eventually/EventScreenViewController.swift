@@ -23,6 +23,8 @@ class EventScreenViewController: UIViewController {
     @IBOutlet weak var location: UILabel?
     @IBOutlet weak var map: MKMapView?
     
+    @IBOutlet weak var joinButton: UIButton!
+    
     func setEvent(event: Event) {
         self.event = event
     }
@@ -30,6 +32,7 @@ class EventScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let eventImage = self.event.getImage()
+        setJoinButtonTitle()
         
         image?.image = eventImage
         eventName?.text = self.event.getName()
@@ -54,4 +57,23 @@ class EventScreenViewController: UIViewController {
         self .map?.setRegion(region, animated: false)
     }
 
+    func setJoinButtonTitle() {
+        if (!event.getIsJoined()) {
+            joinButton.setTitle("Jelentkezés", for: .normal)
+        }
+        else {
+            joinButton.setTitle("Leiratkozás", for: .normal)
+        }
+    }
+    
+    @IBAction func joinButtonClicked(_ sender: UIButton) {
+        let eventIndex = EventHandler.shared().getExactEventIndex(event: self.event)
+        if (!event.getIsJoined()) {
+            EventHandler.shared().setJoinForAnEvent(status: true, index: eventIndex)
+        }
+        else {
+            EventHandler.shared().setJoinForAnEvent(status: false, index: eventIndex)
+        }
+        setJoinButtonTitle()
+    }
 }

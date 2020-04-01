@@ -14,12 +14,19 @@ class EventCell: UITableViewCell {
     @IBOutlet weak var eventImageView: UIImageView!
     @IBOutlet weak var eventTitleLabel: UILabel!
     @IBOutlet weak var eventDurationLabel: UILabel!
+    @IBOutlet weak var joinedTicket: UIImageView!
     
     func setEvent(event: Event) {
         self.event = event
         eventImageView.image = event.getImage()
         eventTitleLabel.text = event.getName()
         eventDurationLabel.text = event.getStartDate()
+        if (!event.getIsJoined()) {
+            joinedTicket.isHidden = true
+        }
+        else {
+            joinedTicket.isHidden = false
+        }
     }
 
 } //end of the class

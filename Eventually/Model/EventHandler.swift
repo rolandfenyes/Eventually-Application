@@ -29,8 +29,24 @@ class EventHandler: MyObserverForEventList {
         notify()
     }
     
+    func setJoinForAnEvent(status: Bool, index: Int) {
+        events[index].setJoined(status: status)
+        notify()
+    }
+    
     func getEvents() -> [Event] {
         return events
+    }
+    
+    func getExactEventIndex(event: Event) -> Int {
+        var index = 0
+        for varEvent in self.events {
+            if event === varEvent {
+                break
+            }
+            index += 1
+        }
+        return index
     }
     
 }
