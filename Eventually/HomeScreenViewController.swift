@@ -30,9 +30,12 @@ class HomeScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        EventHandler.shared().attach(observer: self)
+        
         tableView.delegate = self
         tableView.dataSource = self
         
+        //MARK: - Sample events
         let event1 = Event(eventName: "Mozizás", eventLocation: CLLocationCoordinate2D(latitude: 47.474838443055546, longitude: 19.049048381857574), numberOfPeople: "3", shortDescription: "Szeretnék mozizni menni pár emberrel.", dateOfEvent: "holnap", publicity: "publikus", image: UIImage(named: "cinema"), address: "Allee")
         
         let event2 = Event(eventName: "Kajakozás", eventLocation: CLLocationCoordinate2D(latitude: 47.73254454163791, longitude: 19.051930750720203), numberOfPeople: "10", shortDescription: "Kajakozásra fel! A Dunakanyarban lakok, és nemrég nyílt a környéken egy új hely, ahol lehet bérelni kajakot. Olyan emberek jelentkezését várom, akik tudnak úszni, és szeretnének egy jót evezni,", dateOfEvent: "Szavazás alapján", publicity: "publikus", image: UIImage(named: "kayaking"), address: "Dunakanyar")
@@ -64,9 +67,10 @@ class HomeScreenViewController: UIViewController {
          burger: (latitude: 47.37842513297852, longitude: 18.93373870756477)
          sör: (latitude: 47.49810821206292, longitude: 19.066526661626995)
          */
-        
+        //MARK: - End of Sample events
     }
     
+    //MARK: - Events
     @IBAction func event1EventClicked(_ sender: Any) {
         presentEventScreen(event: EventHandler.shared().getEvents()[0])
     }
@@ -87,6 +91,8 @@ class HomeScreenViewController: UIViewController {
     }
 } //end of the class
 
+//MARK: - Set up tableview
+
 extension HomeScreenViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -102,4 +108,18 @@ extension HomeScreenViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return EventHandler.shared().getEvents().count
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presentEventScreen(event: EventHandler.shared().getEvents()[indexPath.row])
+    }
+}
+
+//MARK: - Observer
+
+extension HomeScreenViewController: PObserver {
+    
+    func update() {
+        self.tableView.reloadData()
+    }
+    
 }

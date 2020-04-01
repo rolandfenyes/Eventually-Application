@@ -8,7 +8,7 @@
 
 import Foundation
 
-class EventHandler {
+class EventHandler: MyObserverForEventList {
     
     private var events: [Event] = []
     
@@ -21,11 +21,13 @@ class EventHandler {
         return eventManager
     }()
     
-    private init() {
+    private override init() {
     }
     
     func addEvent(event: Event) {
         events.append(event)
+        notify()
+        print("event added")
     }
     
     func getEvents() -> [Event] {
