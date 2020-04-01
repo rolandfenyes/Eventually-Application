@@ -478,6 +478,7 @@
                     <connections>
                         <outlet property="endDate" destination="IgL-fc-Ei5" id="eu1-kC-BgZ"/>
                         <outlet property="errorMessage" destination="D06-kC-50h" id="IlQ-MS-5kJ"/>
+                        <outlet property="eventCreateButton" destination="pN1-ak-kYI" id="ObT-Eo-iOP"/>
                         <outlet property="eventName" destination="GNz-Sl-vfL" id="OG9-1o-Bc7"/>
                         <outlet property="imageView" destination="gCx-r5-RbB" id="9SM-ng-65w"/>
                         <outlet property="location" destination="mHP-Oj-Ld6" id="KUj-1t-Wtl"/>

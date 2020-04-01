@@ -36,8 +36,9 @@ class NewEventViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     @IBOutlet weak var imageView: UIImageView!
     private var image: UIImage?
     
-    //variable for error message
+    //variables for error message and create event button
     @IBOutlet weak var errorMessage: UILabel!
+    @IBOutlet weak var eventCreateButton: UIButton!
     
     //MARK: - Main
     
@@ -100,6 +101,8 @@ class NewEventViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         if checkInputsValidaton(){
             let event = Event(eventName: eventName.text!, eventLocation: LocationSingleton.shared().getCoordinates()!, numberOfPeople: numOfPeople.text!, shortDescription: shortDesc.text!, startDate: startDate.text!, endDate: endDate.text!, publicity: publicityInput.text!, image: imageView.image, address: LocationSingleton.shared().getText())
             EventHandler.shared().addEvent(event: event)
+            eventCreateButton.setTitle("Létrehozva", for: .normal)
+            eventCreateButton.isEnabled = false
         }
      }
     
