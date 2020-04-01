@@ -19,7 +19,7 @@ class EventCell: UITableViewCell {
         self.event = event
         eventImageView.image = event.getImage()
         eventTitleLabel.text = event.getName()
-        eventDurationLabel.text = event.getDate() 
+        eventDurationLabel.text = event.getStartDate()
     }
 
 } //end of the class

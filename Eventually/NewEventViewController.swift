@@ -98,10 +98,9 @@ class NewEventViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     @IBAction func eventCreatedButtonPressed(_ sender: Any) {
         if checkInputsValidaton(){
-            let event = Event(eventName: eventName.text!, eventLocation: LocationSingleton.shared().getCoordinates()!, numberOfPeople: numOfPeople.text!, shortDescription: shortDesc.text!, dateOfEvent: startDate.text!, publicity: publicityInput.text!, image: imageView.image, address: LocationSingleton.shared().getText())
+            let event = Event(eventName: eventName.text!, eventLocation: LocationSingleton.shared().getCoordinates()!, numberOfPeople: numOfPeople.text!, shortDescription: shortDesc.text!, startDate: startDate.text!, endDate: endDate.text!, publicity: publicityInput.text!, image: imageView.image, address: LocationSingleton.shared().getText())
             EventHandler.shared().addEvent(event: event)
         }
-        print("létrehozva")
      }
     
     

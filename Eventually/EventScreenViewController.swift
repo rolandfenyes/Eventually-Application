@@ -17,6 +17,7 @@ class EventScreenViewController: UIViewController {
     @IBOutlet weak var eventName: UILabel?
     @IBOutlet weak var guests: UILabel?
     @IBOutlet weak var date: UILabel?
+    @IBOutlet weak var dateEnd: UILabel?
     @IBOutlet weak var publicity: UILabel?
     @IBOutlet weak var desc: UILabel?
     @IBOutlet weak var location: UILabel?
@@ -33,7 +34,8 @@ class EventScreenViewController: UIViewController {
         image?.image = eventImage
         eventName?.text = self.event.getName()
         guests?.text = self.event.getGuests()
-        date?.text = self.event.getDate()
+        date?.text = self.event.getStartDate()
+        dateEnd?.text = self.event.getEndDate()
         publicity?.text = self.event.getPub()
         desc?.text = self.event.getDescription()
         location?.text = self.event.getAddress()
