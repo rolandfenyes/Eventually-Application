@@ -75,4 +75,12 @@ class Event {
     func getIsJoined() -> Bool {
         return self.joined
     }
+    func isPublic() -> Bool {
+        if (self.publicity == "Privát") {
+            return false
+        }
+        else {
+            return true
+        }
+    }
 }
