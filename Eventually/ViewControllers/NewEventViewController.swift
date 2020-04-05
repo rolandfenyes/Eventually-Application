@@ -47,6 +47,7 @@ class NewEventViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     //MARK: - Variables for editing
     private var editedEvent: Event?
     private var isEditModeOn: Bool! = false
+    @IBOutlet weak var cancelButton: UIButton!
     
     func setEventToEdit(event: Event) {
         self.editedEvent = event
@@ -57,6 +58,8 @@ class NewEventViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     override func viewDidLoad() {
         super.viewDidLoad()
         errorMessage.isHidden = true
+
+        modifyCancelButtonDependingOnEditMode()
         
         publicityInput.text = dataSourceOfPubPicker[0]
 
@@ -72,10 +75,22 @@ class NewEventViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         }
     }
     
+    func modifyCancelButtonDependingOnEditMode() {
+        if (!self.isEditModeOn) {
+            cancelButton.isHidden = true
+            cancelButton.isEnabled = false
+        }
+        else {
+            cancelButton.isHidden = false
+            cancelButton.isEnabled = true
+        }
+    }
+    
     //MARK: - Set up editing
     
     func setUpEditing() {
         headTitle.text = "Szerkesztés"
+        
         eventName.text = self.editedEvent?.getName()
         numOfPeople.text = self.editedEvent?.getGuests()
         shortDesc.text = self.editedEvent?.getDescription()
@@ -161,7 +176,7 @@ class NewEventViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
             if (isEditModeOn) {
                 let modifiedEvent = createEvent()
                 editEvent(modifiedEvent: modifiedEvent)
-                dismiss(animated: true, completion: nil)
+                disappearScreen()
             }
             else {
                 let newEvent = createEvent()
@@ -184,6 +199,13 @@ class NewEventViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         EventHandler.shared().editEvent(oldEvent: self.editedEvent!, modifiedEvent: modifiedEvent)
     }
     
+    @IBAction func cancelButtonClicked(_ sender: UIButton) {
+        disappearScreen()
+    }
+    
+    func disappearScreen() {
+        dismiss(animated: true, completion: nil)
+    }
     
     //MARK: - Image Picker
     

@@ -462,12 +462,24 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bnx-Du-jPp">
+                                <rect key="frame" x="334" y="32" width="60" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Mégse">
+                                    <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelButtonClicked:" destination="N6H-X7-ndm" eventType="touchUpInside" id="yfl-0b-BYh"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="3V7-Dv-vHW"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="New Event" image="plus.circle.fill" catalog="system" id="365-B8-Ktd"/>
                     <connections>
+                        <outlet property="cancelButton" destination="bnx-Du-jPp" id="LBx-fo-cju"/>
                         <outlet property="endDate" destination="IgL-fc-Ei5" id="eu1-kC-BgZ"/>
                         <outlet property="errorMessage" destination="D06-kC-50h" id="IlQ-MS-5kJ"/>
                         <outlet property="eventCreateButton" destination="pN1-ak-kYI" id="ObT-Eo-iOP"/>
