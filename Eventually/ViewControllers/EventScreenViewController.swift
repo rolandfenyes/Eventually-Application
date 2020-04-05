@@ -85,6 +85,13 @@ class EventScreenViewController: UIViewController {
         setJoinButtonTitle()
     }
     
+    //MARK: - Close Button
+    
+    @IBAction func closeButtonClicked(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    
     //MARK: - Edit Button
     
     @IBAction func editButtonClicked(_ sender: UIButton) {

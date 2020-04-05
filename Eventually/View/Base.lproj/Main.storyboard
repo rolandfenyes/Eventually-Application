@@ -614,10 +614,12 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SAC-Vw-XhJ">
-                                <rect key="frame" x="132" y="785" width="150" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SAC-Vw-XhJ">
+                                <rect key="frame" x="52" y="832" width="150" height="30"/>
                                 <color key="backgroundColor" red="0.93229508400000005" green="0.1650608039" blue="0.1332686035" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="mkU-kY-iIQ"/>
+                                </constraints>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button">
                                     <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -637,8 +639,27 @@
                                     <action selector="editButtonClicked:" destination="S1m-ng-Fd7" eventType="touchUpInside" id="Ewt-uo-kFL"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="scg-Eb-X52">
+                                <rect key="frame" x="212" y="832" width="150" height="30"/>
+                                <color key="backgroundColor" red="0.93229508400000005" green="0.1650608039" blue="0.1332686035" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="VV8-y7-x5g"/>
+                                </constraints>
+                                <state key="normal" title="Bezárás">
+                                    <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="closeButtonClicked:" destination="S1m-ng-Fd7" eventType="touchUpInside" id="Umh-40-lzc"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="SQv-3V-Opp" firstAttribute="bottom" secondItem="SAC-Vw-XhJ" secondAttribute="bottom" id="76M-Yd-K3B"/>
+                            <constraint firstItem="SQv-3V-Opp" firstAttribute="trailing" secondItem="scg-Eb-X52" secondAttribute="trailing" constant="52" id="BrX-Jd-ZRF"/>
+                            <constraint firstItem="SQv-3V-Opp" firstAttribute="bottom" secondItem="scg-Eb-X52" secondAttribute="bottom" id="IUZ-fu-3oK"/>
+                            <constraint firstItem="SAC-Vw-XhJ" firstAttribute="leading" secondItem="SQv-3V-Opp" secondAttribute="leading" constant="52" id="rg4-3m-y7d"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="SQv-3V-Opp"/>
                     </view>
                     <connections>
