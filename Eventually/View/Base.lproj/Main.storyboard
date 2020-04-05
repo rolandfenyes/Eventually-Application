@@ -71,7 +71,7 @@
                                                 <rect key="frame" x="250" y="0.0" width="240" height="200"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kayaking" translatesAutoresizingMaskIntoConstraints="NO" id="y79-NC-HPi">
-                                                        <rect key="frame" x="10" y="10" width="220" height="160"/>
+                                                        <rect key="frame" x="10" y="10" width="220" height="160.00000000000011"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="awa-dj-QoJ">
                                                         <rect key="frame" x="8" y="171.5" width="224" height="20.5"/>
@@ -619,7 +619,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.93229508400000005" green="0.1650608039" blue="0.1332686035" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
                                 <connections>
                                     <action selector="joinButtonClicked:" destination="S1m-ng-Fd7" eventType="touchUpInside" id="BiP-aK-h0i"/>
                                 </connections>
@@ -681,12 +683,28 @@
                                 <rect key="frame" x="0.0" y="60" width="414" height="782"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JG5-4h-daI">
+                                <rect key="frame" x="150" y="731" width="114" height="30"/>
+                                <color key="backgroundColor" red="0.93229508400000005" green="0.1650608039" blue="0.1332686035" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Ez az a hely!">
+                                    <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="foundButtonClicked:" destination="MV6-v8-JCn" eventType="touchUpInside" id="N17-ge-T1z"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="4rN-ed-k88" firstAttribute="bottom" secondItem="JG5-4h-daI" secondAttribute="bottom" constant="47" id="txJ-Ha-F45"/>
+                            <constraint firstItem="4rN-ed-k88" firstAttribute="trailing" secondItem="JG5-4h-daI" secondAttribute="trailing" constant="150" id="uaw-kT-KC6"/>
+                            <constraint firstItem="JG5-4h-daI" firstAttribute="leading" secondItem="4rN-ed-k88" secondAttribute="leading" constant="150" id="wik-sg-mhJ"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="4rN-ed-k88"/>
                     </view>
                     <navigationItem key="navigationItem" id="YC3-sX-4Xu"/>
                     <connections>
+                        <outlet property="foundButton" destination="JG5-4h-daI" id="kev-XP-KIL"/>
                         <outlet property="myMapView" destination="BJ8-9W-nbr" id="w7v-yd-5sI"/>
                     </connections>
                 </viewController>

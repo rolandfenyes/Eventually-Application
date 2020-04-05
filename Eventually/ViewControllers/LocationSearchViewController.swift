@@ -14,6 +14,7 @@ class LocationSearchViewController: UIViewController, UISearchBarDelegate {
     //MARK: - Variables
     @IBOutlet weak var myMapView: MKMapView!
     private var map: MapLoader!
+    @IBOutlet weak var foundButton: UIButton!
     
     //MARK: - Main
     override func viewDidLoad() {
@@ -22,6 +23,7 @@ class LocationSearchViewController: UIViewController, UISearchBarDelegate {
         if LocationSingleton.shared().isLocationAlreadyLoaded() {
             activeSearch(search: LocationSingleton.shared().getText())
         }
+        setFoundButtonInvisible()
     }
     
     //MARK: - Set up Search Button
@@ -101,8 +103,24 @@ class LocationSearchViewController: UIViewController, UISearchBarDelegate {
             }
             
             LocationSingleton.shared().setLocation(coordinates: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), text: locationText)
+            self.setFoundButtonVisible()
         })
 
     }
     
-}
+    //MARK: - Found Button
+    
+    func setFoundButtonVisible() {
+        self.foundButton.isHidden = false
+        self.foundButton.isEnabled = true
+    }
+    
+    func setFoundButtonInvisible() {
+        self.foundButton.isHidden = true
+        self.foundButton.isEnabled = false
+    }
+    @IBAction func foundButtonClicked(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+} // end of the class
