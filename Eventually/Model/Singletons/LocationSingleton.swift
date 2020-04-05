@@ -38,7 +38,6 @@ class LocationSingleton : MyObserverForAddress {
     func setLocation(coordinates: CLLocationCoordinate2D, text: String){
         self.coordinates = coordinates
         self.baseLocationText = text
-        print(baseLocationText)
         notify()
     }
     

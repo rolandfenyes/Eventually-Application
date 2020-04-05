@@ -35,6 +35,13 @@ class HomeScreenViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
+        createSampleEvents()
+        setUpHorizontallyEvents()
+        
+        
+    }
+    
+    func createSampleEvents() {
         //MARK: - Sample events
         let event1 = Event(eventName: "Mozizás", eventLocation: CLLocationCoordinate2D(latitude: 47.474838443055546, longitude: 19.049048381857574), numberOfPeople: "3", shortDescription: "Szeretnék mozizni menni pár emberrel.", startDate: "holnap", endDate: "valamikor", publicity: "Privát", image: UIImage(named: "cinema"), address: "Allee")
         
@@ -48,19 +55,7 @@ class HomeScreenViewController: UIViewController {
         EventHandler.shared().addEvent(event: event2)
         EventHandler.shared().addEvent(event: event3)
         EventHandler.shared().addEvent(event: event4)
-        
-        eventImage1.image = EventHandler.shared().getEvents()[0].getImage()
-        eventTitle1.text = EventHandler.shared().getEvents()[0].getName()
-        
-        eventImage2.image = EventHandler.shared().getEvents()[1].getImage()
-        eventTitle2.text = EventHandler.shared().getEvents()[1].getName()
-        
-        eventImage3.image = EventHandler.shared().getEvents()[2].getImage()
-        eventTitle3.text = EventHandler.shared().getEvents()[2].getName()
-        
-        eventImage4.image = EventHandler.shared().getEvents()[3].getImage()
-        eventTitle4.text = EventHandler.shared().getEvents()[3].getName()
-        
+                
         /*
          mozi: (latitude: 47.474838443055546, longitude: 19.049048381857574)
          kajak: (latitude: 47.73254454163791, longitude: 19.051930750720203)
@@ -68,7 +63,31 @@ class HomeScreenViewController: UIViewController {
          sör: (latitude: 47.49810821206292, longitude: 19.066526661626995)
          */
         //MARK: - End of Sample events
+        
     }
+    
+    //MARK: - Horizontally Events
+    
+    func setUpHorizontallyEvents() {
+        var index = 0
+        while index < EventHandler.shared().getEvents().count {
+            if (index == 0) {
+                eventImage1.image = EventHandler.shared().getEvents()[0].getImage()
+                eventTitle1.text = EventHandler.shared().getEvents()[0].getName()
+            } else if (index == 1) {
+                eventImage2.image = EventHandler.shared().getEvents()[1].getImage()
+                eventTitle2.text = EventHandler.shared().getEvents()[1].getName()
+            } else if (index == 2) {
+                eventImage3.image = EventHandler.shared().getEvents()[2].getImage()
+                eventTitle3.text = EventHandler.shared().getEvents()[2].getName()
+            } else if (index == 3) {
+                eventImage4.image = EventHandler.shared().getEvents()[3].getImage()
+                eventTitle4.text = EventHandler.shared().getEvents()[3].getName()
+            }
+            index += 1
+        }
+    }
+    
     
     //MARK: - Events
     @IBAction func event1EventClicked(_ sender: Any) {
@@ -120,6 +139,7 @@ extension HomeScreenViewController: PObserver {
     
     func update() {
         self.tableView.reloadData()
+        setUpHorizontallyEvents()
     }
     
 }
