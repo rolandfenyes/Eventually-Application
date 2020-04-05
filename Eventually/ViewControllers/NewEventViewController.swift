@@ -89,7 +89,7 @@ class NewEventViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     //MARK: - Set up editing
     
     func setUpEditing() {
-        headTitle.text = "Szerkesztés"
+        headTitle.text = "  Szerkesztés"
         
         eventName.text = self.editedEvent?.getName()
         numOfPeople.text = self.editedEvent?.getGuests()
