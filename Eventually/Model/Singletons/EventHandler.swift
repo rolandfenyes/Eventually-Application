@@ -49,4 +49,18 @@ class EventHandler: MyObserverForEventList {
         return index
     }
     
+    func editEvent(oldEvent: Event, modifiedEvent: Event) {
+        let index = getExactEventIndex(event: oldEvent)
+        events[index].setEventName(name: modifiedEvent.getEventName())
+        events[index].setEventLocation(location: modifiedEvent.getEventLocation())
+        events[index].setGuests(guests: modifiedEvent.getGuests())
+        events[index].setDescription(desc: modifiedEvent.getDescription())
+        events[index].setStartDate(date: modifiedEvent.getStartDate())
+        events[index].setEndDate(date: modifiedEvent.getEndDate())
+        events[index].setPub(pub: modifiedEvent.getPub())
+        events[index].setImage(image: modifiedEvent.getImage())
+        events[index].setAddress(address: modifiedEvent.getAddress())
+        notify()
+    }
+    
 }

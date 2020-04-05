@@ -11,6 +11,8 @@ import MapKit
 
 class EventScreenViewController: UIViewController {
 
+    //MARK: - Variables for event details
+    
     private var event: Event!
 
     @IBOutlet weak var image: UIImageView?
@@ -28,6 +30,8 @@ class EventScreenViewController: UIViewController {
     func setEvent(event: Event) {
         self.event = event
     }
+    
+    //MARK: - Setting up the view
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,7 +59,11 @@ class EventScreenViewController: UIViewController {
         let region = MKCoordinateRegion(center: coordinate, span: span)
         
         self .map?.setRegion(region, animated: false)
+        
+        EventHandler.shared().attach(observer: self)
     }
+    
+    //MARK: - Join Button
 
     func setJoinButtonTitle() {
         if (!event.getIsJoined()) {
@@ -75,5 +83,21 @@ class EventScreenViewController: UIViewController {
             EventHandler.shared().setJoinForAnEvent(status: false, index: eventIndex)
         }
         setJoinButtonTitle()
+    }
+    
+    //MARK: - Edit Button
+    
+    @IBAction func editButtonClicked(_ sender: UIButton) {
+        //newEventScreen
+        let editEventScreen = self.storyboard?.instantiateViewController(withIdentifier: "newEventScreen") as! NewEventViewController
+        editEventScreen.setEventToEdit(event: self.event)
+        self.present(editEventScreen, animated: true, completion: nil)
+    }
+    
+} // end of the class
+
+extension EventScreenViewController: PObserver {
+    func update() {
+        viewDidLoad()
     }
 }

@@ -83,4 +83,34 @@ class Event {
             return true
         }
     }
-}
+    
+    //MARK: - Setters
+    
+    func setEventName(name: String) {
+        self.eventName = name
+    }
+    func setEventLocation(location: CLLocationCoordinate2D) {
+        self.eventLocation = location
+    }
+    func setGuests(guests: String) {
+        self.numberOfPeople = guests
+    }
+    func setDescription(desc: String) {
+        self.shortDescription = desc
+    }
+    func setStartDate(date: String) {
+        self.startDate = date
+    }
+    func setEndDate(date: String) {
+        self.endDate = date
+    }
+    func setPub(pub: String) {
+        self.publicity = pub
+    }
+    func setImage(image: UIImage) {
+        self.image! = image
+    }
+    func setAddress(address: String) {
+        self.address = address
+    }
+} // end of the class

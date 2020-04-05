@@ -12,6 +12,9 @@ import MapKit
 class NewEventViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UINavigationControllerDelegate, UIImagePickerControllerDelegate, PObserver {
 
     //MARK: - Variables
+    
+    @IBOutlet weak var headTitle: UILabel!
+    
     @IBOutlet weak var eventName: UITextField!
     @IBOutlet weak var numOfPeople: UITextField!
     @IBOutlet weak var shortDesc: UITextField!
@@ -41,6 +44,14 @@ class NewEventViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     @IBOutlet weak var errorMessage: UILabel!
     @IBOutlet weak var eventCreateButton: UIButton!
     
+    //MARK: - Variables for editing
+    private var editedEvent: Event?
+    private var isEditModeOn: Bool! = false
+    
+    func setEventToEdit(event: Event) {
+        self.editedEvent = event
+        isEditModeOn = true
+    }
     //MARK: - Main
     
     override func viewDidLoad() {
@@ -55,7 +66,46 @@ class NewEventViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         PublicityPicking()
         LocationSingleton.shared().attach(observer: self)
         map = MapLoader(map: showLocationOnMap)
+        
+        if (isEditModeOn) {
+            setUpEditing()
+        }
     }
+    
+    //MARK: - Set up editing
+    
+    func setUpEditing() {
+        headTitle.text = "Szerkesztés"
+        eventName.text = self.editedEvent?.getName()
+        numOfPeople.text = self.editedEvent?.getGuests()
+        shortDesc.text = self.editedEvent?.getDescription()
+        location.setTitle(self.editedEvent?.getAddress(), for: .normal)
+        startDate.text = self.editedEvent?.getStartDate()
+        endDate.text = self.editedEvent?.getEndDate()
+        publicityInput.text = self.editedEvent?.getPub()
+        imageView.image = self.editedEvent?.getImage()
+        eventCreateButton.setTitle("Befejezés", for: .normal)
+        setUpMiniMap()
+    }
+    
+    func setUpMiniMap() {
+        let title = self.editedEvent!.getAddress()
+        let coordinates = self.editedEvent!.getEventLocation()
+        LocationSingleton.shared().setLocation(coordinates: coordinates, text: title)
+        let annotation = MKPointAnnotation()
+        annotation.title = title
+        annotation.coordinate = CLLocationCoordinate2DMake(coordinates.latitude, coordinates.longitude)
+        self.showLocationOnMap?.addAnnotation(annotation)
+        
+        let coordinate:CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: coordinates.latitude, longitude: coordinates.longitude)
+        let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+        let region = MKCoordinateRegion(center: coordinate, span: span)
+        
+        self .showLocationOnMap?.setRegion(region, animated: false)
+        
+    }
+    
+    //MARK: - Observer
     
     func update() {
         let title = LocationSingleton.shared().getText()
@@ -97,16 +147,42 @@ class NewEventViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         }
     }
     
+    func setErrorMessageHidden() {
+        errorMessage.isHidden = true
+    }
+    
     //MARK: - Event Created Button Pressed
     
     @IBAction func eventCreatedButtonPressed(_ sender: Any) {
         if checkInputsValidaton(){
-            let event = Event(eventName: eventName.text!, eventLocation: LocationSingleton.shared().getCoordinates()!, numberOfPeople: numOfPeople.text!, shortDescription: shortDesc.text!, startDate: startDate.text!, endDate: endDate.text!, publicity: publicityInput.text!, image: imageView.image, address: LocationSingleton.shared().getText())
-            EventHandler.shared().addEvent(event: event)
-            eventCreateButton.setTitle("Létrehozva", for: .normal)
+            setErrorMessageHidden()
+            var buttonMessage: String?
+            
+            if (isEditModeOn) {
+                let modifiedEvent = createEvent()
+                editEvent(modifiedEvent: modifiedEvent)
+                dismiss(animated: true, completion: nil)
+            }
+            else {
+                let newEvent = createEvent()
+                EventHandler.shared().addEvent(event: newEvent)
+                buttonMessage = "Létrehozva"
+            }
+            
+            
+            eventCreateButton.setTitle(buttonMessage, for: .normal)
             eventCreateButton.isEnabled = false
         }
      }
+    
+    func createEvent() -> Event {
+        let event = Event(eventName: eventName.text!, eventLocation: LocationSingleton.shared().getCoordinates()!, numberOfPeople: numOfPeople.text!, shortDescription: shortDesc.text!, startDate: startDate.text!, endDate: endDate.text!, publicity: publicityInput.text!, image: imageView.image, address: LocationSingleton.shared().getText())
+        return event
+    }
+    
+    func editEvent(modifiedEvent: Event) {
+        EventHandler.shared().editEvent(oldEvent: self.editedEvent!, modifiedEvent: modifiedEvent)
+    }
     
     
     //MARK: - Image Picker
