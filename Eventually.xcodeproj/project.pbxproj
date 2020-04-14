@@ -28,6 +28,7 @@
 		53B00A2E23FF164500F915D5 /* EventuallyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B00A2D23FF164500F915D5 /* EventuallyUITests.swift */; };
 		53CD32D8243F181800BDB5A0 /* SearchEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53CD32D7243F181800BDB5A0 /* SearchEventViewController.swift */; };
 		53CD32DA2445B9AC00BDB5A0 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53CD32D92445B9AC00BDB5A0 /* SettingsViewController.swift */; };
+		53CD32DC2445BA1C00BDB5A0 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53CD32DB2445BA1C00BDB5A0 /* Profile.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		53B00A2F23FF164500F915D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		53CD32D7243F181800BDB5A0 /* SearchEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEventViewController.swift; sourceTree = "<group>"; };
 		53CD32D92445B9AC00BDB5A0 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		53CD32DB2445BA1C00BDB5A0 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +127,7 @@
 			children = (
 				539E0DE224388EF100FB928E /* EventHandler.swift */,
 				539E0DDE24388EBD00FB928E /* LocationSingleton.swift */,
+				53CD32DB2445BA1C00BDB5A0 /* Profile.swift */,
 			);
 			path = Singletons;
 			sourceTree = "<group>";
@@ -346,6 +349,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				53CD32DC2445BA1C00BDB5A0 /* Profile.swift in Sources */,
 				53B00A0A23FF163F00F915D5 /* AppDelegate.swift in Sources */,
 				539E0DE124388ECA00FB928E /* NewEventViewController.swift in Sources */,
 				539E0DCC24388DA900FB928E /* MyObserverForAddress.swift in Sources */,
