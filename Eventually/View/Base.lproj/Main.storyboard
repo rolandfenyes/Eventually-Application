@@ -843,6 +843,12 @@
                                     <constraint firstAttribute="height" constant="75" id="SK9-tg-RET"/>
                                 </constraints>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7kr-X3-6RQ">
+                                <rect key="frame" x="140" y="763" width="134" height="30"/>
+                                <state key="normal" title="Felhasználó váltás">
+                                    <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -854,14 +860,17 @@
                             <constraint firstItem="HpZ-AK-pwC" firstAttribute="top" secondItem="aXA-Ta-llO" secondAttribute="bottom" id="LVq-zJ-wQy"/>
                             <constraint firstItem="U5u-WI-Qfa" firstAttribute="leading" secondItem="3b9-wK-41A" secondAttribute="leading" constant="10" id="RT1-jk-OIF"/>
                             <constraint firstItem="3b9-wK-41A" firstAttribute="trailing" secondItem="HpZ-AK-pwC" secondAttribute="trailing" constant="170" id="SCU-XG-yFi"/>
+                            <constraint firstItem="7kr-X3-6RQ" firstAttribute="leading" secondItem="3b9-wK-41A" secondAttribute="leading" constant="140" id="TYH-v0-cLD"/>
                             <constraint firstItem="oDj-b0-fdG" firstAttribute="leading" secondItem="3b9-wK-41A" secondAttribute="leading" constant="170" id="aqO-t2-9ZB"/>
                             <constraint firstItem="3b9-wK-41A" firstAttribute="trailing" secondItem="U5u-WI-Qfa" secondAttribute="trailing" constant="10" id="c6I-79-nfn"/>
+                            <constraint firstItem="3b9-wK-41A" firstAttribute="bottom" secondItem="7kr-X3-6RQ" secondAttribute="bottom" constant="20" id="cUz-hI-Gja"/>
                             <constraint firstItem="3b9-wK-41A" firstAttribute="bottom" secondItem="U5u-WI-Qfa" secondAttribute="bottom" constant="288" id="drX-Ja-kyn"/>
                             <constraint firstItem="aXA-Ta-llO" firstAttribute="trailing" secondItem="3b9-wK-41A" secondAttribute="trailing" id="eds-s2-iNf"/>
                             <constraint firstItem="U5u-WI-Qfa" firstAttribute="top" secondItem="oDj-b0-fdG" secondAttribute="bottom" constant="50" id="iUC-6n-fiJ"/>
                             <constraint firstItem="HpZ-AK-pwC" firstAttribute="leading" secondItem="3b9-wK-41A" secondAttribute="leading" constant="170" id="lGy-IT-7WB"/>
                             <constraint firstItem="XlL-y3-GI4" firstAttribute="leading" secondItem="3b9-wK-41A" secondAttribute="leading" constant="120" id="noV-cm-kHE"/>
                             <constraint firstItem="oDj-b0-fdG" firstAttribute="top" secondItem="aXA-Ta-llO" secondAttribute="bottom" id="pOo-ld-LS3"/>
+                            <constraint firstItem="3b9-wK-41A" firstAttribute="trailing" secondItem="7kr-X3-6RQ" secondAttribute="trailing" constant="140" id="tEy-LS-PEK"/>
                             <constraint firstItem="XlL-y3-GI4" firstAttribute="top" secondItem="HpZ-AK-pwC" secondAttribute="bottom" constant="10" id="y0t-da-PQJ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3b9-wK-41A"/>
