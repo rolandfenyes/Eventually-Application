@@ -26,6 +26,7 @@
 		53B00A1823FF164500F915D5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53B00A1623FF164500F915D5 /* LaunchScreen.storyboard */; };
 		53B00A2323FF164500F915D5 /* EventuallyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B00A2223FF164500F915D5 /* EventuallyTests.swift */; };
 		53B00A2E23FF164500F915D5 /* EventuallyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B00A2D23FF164500F915D5 /* EventuallyUITests.swift */; };
+		53CD32D8243F181800BDB5A0 /* SearchEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53CD32D7243F181800BDB5A0 /* SearchEventViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		53B00A2923FF164500F915D5 /* EventuallyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EventuallyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		53B00A2D23FF164500F915D5 /* EventuallyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventuallyUITests.swift; sourceTree = "<group>"; };
 		53B00A2F23FF164500F915D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		53CD32D7243F181800BDB5A0 /* SearchEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEventViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +186,7 @@
 				539E0DCF24388E1900FB928E /* EventScreenViewController.swift */,
 				539E0DD024388E1900FB928E /* HomeScreenViewController.swift */,
 				539E0DD124388E1A00FB928E /* LocationSearchViewController.swift */,
+				53CD32D7243F181800BDB5A0 /* SearchEventViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -347,6 +350,7 @@
 				539E0DDF24388EBD00FB928E /* LocationSingleton.swift in Sources */,
 				539E0DD224388E1A00FB928E /* EventCell.swift in Sources */,
 				539E0DD524388E1A00FB928E /* LocationSearchViewController.swift in Sources */,
+				53CD32D8243F181800BDB5A0 /* SearchEventViewController.swift in Sources */,
 				539E0DDD24388EB600FB928E /* Event.swift in Sources */,
 				539E0DD424388E1A00FB928E /* HomeScreenViewController.swift in Sources */,
 				539E0DC924388D8C00FB928E /* PObserver.swift in Sources */,

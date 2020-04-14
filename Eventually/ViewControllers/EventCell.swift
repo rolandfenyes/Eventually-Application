@@ -34,6 +34,7 @@ class EventCell: UITableViewCell {
         else {
             joinedTicket.isHidden = false
         }
+        
     }
 
 } //end of the class
