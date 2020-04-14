@@ -746,7 +746,7 @@
             </objects>
             <point key="canvasLocation" x="2230.434782608696" y="359.59821428571428"/>
         </scene>
-        <!--Profile-->
+        <!--Settings-->
         <scene sceneID="zUG-a4-j00">
             <objects>
                 <viewController id="ayT-uL-8AL" sceneMemberID="viewController">
@@ -875,7 +875,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3b9-wK-41A"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Profile" image="person" catalog="system" id="dNy-Om-6cT"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="gear" catalog="system" id="dNy-Om-6cT"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pZ4-ta-eIH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1037,13 +1037,13 @@
         <image name="checkmark" catalog="system" width="64" height="56"/>
         <image name="cinema" width="600" height="603"/>
         <image name="clock" catalog="system" width="64" height="60"/>
+        <image name="gear" catalog="system" width="64" height="58"/>
         <image name="hamburger" width="600" height="420"/>
         <image name="house" catalog="system" width="64" height="54"/>
         <image name="kayaking" width="600" height="417"/>
         <image name="lock" catalog="system" width="64" height="64"/>
         <image name="magnifyingglass" catalog="system" width="64" height="56"/>
         <image name="map" catalog="system" width="64" height="56"/>
-        <image name="person" catalog="system" width="64" height="58"/>
         <image name="person.circle" catalog="system" width="64" height="60"/>
         <image name="photo" catalog="system" width="64" height="46"/>
         <image name="plus.circle.fill" catalog="system" width="64" height="60"/>
