@@ -71,7 +71,7 @@
                                                 <rect key="frame" x="250" y="0.0" width="240" height="200"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kayaking" translatesAutoresizingMaskIntoConstraints="NO" id="y79-NC-HPi">
-                                                        <rect key="frame" x="10" y="10" width="220" height="160"/>
+                                                        <rect key="frame" x="10" y="10" width="220" height="160.00000000000011"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="awa-dj-QoJ">
                                                         <rect key="frame" x="8" y="171.5" width="224" height="20.5"/>
@@ -754,17 +754,116 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="  Profil" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aXA-Ta-llO">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Profil" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aXA-Ta-llO">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.89090096949999997" green="0.3556731045" blue="0.3216511011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="gY6-aL-c8W"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="oDj-b0-fdG">
+                                <rect key="frame" x="170" y="100.5" width="74" height="74"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="75" id="vai-pZ-o7u"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="U5u-WI-Qfa">
+                                <rect key="frame" x="10" y="225" width="394" height="300"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x8U-Wt-olR">
+                                        <rect key="frame" x="0.0" y="0.0" width="394" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="4Ko-cj-N7C"/>
+                                        </constraints>
+                                        <state key="normal" title="Profil szerkesztése">
+                                            <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cwV-G6-HJc">
+                                        <rect key="frame" x="0.0" y="50" width="394" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="8vO-tg-bbH"/>
+                                        </constraints>
+                                        <state key="normal" title="Keresési előzmények">
+                                            <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wcz-5A-r52">
+                                        <rect key="frame" x="0.0" y="100" width="394" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="7Wf-Gh-10P"/>
+                                        </constraints>
+                                        <state key="normal" title="Saját események">
+                                            <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1rb-Lw-DtM">
+                                        <rect key="frame" x="0.0" y="150" width="394" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="kxr-Nq-ZG6"/>
+                                        </constraints>
+                                        <state key="normal" title="Jelentkezések">
+                                            <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yE7-wY-Jhe">
+                                        <rect key="frame" x="0.0" y="200" width="394" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="AAn-qS-EOw"/>
+                                        </constraints>
+                                        <state key="normal" title="Szinkronizáció">
+                                            <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Q4-eJ-Ls0">
+                                        <rect key="frame" x="0.0" y="250" width="394" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="Tno-iU-51z"/>
+                                        </constraints>
+                                        <state key="normal" title="Értesítések">
+                                            <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XlL-y3-GI4">
+                                <rect key="frame" x="120" y="185" width="174" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HpZ-AK-pwC">
+                                <rect key="frame" x="170" y="100" width="74" height="75"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="74" id="74f-k5-9Yf"/>
+                                    <constraint firstAttribute="height" constant="75" id="SK9-tg-RET"/>
+                                </constraints>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="aXA-Ta-llO" firstAttribute="leading" secondItem="3b9-wK-41A" secondAttribute="leading" id="0n5-MI-1xg"/>
+                            <constraint firstItem="oDj-b0-fdG" firstAttribute="centerX" secondItem="aXA-Ta-llO" secondAttribute="centerX" id="1oG-Xt-g6w"/>
+                            <constraint firstItem="aXA-Ta-llO" firstAttribute="top" secondItem="HDZ-vF-J7T" secondAttribute="top" id="ETx-LF-eYW"/>
+                            <constraint firstItem="XlL-y3-GI4" firstAttribute="top" secondItem="oDj-b0-fdG" secondAttribute="bottom" constant="10" id="GiT-sV-5cP"/>
+                            <constraint firstItem="3b9-wK-41A" firstAttribute="trailing" secondItem="XlL-y3-GI4" secondAttribute="trailing" constant="120" id="Gw4-bw-7XE"/>
+                            <constraint firstItem="HpZ-AK-pwC" firstAttribute="top" secondItem="aXA-Ta-llO" secondAttribute="bottom" id="LVq-zJ-wQy"/>
+                            <constraint firstItem="U5u-WI-Qfa" firstAttribute="leading" secondItem="3b9-wK-41A" secondAttribute="leading" constant="10" id="RT1-jk-OIF"/>
+                            <constraint firstItem="3b9-wK-41A" firstAttribute="trailing" secondItem="HpZ-AK-pwC" secondAttribute="trailing" constant="170" id="SCU-XG-yFi"/>
+                            <constraint firstItem="oDj-b0-fdG" firstAttribute="leading" secondItem="3b9-wK-41A" secondAttribute="leading" constant="170" id="aqO-t2-9ZB"/>
+                            <constraint firstItem="3b9-wK-41A" firstAttribute="trailing" secondItem="U5u-WI-Qfa" secondAttribute="trailing" constant="10" id="c6I-79-nfn"/>
+                            <constraint firstItem="3b9-wK-41A" firstAttribute="bottom" secondItem="U5u-WI-Qfa" secondAttribute="bottom" constant="288" id="drX-Ja-kyn"/>
+                            <constraint firstItem="aXA-Ta-llO" firstAttribute="trailing" secondItem="3b9-wK-41A" secondAttribute="trailing" id="eds-s2-iNf"/>
+                            <constraint firstItem="U5u-WI-Qfa" firstAttribute="top" secondItem="oDj-b0-fdG" secondAttribute="bottom" constant="50" id="iUC-6n-fiJ"/>
+                            <constraint firstItem="HpZ-AK-pwC" firstAttribute="leading" secondItem="3b9-wK-41A" secondAttribute="leading" constant="170" id="lGy-IT-7WB"/>
+                            <constraint firstItem="XlL-y3-GI4" firstAttribute="leading" secondItem="3b9-wK-41A" secondAttribute="leading" constant="120" id="noV-cm-kHE"/>
+                            <constraint firstItem="oDj-b0-fdG" firstAttribute="top" secondItem="aXA-Ta-llO" secondAttribute="bottom" id="pOo-ld-LS3"/>
+                            <constraint firstItem="XlL-y3-GI4" firstAttribute="top" secondItem="HpZ-AK-pwC" secondAttribute="bottom" constant="10" id="y0t-da-PQJ"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="3b9-wK-41A"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Profile" image="person" catalog="system" id="dNy-Om-6cT"/>
@@ -936,6 +1035,7 @@
         <image name="magnifyingglass" catalog="system" width="64" height="56"/>
         <image name="map" catalog="system" width="64" height="56"/>
         <image name="person" catalog="system" width="64" height="58"/>
+        <image name="person.circle" catalog="system" width="64" height="60"/>
         <image name="photo" catalog="system" width="64" height="46"/>
         <image name="plus.circle.fill" catalog="system" width="64" height="60"/>
         <image name="square.and.pencil" catalog="system" width="64" height="58"/>
