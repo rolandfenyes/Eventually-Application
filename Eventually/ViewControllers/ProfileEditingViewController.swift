@@ -19,12 +19,15 @@ class ProfileEditingViewController: UIViewController {
     @IBOutlet weak var profileDescription: UITextField!
     
     private var datePicker: DatePicker?
+    private let profile = Profile.shared()
+    private let formatter: DateFormatter = DateFormatter()
     
     //MARK: - Main
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setUpFormatter()
         loadProfile()
         
         self.datePicker = DatePicker(viewController: self)
@@ -35,24 +38,29 @@ class ProfileEditingViewController: UIViewController {
     //MARK: - Load Profile
     
     func loadProfile() {
-        let profile = Profile.shared()
         self.profileName.text = profile.nickname
         self.birthDate.text = dateFormatter(date: profile.birthDate)
         self.emailAddress.text = profile.emailAddress
         self.password.text = profile.password
     }
     
-    func dateFormatter(date: Date) -> String? {
-        let formatter = DateFormatter()
+    func setUpFormatter() {
         formatter.dateFormat = "yyyy/MM/dd"
+    }
+    
+    func dateFormatter(date: Date) -> String? {
         return formatter.string(from: date)
+    }
+    
+    func dateFormatter(date: String) -> Date? {
+        return formatter.date(from: date)
     }
     
     //MARK: - BirthDate Changed
     
     func birthDateChanged() {
         self.datePicker!.setDatePicker(mode: .date, textField: self.birthDate, minimumDate: nil).addTarget(self, action: #selector(dateChanged(datePicker:)), for: .valueChanged)
-        self.datePicker!.setDate(date: Profile.shared().birthDate, animated: true)
+        self.datePicker!.setDate(date: self.profile.birthDate, animated: true)
     }
     
     @objc func dateChanged(datePicker: UIDatePicker) {
@@ -79,9 +87,18 @@ class ProfileEditingViewController: UIViewController {
     }
     
     @IBAction func save(_ sender: UIButton) {
+        saveProfileDetails()
+        disappearScreen()
     }
     
     //MARK: - Service functions
+    
+    func saveProfileDetails() {
+        self.profile.nickname = self.profileName.text
+        self.profile.birthDate = dateFormatter(date: self.birthDate.text!)
+        profile.emailAddress = self.emailAddress.text
+        profile.password = self.password.text
+    }
     
     func disappearScreen() {
         dismiss(animated: true, completion: nil)
