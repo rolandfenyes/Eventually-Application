@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileEditingViewController: UIViewController {
+class ProfileEditingViewController: UIViewController, UIImagePickerControllerDelegate,  UINavigationControllerDelegate {
 
     //MARK: - Variables
     
@@ -17,10 +17,12 @@ class ProfileEditingViewController: UIViewController {
     @IBOutlet weak var emailAddress: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var profileDescription: UITextField!
+    @IBOutlet weak var profilePicture: UIImageView!
     
     private var datePicker: DatePicker?
     private let profile = Profile.shared()
     private let formatter: DateFormatter = DateFormatter()
+    private var imagePicker: ImagePicker?
     
     //MARK: - Main
     
@@ -31,6 +33,7 @@ class ProfileEditingViewController: UIViewController {
         loadProfile()
         
         self.datePicker = DatePicker(viewController: self)
+        self.imagePicker = ImagePicker(viewController: self)
 
         birthDateChanged()
     }
@@ -42,6 +45,7 @@ class ProfileEditingViewController: UIViewController {
         self.birthDate.text = dateFormatter(date: profile.birthDate)
         self.emailAddress.text = profile.emailAddress
         self.password.text = profile.password
+        self.profilePicture.image = profile.profilePicture ?? UIImage(systemName: "person.circle")!
     }
     
     func setUpFormatter() {
@@ -80,6 +84,7 @@ class ProfileEditingViewController: UIViewController {
     //MARK: - Buttons
     
     @IBAction func changeProfilePicture(_ sender: UIButton) {
+        imagePicker?.importImage()
     }
     
     @IBAction func cancel(_ sender: UIButton) {
@@ -93,11 +98,23 @@ class ProfileEditingViewController: UIViewController {
     
     //MARK: - Service functions
     
+    internal func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            setChosenImage(image: image)
+       }
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func setChosenImage(image: UIImage) {
+        self.profilePicture.image = image
+    }
+    
     func saveProfileDetails() {
         self.profile.nickname = self.profileName.text
         self.profile.birthDate = dateFormatter(date: self.birthDate.text!)
-        profile.emailAddress = self.emailAddress.text
-        profile.password = self.password.text
+        self.profile.emailAddress = self.emailAddress.text
+        self.profile.password = self.password.text
+        self.profile.profilePicture = self.profilePicture.image
     }
     
     func disappearScreen() {

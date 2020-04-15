@@ -1054,6 +1054,7 @@
                         <outlet property="password" destination="Q5C-qw-byI" id="zpd-Zl-m4W"/>
                         <outlet property="profileDescription" destination="hAL-35-bgC" id="A9T-iA-fpf"/>
                         <outlet property="profileName" destination="oqC-xc-bdi" id="Qyx-GV-XOJ"/>
+                        <outlet property="profilePicture" destination="rnX-ec-tF8" id="eyF-0G-eAL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G8q-CZ-uCX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
