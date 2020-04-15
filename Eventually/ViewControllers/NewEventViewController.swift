@@ -40,6 +40,8 @@ class NewEventViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     //variables for the event image
     @IBOutlet weak var imageView: UIImageView!
     private var image: UIImage?
+    var imagePicker: ImagePicker!
+
     
     //variables for error message and create event button
     @IBOutlet weak var errorMessage: UILabel!
@@ -58,7 +60,10 @@ class NewEventViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         errorMessage.isHidden = true
+        
+        self.imagePicker = ImagePicker(viewController: self)
 
         modifyCancelButtonDependingOnEditMode()
         
@@ -129,7 +134,6 @@ class NewEventViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         let title = LocationSingleton.shared().getText()
         location.setTitle(title, for: .normal)
         map.showMap(coordinates: LocationSingleton.shared().getCoordinates()!, animation: false, title: title, mapRange: 0.01)
-        
     }
     
     //MARK: - Check inputs
@@ -212,23 +216,19 @@ class NewEventViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     //MARK: - Image Picker
     
     @IBAction func importImage(_ sender: Any) {
-        let image = UIImagePickerController()
-        image.delegate = self
-        
-        image.sourceType = UIImagePickerController.SourceType.photoLibrary
-        
-        image.allowsEditing = false
-        
-        self.present(image, animated: true)
+        imagePicker!.importImage()
     }
     
     internal func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            imageView.image = image
-            self.image = image
-        }
-        
+            setChosenImage(image: image)
+       }
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    func setChosenImage(image: UIImage) {
+        self.imageView.image = image
+        self.image = image
     }
     
     //MARK: - Publicity Picker

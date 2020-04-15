@@ -1,8 +1,8 @@
 //
-//  IObserver.swift
+//  PObserver.swift
 //  Eventually
 //
-//  Created by Fényes Roland on 2020. 03. 09..
+//  Created by Fényes Roland on 2020. 04. 15..
 //  Copyright © 2020. Fényes Roland. All rights reserved.
 //
 

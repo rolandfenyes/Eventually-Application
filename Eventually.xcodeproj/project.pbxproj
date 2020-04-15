@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		539E0DC924388D8C00FB928E /* PObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539E0DC824388D8C00FB928E /* PObserver.swift */; };
 		539E0DCC24388DA900FB928E /* MyObserverForAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539E0DCA24388DA900FB928E /* MyObserverForAddress.swift */; };
 		539E0DCD24388DA900FB928E /* MyObserverForEventList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539E0DCB24388DA900FB928E /* MyObserverForEventList.swift */; };
 		539E0DD224388E1A00FB928E /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539E0DCE24388E1900FB928E /* EventCell.swift */; };
@@ -32,6 +31,7 @@
 		53CD32DE2446F41600BDB5A0 /* ProfileEditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53CD32DD2446F41600BDB5A0 /* ProfileEditingViewController.swift */; };
 		53CD32E02446F67300BDB5A0 /* DatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53CD32DF2446F67300BDB5A0 /* DatePicker.swift */; };
 		53CD32E2244717D700BDB5A0 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53CD32E1244717D700BDB5A0 /* ImagePicker.swift */; };
+		53CD32E92447215500BDB5A0 /* PObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53CD32E82447215500BDB5A0 /* PObserver.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,7 +52,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		539E0DC824388D8C00FB928E /* PObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PObserver.swift; sourceTree = "<group>"; };
 		539E0DCA24388DA900FB928E /* MyObserverForAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyObserverForAddress.swift; sourceTree = "<group>"; };
 		539E0DCB24388DA900FB928E /* MyObserverForEventList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyObserverForEventList.swift; sourceTree = "<group>"; };
 		539E0DCE24388E1900FB928E /* EventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
@@ -83,6 +82,7 @@
 		53CD32DD2446F41600BDB5A0 /* ProfileEditingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditingViewController.swift; sourceTree = "<group>"; };
 		53CD32DF2446F67300BDB5A0 /* DatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePicker.swift; sourceTree = "<group>"; };
 		53CD32E1244717D700BDB5A0 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		53CD32E82447215500BDB5A0 /* PObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PObserver.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,7 +115,7 @@
 			children = (
 				539E0DCA24388DA900FB928E /* MyObserverForAddress.swift */,
 				539E0DCB24388DA900FB928E /* MyObserverForEventList.swift */,
-				539E0DC824388D8C00FB928E /* PObserver.swift */,
+				53CD32E82447215500BDB5A0 /* PObserver.swift */,
 			);
 			path = Observers;
 			sourceTree = "<group>";
@@ -364,6 +364,7 @@
 				539E0DCC24388DA900FB928E /* MyObserverForAddress.swift in Sources */,
 				539E0DE524388F5B00FB928E /* MapLoader.swift in Sources */,
 				53CD32DE2446F41600BDB5A0 /* ProfileEditingViewController.swift in Sources */,
+				53CD32E92447215500BDB5A0 /* PObserver.swift in Sources */,
 				539E0DDF24388EBD00FB928E /* LocationSingleton.swift in Sources */,
 				539E0DD224388E1A00FB928E /* EventCell.swift in Sources */,
 				53CD32E02446F67300BDB5A0 /* DatePicker.swift in Sources */,
@@ -372,7 +373,6 @@
 				53CD32D8243F181800BDB5A0 /* SearchEventViewController.swift in Sources */,
 				539E0DDD24388EB600FB928E /* Event.swift in Sources */,
 				539E0DD424388E1A00FB928E /* HomeScreenViewController.swift in Sources */,
-				539E0DC924388D8C00FB928E /* PObserver.swift in Sources */,
 				539E0DE324388EF100FB928E /* EventHandler.swift in Sources */,
 				53B00A0C23FF163F00F915D5 /* SceneDelegate.swift in Sources */,
 				53CD32E2244717D700BDB5A0 /* ImagePicker.swift in Sources */,
