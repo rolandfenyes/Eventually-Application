@@ -184,7 +184,6 @@ class NewEventViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
                 buttonMessage = "Létrehozva"
             }
             
-            
             eventCreateButton.setTitle(buttonMessage, for: .normal)
             eventCreateButton.isEnabled = false
         }
@@ -327,4 +326,3 @@ class NewEventViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         self.view.endEditing(true)
     }
 }
-
