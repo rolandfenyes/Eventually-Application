@@ -22,13 +22,13 @@ class ImagePicker {
         return self.image!
     }
     
-    func importImage() {
+    func importImage(allowsEditing: Bool) {
         let image = UIImagePickerController()
         image.delegate = (self.viewController as! UIImagePickerControllerDelegate & UINavigationControllerDelegate)
            
         image.sourceType = UIImagePickerController.SourceType.photoLibrary
            
-        image.allowsEditing = false
+        image.allowsEditing = allowsEditing
            
         self.viewController.present(image, animated: true)
     }

@@ -197,7 +197,8 @@ class NewEventViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
      }
     
     func createEvent() -> Event {
-        let event = Event(eventName: eventName.text!, eventLocation: LocationSingleton.shared().getCoordinates()!, numberOfPeople: numOfPeople.text!, shortDescription: shortDesc.text!, startDate: startDate.text!, endDate: endDate.text!, publicity: publicityInput.text!, image: imageView.image, address: LocationSingleton.shared().getText())
+        let event = Event(eventName: eventName.text!, eventLocation: LocationSingleton.shared().getCoordinates()!, numberOfPeople: numOfPeople.text!, shortDescription: shortDesc.text!, startDate: startDate.text!, endDate: endDate.text!, publicity: publicityInput.text!, image: imageView.image, address: LocationSingleton.shared().getText(), creatorID: Profile.shared().getID())
+        event.setJoined(status: true)
         return event
     }
     
@@ -216,7 +217,7 @@ class NewEventViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     //MARK: - Image Picker
     
     @IBAction func importImage(_ sender: Any) {
-        imagePicker!.importImage()
+        imagePicker!.importImage(allowsEditing: false)
     }
     
     internal func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {

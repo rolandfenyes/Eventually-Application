@@ -80,4 +80,7 @@ class Profile : MyObserverForProfileEditing {
     func getProfilePicture() -> UIImage {
         return self.profilePicture ?? UIImage(systemName: "person.circle")!
     }
+    func getID() -> Int {
+        return self.profileID
+    }
 } //end of the class

@@ -83,7 +83,7 @@ class ProfileEditingViewController: UIViewController, UIImagePickerControllerDel
     //MARK: - Buttons
     
     @IBAction func changeProfilePicture(_ sender: UIButton) {
-        imagePicker?.importImage()
+        imagePicker?.importImage(allowsEditing: true)
     }
     
     @IBAction func cancel(_ sender: UIButton) {

@@ -23,9 +23,10 @@ class Event {
     private var publicity: String
     private var image: UIImage?
     private var joined: Bool! = false
+    private var creatorID: Int
     
     //MARK: - Init
-    init(eventName: String, eventLocation: CLLocationCoordinate2D, numberOfPeople: String, shortDescription: String, startDate: String, endDate: String, publicity: String, image: UIImage?, address: String) {
+    init(eventName: String, eventLocation: CLLocationCoordinate2D, numberOfPeople: String, shortDescription: String, startDate: String, endDate: String, publicity: String, image: UIImage?, address: String, creatorID: Int) {
         self.eventName = eventName
         self.eventLocation = eventLocation
         self.numberOfPeople = numberOfPeople
@@ -35,6 +36,7 @@ class Event {
         self.publicity = publicity
         self.image = image
         self.address = address
+        self.creatorID = creatorID
     }
     
     func setJoined(status: Bool) {
@@ -74,6 +76,9 @@ class Event {
     }
     func getIsJoined() -> Bool {
         return self.joined
+    }
+    func getCreatorID() -> Int {
+        return self.creatorID
     }
     func isPublic() -> Bool {
         if (self.publicity == "Privát") {

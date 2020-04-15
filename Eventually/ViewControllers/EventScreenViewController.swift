@@ -26,6 +26,7 @@ class EventScreenViewController: UIViewController {
     @IBOutlet weak var map: MKMapView?
     
     @IBOutlet weak var joinButton: UIButton!
+    @IBOutlet weak var editBUtton: UIButton!
     
     func setEvent(event: Event) {
         self.event = event
@@ -37,6 +38,7 @@ class EventScreenViewController: UIViewController {
         super.viewDidLoad()
         let eventImage = self.event.getImage()
         setJoinButtonTitle()
+        setEditButton()
         
         image?.image = eventImage
         eventName?.text = self.event.getName()
@@ -70,7 +72,13 @@ class EventScreenViewController: UIViewController {
             joinButton.setTitle("Jelentkezés", for: .normal)
         }
         else {
-            joinButton.setTitle("Leiratkozás", for: .normal)
+            if (event.isPublic()) {
+                joinButton.setTitle("Leiratkozás", for: .normal)
+            }
+            else if (!event.isPublic()) {
+                joinButton.setTitle("Kérelem elküldve", for: .normal)
+            }
+
         }
     }
     
@@ -93,6 +101,15 @@ class EventScreenViewController: UIViewController {
     
     
     //MARK: - Edit Button
+    
+    func setEditButton() {
+        if (Profile.shared().getID() == self.event.getCreatorID()) {
+            self.editBUtton.isHidden = false
+        }
+        else {
+            self.editBUtton.isHidden = true
+        }
+    }
     
     @IBAction func editButtonClicked(_ sender: UIButton) {
         //newEventScreen

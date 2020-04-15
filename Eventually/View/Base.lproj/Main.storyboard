@@ -677,6 +677,7 @@
                         <outlet property="date" destination="OCp-wR-Jsr" id="BBd-Te-eKk"/>
                         <outlet property="dateEnd" destination="JTe-6M-0jY" id="Hs9-sD-0Xh"/>
                         <outlet property="desc" destination="xhj-ph-j8q" id="U50-jJ-em0"/>
+                        <outlet property="editBUtton" destination="LeN-Ap-0J0" id="U4S-7c-MvD"/>
                         <outlet property="eventName" destination="Urv-Yq-Mo2" id="mEZ-49-bam"/>
                         <outlet property="guests" destination="F4x-am-zL7" id="ARc-RO-e5a"/>
                         <outlet property="image" destination="ScH-Ov-WBz" id="Fat-PG-kpW"/>
@@ -765,7 +766,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="oDj-b0-fdG">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="oDj-b0-fdG">
                                 <rect key="frame" x="170" y="100.5" width="74" height="74"/>
                                 <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <constraints>
@@ -886,7 +887,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="rnX-ec-tF8">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="rnX-ec-tF8">
                                 <rect key="frame" x="170" y="110.5" width="74" height="74"/>
                                 <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <constraints>
