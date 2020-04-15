@@ -24,15 +24,35 @@ class ProfileEditingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        loadProfile()
         
         self.datePicker = DatePicker(viewController: self)
 
         birthDateChanged()
     }
     
+    //MARK: - Load Profile
+    
+    func loadProfile() {
+        let profile = Profile.shared()
+        self.profileName.text = profile.nickname
+        self.birthDate.text = dateFormatter(date: profile.birthDate)
+        self.emailAddress.text = profile.emailAddress
+        self.password.text = profile.password
+    }
+    
+    func dateFormatter(date: Date) -> String? {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy/MM/dd"
+        return formatter.string(from: date)
+    }
+    
+    //MARK: - BirthDate Changed
+    
     func birthDateChanged() {
-        print("birthDateCalled")
         self.datePicker!.setDatePicker(mode: .date, textField: self.birthDate, minimumDate: nil).addTarget(self, action: #selector(dateChanged(datePicker:)), for: .valueChanged)
+        self.datePicker!.setDate(date: Profile.shared().birthDate, animated: true)
     }
     
     @objc func dateChanged(datePicker: UIDatePicker) {

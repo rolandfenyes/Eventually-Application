@@ -33,6 +33,10 @@ class DatePicker {
         return self.datePicker!
     }
     
+    func setDate(date: Date, animated: Bool) {
+        self.datePicker?.setDate(date, animated: animated)
+    }
+    
     func getTextField() -> UITextField {
         return self.textField!
     }
