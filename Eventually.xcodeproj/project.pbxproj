@@ -30,6 +30,7 @@
 		53CD32DA2445B9AC00BDB5A0 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53CD32D92445B9AC00BDB5A0 /* SettingsViewController.swift */; };
 		53CD32DC2445BA1C00BDB5A0 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53CD32DB2445BA1C00BDB5A0 /* Profile.swift */; };
 		53CD32DE2446F41600BDB5A0 /* ProfileEditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53CD32DD2446F41600BDB5A0 /* ProfileEditingViewController.swift */; };
+		53CD32E02446F67300BDB5A0 /* DatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53CD32DF2446F67300BDB5A0 /* DatePicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		53CD32D92445B9AC00BDB5A0 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		53CD32DB2445BA1C00BDB5A0 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		53CD32DD2446F41600BDB5A0 /* ProfileEditingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditingViewController.swift; sourceTree = "<group>"; };
+		53CD32DF2446F67300BDB5A0 /* DatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,6 +208,7 @@
 				539E0DE424388F5B00FB928E /* MapLoader.swift */,
 				539E0DD924388E6D00FB928E /* Singletons */,
 				539E0DD824388E6700FB928E /* Event */,
+				53CD32DF2446F67300BDB5A0 /* DatePicker.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -360,6 +363,7 @@
 				53CD32DE2446F41600BDB5A0 /* ProfileEditingViewController.swift in Sources */,
 				539E0DDF24388EBD00FB928E /* LocationSingleton.swift in Sources */,
 				539E0DD224388E1A00FB928E /* EventCell.swift in Sources */,
+				53CD32E02446F67300BDB5A0 /* DatePicker.swift in Sources */,
 				539E0DD524388E1A00FB928E /* LocationSearchViewController.swift in Sources */,
 				53CD32DA2445B9AC00BDB5A0 /* SettingsViewController.swift in Sources */,
 				53CD32D8243F181800BDB5A0 /* SearchEventViewController.swift in Sources */,

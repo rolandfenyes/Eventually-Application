@@ -31,9 +31,16 @@ class ProfileEditingViewController: UIViewController {
     }
     
     @IBAction func cancel(_ sender: UIButton) {
+        disappearScreen()
     }
     
     @IBAction func save(_ sender: UIButton) {
+    }
+    
+    //MARK: - Service functions
+    
+    func disappearScreen() {
+        dismiss(animated: true, completion: nil)
     }
     
 } //end of the class

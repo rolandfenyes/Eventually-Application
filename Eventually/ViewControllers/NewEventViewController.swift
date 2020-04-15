@@ -26,11 +26,12 @@ class NewEventViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     @IBOutlet weak var showLocationOnMap: MKMapView!
     
     //variables for the date
+    
+    private var datePicker: DatePicker!
+    private var isEndDateEnabled: Bool!
+    
     @IBOutlet weak var startDate: UITextField!
-    private var startDatePicker: UIDatePicker?
-    private var startDateDate: Date?
     @IBOutlet weak var endDate: UITextField!
-    private var endDatePicker: UIDatePicker?
     
     //variables for the publicity
     @IBOutlet weak var publicityInput: UITextField!
@@ -63,9 +64,11 @@ class NewEventViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         
         publicityInput.text = dataSourceOfPubPicker[0]
 
+        self.datePicker = DatePicker(viewController: self)
+        
         startDatePicking()
-        endDatePicker?.isEnabled = false
-        //endDatePicking()
+        isEndDateEnabled = false
+
         PublicityPicking()
         LocationSingleton.shared().attach(observer: self)
         map = MapLoader(map: showLocationOnMap)
@@ -259,40 +262,31 @@ class NewEventViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     //MARK: - Date Picker
     
     func startDatePicking() {
-        startDatePicker = UIDatePicker()
-        startDatePicker?.datePickerMode = .dateAndTime
-        startDatePicker?.minimumDate = startDatePicker?.date
-        startDatePicker?.addTarget(self, action: #selector(startDateChanged(datePicker:)), for: .valueChanged)
-        startDate.inputView = startDatePicker
-        SetUpDoneButton(pickerType: "DatePicker")
-    }
+        let currentDate = UIDatePicker().date
+        
+        self.datePicker!.setDatePicker(mode: .dateAndTime, textField: self.startDate, minimumDate: currentDate).addTarget(self, action: #selector(dateChanged(datePicker:)), for: .valueChanged)
+        }
     
     func endDatePicking() {
-        endDatePicker = UIDatePicker()
-        endDatePicker?.datePickerMode = .dateAndTime
-        endDatePicker?.minimumDate = startDateDate
-        endDatePicker?.addTarget(self, action: #selector(endDateChanged(datePicker:)), for: .valueChanged)
-        endDate.inputView = endDatePicker
-        SetUpDoneButton(pickerType: "DatePicker")
+        let currentDate = self.datePicker.getSelectedDate()
+        
+        self.datePicker!.setDatePicker(mode: .dateAndTime, textField: self.endDate, minimumDate: currentDate).addTarget(self, action: #selector(dateChanged(datePicker:)), for: .valueChanged)
     }
     
-    @objc func startDateChanged(datePicker: UIDatePicker) {
+    @objc func dateChanged(datePicker: UIDatePicker) {
+        self.datePicker.setSelectedDate(date: datePicker.date)
+        
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MM/dd '-' hh:mm a"  //"hh:mm a 'on' dd"
+        dateFormatter.dateFormat = "MM/dd '-' hh:mm a"
         dateFormatter.amSymbol = "AM"
         dateFormatter.pmSymbol = "PM"
-        startDate.text = dateFormatter.string(from: datePicker.date)
-        startDateDate = datePicker.date
-        endDatePicker?.isEnabled = true
-        endDatePicking()
-    }
-    
-    @objc func endDateChanged(datePicker: UIDatePicker) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MM/dd '-' hh:mm a"  //"hh:mm a 'on' dd"
-        dateFormatter.amSymbol = "AM"
-        dateFormatter.pmSymbol = "PM"
-        endDate.text = dateFormatter.string(from: datePicker.date)
+        
+        self.datePicker.getTextField().text! = dateFormatter.string(from: datePicker.date)
+        
+        if (!self.isEndDateEnabled) {
+            self.isEndDateEnabled = true
+            endDatePicking()
+        }
     }
     
     // MARK: - Done Button
@@ -312,14 +306,10 @@ class NewEventViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     func AddDoneButton(doneButton : UIToolbar, pickerType: String) {
         switch (pickerType) {
-        case "DatePicker":  startDate.inputAccessoryView = doneButton
-                            endDate.inputAccessoryView = doneButton
-                            break
         case "PubPicker":   publicityInput.inputAccessoryView = doneButton
                             break
         default: break
         }
-        
     }
     
     @objc func DoneButtonPressed(sender: UIBarButtonItem) {
