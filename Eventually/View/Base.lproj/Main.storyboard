@@ -993,6 +993,9 @@
                                 <state key="normal" title="Mentés">
                                     <color key="titleColor" red="0.89090096949999997" green="0.3556731045" blue="0.3216511011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="save:" destination="Oab-4x-qbP" eventType="touchUpInside" id="3Aw-XG-YP5"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jkA-Vp-Ujx">
                                 <rect key="frame" x="344" y="32" width="60" height="36"/>
@@ -1000,6 +1003,9 @@
                                 <state key="normal" title="Mégse">
                                     <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="cancel:" destination="Oab-4x-qbP" eventType="touchUpInside" id="Nw1-I1-k25"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ob6-82-Bea">
                                 <rect key="frame" x="170" y="110" width="74" height="75"/>
@@ -1007,6 +1013,9 @@
                                     <constraint firstAttribute="height" constant="75" id="dKK-Ia-EsU"/>
                                     <constraint firstAttribute="width" constant="74" id="tRa-vi-Qvg"/>
                                 </constraints>
+                                <connections>
+                                    <action selector="changeProfilePicture:" destination="Oab-4x-qbP" eventType="touchUpInside" id="H1n-J4-Uas"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -1039,6 +1048,13 @@
                         <viewLayoutGuide key="safeArea" id="nHb-d7-C33"/>
                     </view>
                     <navigationItem key="navigationItem" id="itu-2b-cHs"/>
+                    <connections>
+                        <outlet property="birthDate" destination="ROc-au-7P4" id="Tl7-iE-fqK"/>
+                        <outlet property="emailAddress" destination="PvS-31-jrN" id="lCP-iz-4Si"/>
+                        <outlet property="password" destination="Q5C-qw-byI" id="zpd-Zl-m4W"/>
+                        <outlet property="profileDescription" destination="hAL-35-bgC" id="A9T-iA-fpf"/>
+                        <outlet property="profileName" destination="oqC-xc-bdi" id="Qyx-GV-XOJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G8q-CZ-uCX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
