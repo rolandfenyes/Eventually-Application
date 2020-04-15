@@ -74,7 +74,6 @@ class ProfileEditingViewController: UIViewController, UIImagePickerControllerDel
         dateFormatter.dateFormat = "YYYY/MM/dd"
         
         self.datePicker!.getTextField().text! = dateFormatter.string(from: datePicker.date)
-
     }
     
     @objc func DoneButtonPressed(sender: UIBarButtonItem) {
