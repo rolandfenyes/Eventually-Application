@@ -9,17 +9,17 @@
 import Foundation
 import UIKit
 
-class Profile {
+class Profile : MyObserverForProfileEditing {
     
     //MARK: - Variables
     
-    var name: String!
-    var nickname: String!
-    var password: String!
-    var profilePicture: UIImage?
-    let profileID: Int!
-    var emailAddress: String!
-    var birthDate: Date!
+     var name: String!
+    private var nickname: String!
+    private var password: String!
+    private var profilePicture: UIImage?
+    private var profileID: Int!
+    private var emailAddress: String!
+    private var birthDate: Date!
     
     private let myEventList: [Event] = []
     private let subscribedEventList: [Event] = []
@@ -35,7 +35,8 @@ class Profile {
         return profile
     }()
     
-    private init() {
+    private override init() {
+        super.init()
         self.nickname = "admin"
         self.password = "password"
         self.profileID = 0
@@ -49,6 +50,34 @@ class Profile {
         return formatter.date(from: "2000/01/22")!
     }
     
-    //MARK: - Login Session
+    //MARK: - Change Profile
     
+    func changeProfile(nickname: String, birthDate: Date, email: String, password: String, profilePicture: UIImage) {
+        
+        self.nickname = nickname
+        self.birthDate = birthDate
+        self.emailAddress = email
+        self.password = password
+        self.profilePicture = profilePicture
+        
+        notify()
+    }
+    
+    //MARK: - Getters
+    
+    func getNickname() -> String {
+        return self.nickname
+    }
+    func getBirthDate() -> Date {
+        return self.birthDate
+    }
+    func getEmailAddress() -> String {
+        return self.emailAddress
+    }
+    func getPassword() -> String {
+        return self.password
+    }
+    func getProfilePicture() -> UIImage {
+        return self.profilePicture ?? UIImage(systemName: "person.circle")!
+    }
 } //end of the class

@@ -41,11 +41,11 @@ class ProfileEditingViewController: UIViewController, UIImagePickerControllerDel
     //MARK: - Load Profile
     
     func loadProfile() {
-        self.profileName.text = profile.nickname
-        self.birthDate.text = dateFormatter(date: profile.birthDate)
-        self.emailAddress.text = profile.emailAddress
-        self.password.text = profile.password
-        self.profilePicture.image = profile.profilePicture ?? UIImage(systemName: "person.circle")!
+        self.profileName.text = profile.getNickname()
+        self.birthDate.text = dateFormatter(date: profile.getBirthDate())
+        self.emailAddress.text = profile.getEmailAddress()
+        self.password.text = profile.getPassword()
+        self.profilePicture.image = profile.getProfilePicture()
     }
     
     func setUpFormatter() {
@@ -64,7 +64,7 @@ class ProfileEditingViewController: UIViewController, UIImagePickerControllerDel
     
     func birthDateChanged() {
         self.datePicker!.setDatePicker(mode: .date, textField: self.birthDate, minimumDate: nil).addTarget(self, action: #selector(dateChanged(datePicker:)), for: .valueChanged)
-        self.datePicker!.setDate(date: self.profile.birthDate, animated: true)
+        self.datePicker!.setDate(date: self.profile.getBirthDate(), animated: true)
     }
     
     @objc func dateChanged(datePicker: UIDatePicker) {
@@ -109,11 +109,7 @@ class ProfileEditingViewController: UIViewController, UIImagePickerControllerDel
     }
     
     func saveProfileDetails() {
-        self.profile.nickname = self.profileName.text
-        self.profile.birthDate = dateFormatter(date: self.birthDate.text!)
-        self.profile.emailAddress = self.emailAddress.text
-        self.profile.password = self.password.text
-        self.profile.profilePicture = self.profilePicture.image
+        self.profile.changeProfile(nickname: self.profileName.text!, birthDate: dateFormatter(date: self.birthDate.text!)!, email: self.emailAddress.text!, password: self.password.text!, profilePicture: self.profilePicture.image!)
     }
     
     func disappearScreen() {

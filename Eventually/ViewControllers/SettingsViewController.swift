@@ -8,23 +8,28 @@
 
 import UIKit
 
-class SettingsViewController: UIViewController {
+class SettingsViewController: UIViewController, PObserver{
+    
+    @IBOutlet weak var profilePicture: UIImageView!
+    @IBOutlet weak var profileName: UILabel!
+    private let profile = Profile.shared()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        Profile.shared().attach(observer: self)
+        
+        loadProfileDetails()
+    }
+
+    func loadProfileDetails() {
+        self.profileName.text = self.profile.getNickname()
+        self.profilePicture.image = self.profile.getProfilePicture()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func update() {
+        loadProfileDetails()
     }
-    */
+
 
 }

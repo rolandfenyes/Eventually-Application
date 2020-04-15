@@ -749,7 +749,7 @@
         <!--Settings-->
         <scene sceneID="zUG-a4-j00">
             <objects>
-                <viewController id="ayT-uL-8AL" sceneMemberID="viewController">
+                <viewController id="ayT-uL-8AL" customClass="SettingsViewController" customModule="Eventually" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HDZ-vF-J7T">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -869,6 +869,10 @@
                         <viewLayoutGuide key="safeArea" id="3b9-wK-41A"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Settings" image="gear" catalog="system" id="dNy-Om-6cT"/>
+                    <connections>
+                        <outlet property="profileName" destination="XlL-y3-GI4" id="m5w-Dx-s1q"/>
+                        <outlet property="profilePicture" destination="oDj-b0-fdG" id="D5v-Wz-hLD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pZ4-ta-eIH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
