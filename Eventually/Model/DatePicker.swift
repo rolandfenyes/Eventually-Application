@@ -24,7 +24,7 @@ class DatePicker {
         self.datePicker = UIDatePicker()
         self.textField = textField
         
-        self.datePicker?.datePickerMode = .dateAndTime
+        self.datePicker?.datePickerMode = mode
         self.datePicker?.minimumDate = minimumDate
         self.textField!.inputView = self.datePicker
         

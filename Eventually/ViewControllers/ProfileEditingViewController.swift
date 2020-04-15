@@ -18,11 +18,35 @@ class ProfileEditingViewController: UIViewController {
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var profileDescription: UITextField!
     
+    private var datePicker: DatePicker?
+    
     //MARK: - Main
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.datePicker = DatePicker(viewController: self)
 
+        birthDateChanged()
+    }
+    
+    func birthDateChanged() {
+        print("birthDateCalled")
+        self.datePicker!.setDatePicker(mode: .date, textField: self.birthDate, minimumDate: nil).addTarget(self, action: #selector(dateChanged(datePicker:)), for: .valueChanged)
+    }
+    
+    @objc func dateChanged(datePicker: UIDatePicker) {
+        self.datePicker!.setSelectedDate(date: datePicker.date)
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YYYY/MM/dd"
+        
+        self.datePicker!.getTextField().text! = dateFormatter.string(from: datePicker.date)
+
+    }
+    
+    @objc func DoneButtonPressed(sender: UIBarButtonItem) {
+        self.view.endEditing(true)
     }
     
     //MARK: - Buttons
