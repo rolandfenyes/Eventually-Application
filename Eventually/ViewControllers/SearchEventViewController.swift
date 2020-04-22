@@ -15,6 +15,8 @@ class SearchEventViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let test = EventManager()
+        test.downloadEvents()
     }
     
 }

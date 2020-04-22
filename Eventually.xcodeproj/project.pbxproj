@@ -33,6 +33,8 @@
 		53CD32E2244717D700BDB5A0 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53CD32E1244717D700BDB5A0 /* ImagePicker.swift */; };
 		53CD32E92447215500BDB5A0 /* PObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53CD32E82447215500BDB5A0 /* PObserver.swift */; };
 		53CD32EB2447253F00BDB5A0 /* MyObserverForProfileEditing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53CD32EA2447253F00BDB5A0 /* MyObserverForProfileEditing.swift */; };
+		53EED61824503313003C9410 /* EventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53EED61724503313003C9410 /* EventManager.swift */; };
+		53EED61A245034A4003C9410 /* EventStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53EED619245034A4003C9410 /* EventStructure.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +87,8 @@
 		53CD32E1244717D700BDB5A0 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		53CD32E82447215500BDB5A0 /* PObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PObserver.swift; sourceTree = "<group>"; };
 		53CD32EA2447253F00BDB5A0 /* MyObserverForProfileEditing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyObserverForProfileEditing.swift; sourceTree = "<group>"; };
+		53EED61724503313003C9410 /* EventManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventManager.swift; sourceTree = "<group>"; };
+		53EED619245034A4003C9410 /* EventStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventStructure.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,6 +199,8 @@
 		53EED614245030D0003C9410 /* URLHandling */ = {
 			isa = PBXGroup;
 			children = (
+				53EED61724503313003C9410 /* EventManager.swift */,
+				53EED619245034A4003C9410 /* EventStructure.swift */,
 			);
 			path = URLHandling;
 			sourceTree = "<group>";
@@ -371,6 +377,7 @@
 			files = (
 				53CD32DC2445BA1C00BDB5A0 /* Profile.swift in Sources */,
 				53B00A0A23FF163F00F915D5 /* AppDelegate.swift in Sources */,
+				53EED61824503313003C9410 /* EventManager.swift in Sources */,
 				53CD32EB2447253F00BDB5A0 /* MyObserverForProfileEditing.swift in Sources */,
 				539E0DE124388ECA00FB928E /* NewEventViewController.swift in Sources */,
 				539E0DCC24388DA900FB928E /* MyObserverForAddress.swift in Sources */,
@@ -384,6 +391,7 @@
 				53CD32DA2445B9AC00BDB5A0 /* SettingsViewController.swift in Sources */,
 				53CD32D8243F181800BDB5A0 /* SearchEventViewController.swift in Sources */,
 				539E0DDD24388EB600FB928E /* Event.swift in Sources */,
+				53EED61A245034A4003C9410 /* EventStructure.swift in Sources */,
 				539E0DD424388E1A00FB928E /* HomeScreenViewController.swift in Sources */,
 				539E0DE324388EF100FB928E /* EventHandler.swift in Sources */,
 				53B00A0C23FF163F00F915D5 /* SceneDelegate.swift in Sources */,
