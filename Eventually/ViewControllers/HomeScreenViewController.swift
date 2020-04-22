@@ -38,7 +38,6 @@ class HomeScreenViewController: UIViewController {
         createSampleEvents()
         setUpHorizontallyEvents()
         
-        
     }
     
     func createSampleEvents() {

@@ -192,6 +192,13 @@
 			path = EventuallyUITests;
 			sourceTree = "<group>";
 		};
+		53EED614245030D0003C9410 /* URLHandling */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = URLHandling;
+			sourceTree = "<group>";
+		};
 		53F246CC240E483000BE9F0C /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -210,11 +217,12 @@
 		53F246CD240E48CB00BE9F0C /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				539E0DE424388F5B00FB928E /* MapLoader.swift */,
+				53EED614245030D0003C9410 /* URLHandling */,
 				539E0DD924388E6D00FB928E /* Singletons */,
 				539E0DD824388E6700FB928E /* Event */,
 				53CD32DF2446F67300BDB5A0 /* DatePicker.swift */,
 				53CD32E1244717D700BDB5A0 /* ImagePicker.swift */,
+				539E0DE424388F5B00FB928E /* MapLoader.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
