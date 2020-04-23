@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import MapKit
 
 class EventManager {
     
@@ -53,16 +54,20 @@ class EventManager {
     
     func addEventsToEventHandler(eventList: [EventStructure]) {
         let eventHandler = EventHandler.shared()
+        var partlimit = "0"
         for event in eventList {
+            if event.partlimit != nil {
+                partlimit = String(event.partlimit!)
+            }
             eventHandler.addEvent(event: Event(eventName: event.name!,
-                                               eventLocation: nil,
-                                               numberOfPeople: String(event.partlimit!),
+                                               eventLocation: CLLocationCoordinate2D(latitude: 47.49810821206292, longitude: 19.066526661626995),
+                                               numberOfPeople: partlimit,
                                                shortDescription: event.description ?? "Description...",
                                                startDate: event.starttime!,
                                                endDate: event.endtime!,
                                                publicity: event.visibility!,
-                                               image: nil,
-                                               address: nil,
+                                               image: UIImage(named: "cinema"),
+                                               address: "Füge udvar Budapest",
                                                creatorID: 0))
         }
     }

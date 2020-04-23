@@ -14,8 +14,8 @@ class Event {
     
     //MARK: - Variables
     private var eventName: String
-    private var eventLocation: CLLocationCoordinate2D?
-    private var address: String?
+    private var eventLocation: CLLocationCoordinate2D
+    private var address: String
     private var numberOfPeople: String // int
     private var shortDescription: String
     private var startDate: String
@@ -26,7 +26,7 @@ class Event {
     private var creatorID: Int
     
     //MARK: - Init
-    init(eventName: String, eventLocation: CLLocationCoordinate2D?, numberOfPeople: String, shortDescription: String, startDate: String, endDate: String, publicity: String, image: UIImage?, address: String?, creatorID: Int) {
+    init(eventName: String, eventLocation: CLLocationCoordinate2D, numberOfPeople: String, shortDescription: String, startDate: String, endDate: String, publicity: String, image: UIImage?, address: String, creatorID: Int) {
         self.eventName = eventName
         self.eventLocation = eventLocation
         self.numberOfPeople = numberOfPeople
