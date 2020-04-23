@@ -60,12 +60,14 @@ class EventManager {
                 partlimit = String(event.partlimit!)
             }
             eventHandler.addEvent(event: Event(eventName: event.name!,
+                                               //TODO
                                                eventLocation: CLLocationCoordinate2D(latitude: 47.49810821206292, longitude: 19.066526661626995),
                                                numberOfPeople: partlimit,
                                                shortDescription: event.description ?? "Description...",
                                                startDate: event.starttime!,
                                                endDate: event.endtime!,
                                                publicity: event.visibility!,
+                                               //TODO
                                                image: UIImage(named: "cinema"),
                                                address: "Füge udvar Budapest",
                                                creatorID: 0))
