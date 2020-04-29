@@ -43,7 +43,22 @@ class Event {
     
     func setJoined(status: Bool) {
         self.joined = status
-        self.subscribedParticipants = String(Int(subscribedParticipants)! + 1)
+        if (self.joined) {
+            self.subscribedParticipants = String(Int(subscribedParticipants)! + 1)
+        } else {
+            self.subscribedParticipants = String(Int(subscribedParticipants)! - 1)
+        }
+        
+        /*
+        let eventManager = EventManager()
+        let codableEvent = CodableEvent(name: self.eventName, description: self.shortDescription, starttime: self.startDate, endtime: self.endDate, partlimit: self.participants, part: self.subscribedParticipants, visibility: self.publicity)
+        eventManager.saveEvent(codableEvent, completion: { result in
+            switch result {
+            case .success(let message) : print("Success!")
+            case .failure(let error) : print("An error occured \(error)")
+            }
+        })
+         */
     }
     
     //MARK: - Getters

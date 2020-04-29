@@ -82,31 +82,27 @@ class EventManager {
     }
     
     func saveEvent(_ event: CodableEvent, completion: @escaping(Result<CodableEvent, APIError>) -> Void) {
+  
+        guard let resourceURL = URL(string: eventuallyURL) else { return }
         
-        do {
-            guard let resourceURL = URL(string: eventuallyURL) else {fatalError()}
-            var urlRequest = URLRequest(url: resourceURL)
-            urlRequest.httpMethod = "POST"
-            urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
-            urlRequest.httpBody = try JSONEncoder().encode(event)
+        let body: [String: String] = ["name": event.name, "description": event.description, "starttime": event.starttime, "endtime": event.endtime, "partlimit": String(event.partlimit), "part": String(event.part), "visibility": event.visibility]
+        
+        let finalBody = try! JSONSerialization.data(withJSONObject: body)
+        
+        var urlRequest = URLRequest(url: resourceURL)
+        
+        urlRequest.httpMethod = "POST"
+        urlRequest.httpBody = finalBody
+        urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        URLSession.shared.dataTask(with: urlRequest) { (data, respons, error) in
             
-            let dataTask = URLSession.shared.dataTask(with: urlRequest) { data, response, _ in
-                guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200, let jsonData = data else {
-                    completion(.failure(.responseProblem))
-                    return
-                }
-                
-                do {
-                    let messageData = try JSONDecoder().decode(CodableEvent.self, from: jsonData)
-                    completion(.success(messageData))
-                } catch {
-                    completion(.failure(.decodingProblem))
-                }
-            }
-            dataTask.resume()
-        } catch {
-            completion(.failure(.encodingProblem))
-        }
+            guard let data = data else { return }
+            
+            let finalData =  try! JSONDecoder().decode(CodableEvent.self, from: data)
+            
+            print(finalData)
+        }.resume()
         
     }
     
