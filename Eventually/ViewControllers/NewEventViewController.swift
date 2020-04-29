@@ -100,7 +100,7 @@ class NewEventViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         headTitle.text = "  Szerkesztés"
         
         eventName.text = self.editedEvent?.getName()
-        numOfPeople.text = self.editedEvent?.getGuests()
+        numOfPeople.text = self.editedEvent?.getParticipants()
         shortDesc.text = self.editedEvent?.getDescription()
         location.setTitle(self.editedEvent?.getAddress(), for: .normal)
         startDate.text = self.editedEvent?.getStartDate()

@@ -16,7 +16,8 @@ class Event {
     private var eventName: String
     private var eventLocation: CLLocationCoordinate2D
     private var address: String
-    private var numberOfPeople: String // int
+    private var participants: String
+    private var subscribedParticipants: String
     private var shortDescription: String
     private var startDate: String
     private var endDate: String
@@ -26,10 +27,11 @@ class Event {
     private var creatorID: Int
     
     //MARK: - Init
-    init(eventName: String, eventLocation: CLLocationCoordinate2D, numberOfPeople: String, shortDescription: String, startDate: String, endDate: String, publicity: String, image: UIImage?, address: String, creatorID: Int) {
+    init(eventName: String, eventLocation: CLLocationCoordinate2D, participants: String, subscribedParticipants: String, shortDescription: String, startDate: String, endDate: String, publicity: String, image: UIImage?, address: String, creatorID: Int) {
         self.eventName = eventName
         self.eventLocation = eventLocation
-        self.numberOfPeople = numberOfPeople
+        self.participants = participants
+        self.subscribedParticipants = subscribedParticipants
         self.shortDescription = shortDescription
         self.startDate = startDate
         self.endDate = endDate
@@ -53,8 +55,11 @@ class Event {
     func getEventLocation() -> CLLocationCoordinate2D {
         return self.eventLocation
     }
-    func getGuests() -> String {
-        return self.numberOfPeople
+    func getParticipants() -> String {
+        return self.participants
+    }
+    func getsubscribedParticipants() -> String {
+        return self.subscribedParticipants
     }
     func getDescription() -> String {
         return self.shortDescription
@@ -97,8 +102,11 @@ class Event {
     func setEventLocation(location: CLLocationCoordinate2D) {
         self.eventLocation = location
     }
-    func setGuests(guests: String) {
-        self.numberOfPeople = guests
+    func setParticipants(guests: String) {
+        self.participants = guests
+    }
+    func setsubscribedParticipants(guests: String) {
+        self.subscribedParticipants = guests
     }
     func setDescription(desc: String) {
         self.shortDescription = desc
@@ -118,4 +126,5 @@ class Event {
     func setAddress(address: String) {
         self.address = address
     }
+    
 } // end of the class

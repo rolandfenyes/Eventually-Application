@@ -229,6 +229,13 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vpD-sa-dfB">
+                                                    <rect key="frame" x="110" y="56" width="42" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="aeG-cf-SRN" firstAttribute="top" secondItem="g9u-7e-9Kz" secondAttribute="topMargin" constant="5" id="4Ue-kq-67E"/>
@@ -250,6 +257,7 @@
                                             <outlet property="eventImageView" destination="g8q-Sk-XhL" id="bVx-uY-tBK"/>
                                             <outlet property="eventTitleLabel" destination="aeG-cf-SRN" id="xb4-cA-dtG"/>
                                             <outlet property="joinedTicket" destination="bMa-Te-Ykw" id="PF5-Ra-vd5"/>
+                                            <outlet property="participants" destination="vpD-sa-dfB" id="BBr-fK-dZG"/>
                                             <outlet property="privateIcon" destination="7OL-ED-mnZ" id="X1C-wB-jtS"/>
                                         </connections>
                                     </tableViewCell>

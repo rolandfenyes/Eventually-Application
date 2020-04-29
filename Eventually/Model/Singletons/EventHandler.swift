@@ -53,7 +53,7 @@ class EventHandler: MyObserverForEventList {
         let index = getExactEventIndex(event: oldEvent)
         events[index].setEventName(name: modifiedEvent.getEventName())
         events[index].setEventLocation(location: modifiedEvent.getEventLocation())
-        events[index].setGuests(guests: modifiedEvent.getGuests())
+        events[index].setParticipants(guests: modifiedEvent.getParticipants())
         events[index].setDescription(desc: modifiedEvent.getDescription())
         events[index].setStartDate(date: modifiedEvent.getStartDate())
         events[index].setEndDate(date: modifiedEvent.getEndDate())

@@ -16,25 +16,35 @@ class EventCell: UITableViewCell {
     @IBOutlet weak var eventDurationLabel: UILabel!
     @IBOutlet weak var joinedTicket: UIImageView!
     @IBOutlet weak var privateIcon: UIImageView!
+    @IBOutlet weak var participants: UILabel!
+    
     
     func setEvent(event: Event) {
         self.event = event
         eventImageView.image = event.getImage()
         eventTitleLabel.text = event.getName()
         eventDurationLabel.text = event.getStartDate()
-        if (event.isPublic()) {
+        participants.text = event.getParticipants()
+        setPrivacy()
+        setSubscription()
+    }
+    
+    func setPrivacy() {
+        if (self.event!.isPublic()) {
             privateIcon.isHidden = true
         }
         else {
             privateIcon.isHidden = false
         }
-        if (!event.getIsJoined()) {
+    }
+    
+    func setSubscription() {
+        if (!self.event!.getIsJoined()) {
             joinedTicket.isHidden = true
         }
         else {
             joinedTicket.isHidden = false
         }
-        
     }
 
 } //end of the class

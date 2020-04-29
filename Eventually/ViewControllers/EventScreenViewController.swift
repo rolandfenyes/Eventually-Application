@@ -42,7 +42,7 @@ class EventScreenViewController: UIViewController {
         
         image?.image = eventImage
         eventName?.text = self.event.getName()
-        guests?.text = self.event.getGuests()
+        guests?.text = self.event.getParticipants()
         date?.text = self.event.getStartDate()
         dateEnd?.text = self.event.getEndDate()
         publicity?.text = self.event.getPub()
