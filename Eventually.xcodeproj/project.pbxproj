@@ -35,6 +35,7 @@
 		53CD32EB2447253F00BDB5A0 /* MyObserverForProfileEditing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53CD32EA2447253F00BDB5A0 /* MyObserverForProfileEditing.swift */; };
 		53EED61824503313003C9410 /* EventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53EED61724503313003C9410 /* EventManager.swift */; };
 		53EED61A245034A4003C9410 /* EventStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53EED619245034A4003C9410 /* EventStructure.swift */; };
+		53EED620245983D9003C9410 /* CodableEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53EED61F245983D9003C9410 /* CodableEvent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +90,7 @@
 		53CD32EA2447253F00BDB5A0 /* MyObserverForProfileEditing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyObserverForProfileEditing.swift; sourceTree = "<group>"; };
 		53EED61724503313003C9410 /* EventManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventManager.swift; sourceTree = "<group>"; };
 		53EED619245034A4003C9410 /* EventStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventStructure.swift; sourceTree = "<group>"; };
+		53EED61F245983D9003C9410 /* CodableEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodableEvent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +132,7 @@
 		539E0DD824388E6700FB928E /* Event */ = {
 			isa = PBXGroup;
 			children = (
+				53EED61F245983D9003C9410 /* CodableEvent.swift */,
 				539E0DDB24388EB600FB928E /* Event.swift */,
 			);
 			path = Event;
@@ -391,6 +394,7 @@
 				53CD32DA2445B9AC00BDB5A0 /* SettingsViewController.swift in Sources */,
 				53CD32D8243F181800BDB5A0 /* SearchEventViewController.swift in Sources */,
 				539E0DDD24388EB600FB928E /* Event.swift in Sources */,
+				53EED620245983D9003C9410 /* CodableEvent.swift in Sources */,
 				53EED61A245034A4003C9410 /* EventStructure.swift in Sources */,
 				539E0DD424388E1A00FB928E /* HomeScreenViewController.swift in Sources */,
 				539E0DE324388EF100FB928E /* EventHandler.swift in Sources */,
