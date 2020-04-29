@@ -24,9 +24,14 @@ class EventCell: UITableViewCell {
         eventImageView.image = event.getImage()
         eventTitleLabel.text = event.getName()
         eventDurationLabel.text = event.getStartDate()
-        participants.text = event.getParticipants()
+        setParticipants()
         setPrivacy()
         setSubscription()
+    }
+    
+    func setParticipants() {
+        let part = (((event?.getsubscribedParticipants())!)+"/"+(event?.getParticipants())!)
+        participants.text = part
     }
     
     func setPrivacy() {

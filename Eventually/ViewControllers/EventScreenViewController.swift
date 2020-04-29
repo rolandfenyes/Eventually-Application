@@ -17,7 +17,7 @@ class EventScreenViewController: UIViewController {
 
     @IBOutlet weak var image: UIImageView?
     @IBOutlet weak var eventName: UILabel?
-    @IBOutlet weak var guests: UILabel?
+    @IBOutlet weak var participants: UILabel?
     @IBOutlet weak var date: UILabel?
     @IBOutlet weak var dateEnd: UILabel?
     @IBOutlet weak var publicity: UILabel?
@@ -36,13 +36,18 @@ class EventScreenViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let eventImage = self.event.getImage()
+        
+        setParameters()
         setJoinButtonTitle()
         setEditButton()
         
-        image?.image = eventImage
+        EventHandler.shared().attach(observer: self)
+    }
+    
+    func setParameters() {
+        //let eventImage =
+        image?.image = self.event.getImage()
         eventName?.text = self.event.getName()
-        guests?.text = self.event.getParticipants()
         date?.text = self.event.getStartDate()
         dateEnd?.text = self.event.getEndDate()
         publicity?.text = self.event.getPub()
@@ -60,9 +65,14 @@ class EventScreenViewController: UIViewController {
         let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
         let region = MKCoordinateRegion(center: coordinate, span: span)
         
-        self .map?.setRegion(region, animated: false)
+        self.map?.setRegion(region, animated: false)
         
-        EventHandler.shared().attach(observer: self)
+        setParticipants()
+    }
+    
+    func setParticipants() {
+        let part = (((event?.getsubscribedParticipants())!)+"/"+(event?.getParticipants())!)
+        participants!.text = part
     }
     
     //MARK: - Join Button

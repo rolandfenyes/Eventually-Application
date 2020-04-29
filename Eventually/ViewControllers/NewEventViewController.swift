@@ -197,7 +197,7 @@ class NewEventViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
      }
     
     func createEvent() -> Event {
-        let event = Event(eventName: eventName.text!, eventLocation: LocationSingleton.shared().getCoordinates()!, numberOfPeople: numOfPeople.text!, shortDescription: shortDesc.text!, startDate: startDate.text!, endDate: endDate.text!, publicity: publicityInput.text!, image: imageView.image, address: LocationSingleton.shared().getText(), creatorID: Profile.shared().getID())
+        let event = Event(eventName: eventName.text!, eventLocation: LocationSingleton.shared().getCoordinates()!, participants: numOfPeople.text!, subscribedParticipants: "0", shortDescription: shortDesc.text!, startDate: startDate.text!, endDate: endDate.text!, publicity: publicityInput.text!, image: imageView.image, address: LocationSingleton.shared().getText(), creatorID: Profile.shared().getID())
         event.setJoined(status: true)
         return event
     }

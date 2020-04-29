@@ -62,7 +62,8 @@ class EventManager {
             eventHandler.addEvent(event: Event(eventName: event.name!,
                                                //TODO
                                                eventLocation: CLLocationCoordinate2D(latitude: 47.49810821206292, longitude: 19.066526661626995),
-                                               numberOfPeople: partlimit,
+                                               participants: partlimit,
+                                               subscribedParticipants: "0",
                                                shortDescription: event.description ?? "Description...",
                                                startDate: event.starttime!,
                                                endDate: event.endtime!,

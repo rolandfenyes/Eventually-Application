@@ -687,11 +687,11 @@
                         <outlet property="desc" destination="xhj-ph-j8q" id="U50-jJ-em0"/>
                         <outlet property="editBUtton" destination="LeN-Ap-0J0" id="U4S-7c-MvD"/>
                         <outlet property="eventName" destination="Urv-Yq-Mo2" id="mEZ-49-bam"/>
-                        <outlet property="guests" destination="F4x-am-zL7" id="ARc-RO-e5a"/>
                         <outlet property="image" destination="ScH-Ov-WBz" id="Fat-PG-kpW"/>
                         <outlet property="joinButton" destination="SAC-Vw-XhJ" id="OEc-Wq-t2V"/>
                         <outlet property="location" destination="TFP-5N-km8" id="6by-1S-1y7"/>
                         <outlet property="map" destination="IEN-3s-WFt" id="2Fw-7H-TDx"/>
+                        <outlet property="participants" destination="F4x-am-zL7" id="ARc-RO-e5a"/>
                         <outlet property="publicity" destination="cpF-lR-fVS" id="ViH-Zw-sYb"/>
                     </connections>
                 </viewController>

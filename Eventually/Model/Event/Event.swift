@@ -43,6 +43,7 @@ class Event {
     
     func setJoined(status: Bool) {
         self.joined = status
+        self.subscribedParticipants = String(Int(subscribedParticipants)! + 1)
     }
     
     //MARK: - Getters
