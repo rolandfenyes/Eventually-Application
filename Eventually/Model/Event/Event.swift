@@ -48,7 +48,7 @@ class Event {
         } else {
             self.subscribedParticipants = String(Int(subscribedParticipants)! - 1)
         }
-        
+        //TODO
         /*
         let eventManager = EventManager()
         let codableEvent = CodableEvent(name: self.eventName, description: self.shortDescription, starttime: self.startDate, endtime: self.endDate, partlimit: self.participants, part: self.subscribedParticipants, visibility: self.publicity)
