@@ -37,7 +37,7 @@
                                     <constraint firstItem="jqI-D0-rf5" firstAttribute="leading" secondItem="Pcz-qT-czT" secondAttribute="leading" constant="10" id="xEx-l2-UYW"/>
                                 </constraints>
                             </view>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="TdE-jE-KZh">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="TdE-jE-KZh">
                                 <rect key="frame" x="269" y="0.5" width="40" height="39"/>
                                 <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <constraints>

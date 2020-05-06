@@ -29,7 +29,7 @@ class MessageCell: UITableViewCell {
     }
     
     func setPersonImageRound() {
-        personImage.layer.borderWidth = 1
+        personImage.layer.borderWidth = 0
         personImage.layer.masksToBounds = false
         personImage.layer.borderColor = UIColor.black.cgColor
         personImage.layer.cornerRadius = personImage.frame.height/2

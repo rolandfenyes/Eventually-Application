@@ -31,6 +31,7 @@ class ProfileEditingViewController: UIViewController, UIImagePickerControllerDel
 
         setUpFormatter()
         loadProfile()
+        setProfilePictureRoundly()
         
         self.datePicker = DatePicker(viewController: self)
         self.imagePicker = ImagePicker(viewController: self)
@@ -114,6 +115,14 @@ class ProfileEditingViewController: UIViewController, UIImagePickerControllerDel
     
     func disappearScreen() {
         dismiss(animated: true, completion: nil)
+    }
+    
+    func setProfilePictureRoundly() {
+        profilePicture.layer.borderWidth = 0
+        profilePicture.layer.masksToBounds = false
+        profilePicture.layer.borderColor = UIColor.black.cgColor
+        profilePicture.layer.cornerRadius = profilePicture.frame.height/2
+        profilePicture.clipsToBounds = true
     }
     
 } //end of the class

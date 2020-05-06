@@ -20,6 +20,7 @@ class SettingsViewController: UIViewController, PObserver{
         Profile.shared().attach(observer: self)
         
         loadProfileDetails()
+        setProfilePictureRoundly()
     }
 
     func loadProfileDetails() {
@@ -29,6 +30,14 @@ class SettingsViewController: UIViewController, PObserver{
     
     func update() {
         loadProfileDetails()
+    }
+    
+    func setProfilePictureRoundly() {
+        profilePicture.layer.borderWidth = 0
+        profilePicture.layer.masksToBounds = false
+        profilePicture.layer.borderColor = UIColor.black.cgColor
+        profilePicture.layer.cornerRadius = profilePicture.frame.height/2
+        profilePicture.clipsToBounds = true
     }
 
 
