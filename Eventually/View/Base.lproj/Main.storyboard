@@ -664,21 +664,21 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="VV8-y7-x5g"/>
                                 </constraints>
-                                <state key="normal" title="Bezárás">
-                                    <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                </state>
-                                <connections>
-                                    <action selector="closeButtonClicked:" destination="S1m-ng-Fd7" eventType="touchUpInside" id="Umh-40-lzc"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Udc-U8-d7I">
-                                <rect key="frame" x="312" y="64" width="82" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Kommentek">
                                     <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
-                                    <action selector="commentsButtonPressed:" destination="S1m-ng-Fd7" eventType="touchUpInside" id="eyc-Uo-Gwd"/>
+                                    <action selector="commentsButtonPressed:" destination="S1m-ng-Fd7" eventType="touchUpInside" id="mTi-iu-uHV"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Udc-U8-d7I">
+                                <rect key="frame" x="346" y="64" width="45" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Vissza">
+                                    <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="closeButtonClicked:" destination="S1m-ng-Fd7" eventType="touchUpInside" id="nR5-GP-M3S"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -692,7 +692,7 @@
                         <viewLayoutGuide key="safeArea" id="SQv-3V-Opp"/>
                     </view>
                     <connections>
-                        <outlet property="closeButton" destination="scg-Eb-X52" id="fun-cN-lZK"/>
+                        <outlet property="commentButton" destination="scg-Eb-X52" id="fU2-lg-8rK"/>
                         <outlet property="date" destination="OCp-wR-Jsr" id="BBd-Te-eKk"/>
                         <outlet property="dateEnd" destination="JTe-6M-0jY" id="Hs9-sD-0Xh"/>
                         <outlet property="desc" destination="xhj-ph-j8q" id="U50-jJ-em0"/>

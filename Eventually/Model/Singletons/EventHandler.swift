@@ -49,6 +49,11 @@ class EventHandler: MyObserverForEventList {
         return index
     }
     
+    func addComment(newComment: Comment, event: Event) {
+        events[getExactEventIndex(event: event)].addComment(newComment: newComment)
+        notify()
+    }
+    
     func editEvent(oldEvent: Event, modifiedEvent: Event) {
         let index = getExactEventIndex(event: oldEvent)
         events[index].setEventName(name: modifiedEvent.getEventName())

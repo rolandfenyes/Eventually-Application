@@ -27,7 +27,7 @@ class EventScreenViewController: UIViewController {
     
     @IBOutlet weak var joinButton: UIButton!
     @IBOutlet weak var editBUtton: UIButton!
-    @IBOutlet weak var closeButton: UIButton!
+    @IBOutlet weak var commentButton: UIButton!
     
     func setEvent(event: Event) {
         self.event = event
@@ -80,7 +80,8 @@ class EventScreenViewController: UIViewController {
     //MARK: - Set corner radious for buttons
     func setCornerRadiousForButtons() {
         joinButton.layer.cornerRadius = 10
-        closeButton.layer.cornerRadius = 10
+        commentButton.layer.cornerRadius = 10
+        commentButton.setTitle("Kommentek(\(event.getComments().count))", for: .normal)
     }
     
     //MARK: - Join Button
@@ -113,7 +114,7 @@ class EventScreenViewController: UIViewController {
     
     //MARK: - Close Button
     
-    @IBAction func closeButtonClicked(_ sender: Any) {
+    @IBAction func closeButtonClicked(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
     
@@ -137,6 +138,7 @@ class EventScreenViewController: UIViewController {
     }
     
     //MARK: - Open comments
+    
     @IBAction func commentsButtonPressed(_ sender: UIButton) {
         presentCommentScreen()
     }

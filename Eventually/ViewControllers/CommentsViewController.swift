@@ -29,7 +29,7 @@ class CommentsViewController: UIViewController {
     @IBAction func sendButtonPressed(_ sender: UIButton) {
         let comment = Comment(sender: Profile.shared().getNickname(), body: messageTextField.text!)
         comments.append(comment)
-        EventHandler.shared().getEvents()[EventHandler.shared().getExactEventIndex(event: currentEvent)].addComment(newComment: comment)
+        EventHandler.shared().addComment(newComment: comment, event: currentEvent)
         tableView.reloadData()
     }
     
