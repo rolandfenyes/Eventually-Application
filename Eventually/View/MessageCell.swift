@@ -8,11 +8,17 @@
 
 import UIKit
 
-class MessageCell: UIViewController {
+class MessageCell: UITableViewCell {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
     }
 
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
+        // Configure the view for the selected state
+    }
+    
 }
