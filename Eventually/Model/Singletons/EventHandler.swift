@@ -66,6 +66,17 @@ class EventHandler: MyObserverForEventList {
         return myEvents
     }
     
+    func getSubscribedEvents() -> [Event] {
+        var myEvents: [Event] = []
+        
+        for event in self.events {
+            if event.getIsJoined() {
+                myEvents.append(event)
+            }
+        }
+        return myEvents
+    }
+    
     func addComment(newComment: Comment, event: Event) {
         events[getExactEventIndex(event: event)].addComment(newComment: newComment)
         notify()

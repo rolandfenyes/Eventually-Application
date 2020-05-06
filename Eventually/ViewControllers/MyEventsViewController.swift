@@ -35,7 +35,6 @@ class MyEventsViewController: UIViewController {
     
 }
 
-
 extension MyEventsViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
