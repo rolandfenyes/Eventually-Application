@@ -901,6 +901,9 @@
                                         <state key="normal" title="Saját események">
                                             <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="ETz-7c-NKx" kind="show" id="5zt-L7-lfW"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1rb-Lw-DtM">
                                         <rect key="frame" x="0.0" y="150" width="394" height="50"/>
@@ -1160,6 +1163,49 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G8q-CZ-uCX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3106" y="-672"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="1AK-rk-yN0">
+            <objects>
+                <viewController id="ETz-7c-NKx" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Pqh-aO-BZQ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Saját eseményeim" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uqY-s0-F0t">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+                                <color key="backgroundColor" red="0.89090096949999997" green="0.3556731045" blue="0.3216511011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="XN3-ey-WBx"/>
+                                    <constraint firstAttribute="height" constant="100" id="abJ-R4-9qh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Xyi-an-EU2">
+                                <rect key="frame" x="0.0" y="100" width="414" height="708"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="avY-0R-Ypn" firstAttribute="trailing" secondItem="Xyi-an-EU2" secondAttribute="trailing" id="9z6-GX-wfQ"/>
+                            <constraint firstItem="uqY-s0-F0t" firstAttribute="top" secondItem="avY-0R-Ypn" secondAttribute="top" id="QdS-SG-2CI"/>
+                            <constraint firstItem="uqY-s0-F0t" firstAttribute="leading" secondItem="Pqh-aO-BZQ" secondAttribute="leading" id="VJc-qy-DvS"/>
+                            <constraint firstItem="avY-0R-Ypn" firstAttribute="bottom" secondItem="Xyi-an-EU2" secondAttribute="bottom" id="ea1-Qz-rju"/>
+                            <constraint firstItem="Xyi-an-EU2" firstAttribute="top" secondItem="uqY-s0-F0t" secondAttribute="bottom" id="gIr-en-FpD"/>
+                            <constraint firstItem="avY-0R-Ypn" firstAttribute="trailing" secondItem="uqY-s0-F0t" secondAttribute="trailing" id="sZg-Hz-PgB"/>
+                            <constraint firstItem="Xyi-an-EU2" firstAttribute="leading" secondItem="avY-0R-Ypn" secondAttribute="leading" id="vPQ-Vx-4GU"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="avY-0R-Ypn"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="QMw-V9-1j0"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fFQ-tS-2yb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3764" y="-356"/>
         </scene>
         <!--Search-->
         <scene sceneID="wg7-f3-ORb">
