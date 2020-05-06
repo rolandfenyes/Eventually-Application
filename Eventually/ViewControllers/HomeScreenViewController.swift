@@ -42,6 +42,9 @@ class HomeScreenViewController: UIViewController {
         createSampleEvents()
         setUpHorizontallyEvents()
         
+        tableView.register(UINib(nibName: "EventField", bundle: nil), forCellReuseIdentifier: "EventCell")
+
+        
         /*
         if (!self.areEventsDownloaded) {
             self.eventManager.downloadEvents()
@@ -133,7 +136,7 @@ extension HomeScreenViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let event = EventHandler.shared().getEvents()[indexPath.row]
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell") as! EventCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! EventCell
         
         cell.setEvent(event: event)
          
@@ -147,6 +150,7 @@ extension HomeScreenViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         presentEventScreen(event: EventHandler.shared().getEvents()[indexPath.row])
     }
+ 
 }
 
 //MARK: - Observer
