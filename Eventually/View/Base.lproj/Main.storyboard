@@ -746,17 +746,29 @@
                                     <action selector="sendButtonPressed:" destination="h6Q-ei-K9Y" eventType="touchUpInside" id="Szj-rk-ijy"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Nf-9W-S3N">
+                                <rect key="frame" x="334" y="35" width="45" height="30"/>
+                                <state key="normal" title="Vissza">
+                                    <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="backButtonPressed:" destination="h6Q-ei-K9Y" eventType="touchUpInside" id="yzW-B2-5su"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="daE-w8-flc" firstAttribute="trailing" secondItem="3Nf-9W-S3N" secondAttribute="trailing" constant="35" id="3BQ-bw-qPD"/>
                             <constraint firstItem="1IP-wJ-Lne" firstAttribute="bottom" secondItem="daE-w8-flc" secondAttribute="bottom" id="4md-Fe-rRs"/>
                             <constraint firstItem="lr6-8J-CpT" firstAttribute="top" secondItem="gug-D1-DFq" secondAttribute="top" id="52C-os-U46"/>
                             <constraint firstItem="daE-w8-flc" firstAttribute="trailing" secondItem="1IP-wJ-Lne" secondAttribute="trailing" constant="10" id="81v-5T-AWm"/>
+                            <constraint firstItem="8Zo-KE-923" firstAttribute="top" secondItem="3Nf-9W-S3N" secondAttribute="bottom" constant="35" id="Be8-21-eTf"/>
                             <constraint firstItem="lr6-8J-CpT" firstAttribute="trailing" secondItem="daE-w8-flc" secondAttribute="trailing" id="Jcq-c1-B4P"/>
                             <constraint firstItem="lr6-8J-CpT" firstAttribute="leading" secondItem="daE-w8-flc" secondAttribute="leading" id="XMY-9J-EEh"/>
                             <constraint firstItem="MPr-xS-lyD" firstAttribute="leading" secondItem="daE-w8-flc" secondAttribute="leading" constant="10" id="adc-Zv-QVS"/>
                             <constraint firstItem="1IP-wJ-Lne" firstAttribute="leading" secondItem="MPr-xS-lyD" secondAttribute="trailing" constant="10" id="beS-Cq-FqI"/>
                             <constraint firstItem="MPr-xS-lyD" firstAttribute="bottom" secondItem="daE-w8-flc" secondAttribute="bottom" id="c4p-aI-oCf"/>
+                            <constraint firstItem="3Nf-9W-S3N" firstAttribute="top" secondItem="gug-D1-DFq" secondAttribute="top" constant="35" id="dMz-90-b0m"/>
                             <constraint firstItem="8Zo-KE-923" firstAttribute="top" secondItem="lr6-8J-CpT" secondAttribute="bottom" id="eyN-NS-siq"/>
                             <constraint firstItem="daE-w8-flc" firstAttribute="trailing" secondItem="MPr-xS-lyD" secondAttribute="trailing" constant="70" id="gFv-Cy-xCp"/>
                             <constraint firstItem="8Zo-KE-923" firstAttribute="leading" secondItem="daE-w8-flc" secondAttribute="leading" id="iQH-FY-dVz"/>

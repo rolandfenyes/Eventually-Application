@@ -33,7 +33,9 @@ class CommentsViewController: UIViewController {
         tableView.reloadData()
     }
     
-    
+    @IBAction func backButtonPressed(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
     
 }
 
