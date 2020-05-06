@@ -730,7 +730,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MPr-xS-lyD">
-                                <rect key="frame" x="10" y="774" width="394" height="34"/>
+                                <rect key="frame" x="10" y="774" width="334" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="send"/>
                             </textField>
@@ -738,23 +738,36 @@
                                 <rect key="frame" x="0.0" y="100" width="414" height="664"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1IP-wJ-Lne">
+                                <rect key="frame" x="354" y="774" width="50" height="34"/>
+                                <color key="tintColor" red="0.93229508400000005" green="0.1650608039" blue="0.1332686035" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" image="paperplane" catalog="system"/>
+                                <connections>
+                                    <action selector="sendButtonPressed:" destination="h6Q-ei-K9Y" eventType="touchUpInside" id="Szj-rk-ijy"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="1IP-wJ-Lne" firstAttribute="bottom" secondItem="daE-w8-flc" secondAttribute="bottom" id="4md-Fe-rRs"/>
                             <constraint firstItem="lr6-8J-CpT" firstAttribute="top" secondItem="gug-D1-DFq" secondAttribute="top" id="52C-os-U46"/>
+                            <constraint firstItem="daE-w8-flc" firstAttribute="trailing" secondItem="1IP-wJ-Lne" secondAttribute="trailing" constant="10" id="81v-5T-AWm"/>
                             <constraint firstItem="lr6-8J-CpT" firstAttribute="trailing" secondItem="daE-w8-flc" secondAttribute="trailing" id="Jcq-c1-B4P"/>
                             <constraint firstItem="lr6-8J-CpT" firstAttribute="leading" secondItem="daE-w8-flc" secondAttribute="leading" id="XMY-9J-EEh"/>
                             <constraint firstItem="MPr-xS-lyD" firstAttribute="leading" secondItem="daE-w8-flc" secondAttribute="leading" constant="10" id="adc-Zv-QVS"/>
+                            <constraint firstItem="1IP-wJ-Lne" firstAttribute="leading" secondItem="MPr-xS-lyD" secondAttribute="trailing" constant="10" id="beS-Cq-FqI"/>
                             <constraint firstItem="MPr-xS-lyD" firstAttribute="bottom" secondItem="daE-w8-flc" secondAttribute="bottom" id="c4p-aI-oCf"/>
                             <constraint firstItem="8Zo-KE-923" firstAttribute="top" secondItem="lr6-8J-CpT" secondAttribute="bottom" id="eyN-NS-siq"/>
-                            <constraint firstItem="daE-w8-flc" firstAttribute="trailing" secondItem="MPr-xS-lyD" secondAttribute="trailing" constant="10" id="gFv-Cy-xCp"/>
+                            <constraint firstItem="daE-w8-flc" firstAttribute="trailing" secondItem="MPr-xS-lyD" secondAttribute="trailing" constant="70" id="gFv-Cy-xCp"/>
                             <constraint firstItem="8Zo-KE-923" firstAttribute="leading" secondItem="daE-w8-flc" secondAttribute="leading" id="iQH-FY-dVz"/>
                             <constraint firstItem="MPr-xS-lyD" firstAttribute="top" secondItem="8Zo-KE-923" secondAttribute="bottom" constant="10" id="nH1-aP-Jhd"/>
+                            <constraint firstItem="1IP-wJ-Lne" firstAttribute="top" secondItem="8Zo-KE-923" secondAttribute="bottom" constant="10" id="uXa-S2-bms"/>
                             <constraint firstItem="daE-w8-flc" firstAttribute="trailing" secondItem="8Zo-KE-923" secondAttribute="trailing" id="vuG-fq-1qA"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="daE-w8-flc"/>
                     </view>
                     <connections>
+                        <outlet property="messageTextField" destination="MPr-xS-lyD" id="8nr-yH-jnh"/>
                         <outlet property="tableView" destination="8Zo-KE-923" id="4y8-KD-1WS"/>
                     </connections>
                 </viewController>
@@ -1298,6 +1311,7 @@
         <image name="lock" catalog="system" width="64" height="64"/>
         <image name="magnifyingglass" catalog="system" width="64" height="56"/>
         <image name="map" catalog="system" width="64" height="56"/>
+        <image name="paperplane" catalog="system" width="64" height="60"/>
         <image name="person.circle" catalog="system" width="64" height="60"/>
         <image name="photo" catalog="system" width="64" height="46"/>
         <image name="plus.circle.fill" catalog="system" width="64" height="60"/>

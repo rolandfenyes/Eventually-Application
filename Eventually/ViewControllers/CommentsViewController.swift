@@ -11,11 +11,12 @@ import UIKit
 class CommentsViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var messageTextField: UITextField!
     
     private var comments: [Comment] = [
         Comment(sender: "1@2.com", body: "Hey"),
         Comment(sender: "a@b.com", body: "Hello"),
-        Comment(sender: "1@2.com", body: "How are you?")
+        Comment(sender: "1@2.com", body: "How are you? I'm so fine, and finally I was able to program this code nicely")
     ]
     
     override func viewDidLoad() {
@@ -24,7 +25,11 @@ class CommentsViewController: UIViewController {
 
         tableView.register(UINib(nibName: "MessageCell", bundle: nil), forCellReuseIdentifier: "ReusableCell")
     }
-
+    @IBAction func sendButtonPressed(_ sender: UIButton) {
+        comments.append(Comment(sender: Profile.shared().getNickname(), body: messageTextField.text!))
+        tableView.reloadData()
+    }
+    
 }
 
 extension CommentsViewController: UITableViewDataSource {
