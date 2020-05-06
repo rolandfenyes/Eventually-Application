@@ -25,6 +25,7 @@ class Event {
     private var image: UIImage?
     private var joined: Bool! = false
     private var creatorID: Int
+    private var comments: [Comment]
     
     //MARK: - Init
     init(eventName: String, eventLocation: CLLocationCoordinate2D, participants: String, subscribedParticipants: String, shortDescription: String, startDate: String, endDate: String, publicity: String, image: UIImage?, address: String, creatorID: Int) {
@@ -39,6 +40,7 @@ class Event {
         self.image = image
         self.address = address
         self.creatorID = creatorID
+        comments = []
     }
     
     func setJoined(status: Bool) {
@@ -61,7 +63,14 @@ class Event {
          */
     }
     
+    func addComment(newComment: Comment) {
+        comments.append(newComment)
+    }
+    
     //MARK: - Getters
+    func getComments() -> [Comment] {
+        return comments
+    }
     func getName() -> String {
         return eventName
     }

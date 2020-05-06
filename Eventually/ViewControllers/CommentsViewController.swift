@@ -12,12 +12,13 @@ class CommentsViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var messageTextField: UITextField!
+    private var currentEvent: Event!
+    private var comments: [Comment] = []
     
-    private var comments: [Comment] = [
-        Comment(sender: "1@2.com", body: "Hey"),
-        Comment(sender: "a@b.com", body: "Hello"),
-        Comment(sender: "1@2.com", body: "How are you? I'm so fine, and finally I was able to program this code nicely")
-    ]
+    func setCurrentEvent(event: Event) {
+        self.currentEvent = event
+        self.comments = self.currentEvent.getComments()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,9 +27,13 @@ class CommentsViewController: UIViewController {
         tableView.register(UINib(nibName: "MessageCell", bundle: nil), forCellReuseIdentifier: "ReusableCell")
     }
     @IBAction func sendButtonPressed(_ sender: UIButton) {
-        comments.append(Comment(sender: Profile.shared().getNickname(), body: messageTextField.text!))
+        let comment = Comment(sender: Profile.shared().getNickname(), body: messageTextField.text!)
+        comments.append(comment)
+        EventHandler.shared().getEvents()[EventHandler.shared().getExactEventIndex(event: currentEvent)].addComment(newComment: comment)
         tableView.reloadData()
     }
+    
+    
     
 }
 

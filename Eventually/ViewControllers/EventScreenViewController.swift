@@ -136,6 +136,17 @@ class EventScreenViewController: UIViewController {
         self.present(editEventScreen, animated: true, completion: nil)
     }
     
+    //MARK: - Open comments
+    @IBAction func commentsButtonPressed(_ sender: UIButton) {
+        presentCommentScreen()
+    }
+    
+    private func presentCommentScreen() {
+        let commentScreen = self.storyboard?.instantiateViewController(withIdentifier: "commentPage") as! CommentsViewController
+        commentScreen.setCurrentEvent(event: event)
+        self.present(commentScreen, animated: true, completion: nil)
+    }
+    
 } // end of the class
 
 extension EventScreenViewController: PObserver {
