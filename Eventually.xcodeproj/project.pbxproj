@@ -31,6 +31,8 @@
 		53B00A1823FF164500F915D5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53B00A1623FF164500F915D5 /* LaunchScreen.storyboard */; };
 		53B00A2323FF164500F915D5 /* EventuallyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B00A2223FF164500F915D5 /* EventuallyTests.swift */; };
 		53B00A2E23FF164500F915D5 /* EventuallyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B00A2D23FF164500F915D5 /* EventuallyUITests.swift */; };
+		53BE64212463030A007C1B47 /* MyEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53BE64202463030A007C1B47 /* MyEventsViewController.swift */; };
+		53BE64232463091C007C1B47 /* SubscriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53BE64222463091C007C1B47 /* SubscriptionViewController.swift */; };
 		53CD32D8243F181800BDB5A0 /* SearchEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53CD32D7243F181800BDB5A0 /* SearchEventViewController.swift */; };
 		53CD32DA2445B9AC00BDB5A0 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53CD32D92445B9AC00BDB5A0 /* SettingsViewController.swift */; };
 		53CD32DC2445BA1C00BDB5A0 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53CD32DB2445BA1C00BDB5A0 /* Profile.swift */; };
@@ -92,6 +94,8 @@
 		53B00A2923FF164500F915D5 /* EventuallyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EventuallyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		53B00A2D23FF164500F915D5 /* EventuallyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventuallyUITests.swift; sourceTree = "<group>"; };
 		53B00A2F23FF164500F915D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		53BE64202463030A007C1B47 /* MyEventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyEventsViewController.swift; sourceTree = "<group>"; };
+		53BE64222463091C007C1B47 /* SubscriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionViewController.swift; sourceTree = "<group>"; };
 		53CD32D7243F181800BDB5A0 /* SearchEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEventViewController.swift; sourceTree = "<group>"; };
 		53CD32D92445B9AC00BDB5A0 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		53CD32DB2445BA1C00BDB5A0 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
@@ -240,6 +244,8 @@
 				53CD32D92445B9AC00BDB5A0 /* SettingsViewController.swift */,
 				53CD32DD2446F41600BDB5A0 /* ProfileEditingViewController.swift */,
 				534AA7482462C3DD0084D6B5 /* CommentsViewController.swift */,
+				53BE64202463030A007C1B47 /* MyEventsViewController.swift */,
+				53BE64222463091C007C1B47 /* SubscriptionViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -412,6 +418,7 @@
 				53CD32EB2447253F00BDB5A0 /* MyObserverForProfileEditing.swift in Sources */,
 				539E0DE124388ECA00FB928E /* NewEventViewController.swift in Sources */,
 				539E0DCC24388DA900FB928E /* MyObserverForAddress.swift in Sources */,
+				53BE64232463091C007C1B47 /* SubscriptionViewController.swift in Sources */,
 				539E0DE524388F5B00FB928E /* MapLoader.swift in Sources */,
 				53CD32DE2446F41600BDB5A0 /* ProfileEditingViewController.swift in Sources */,
 				53CD32E92447215500BDB5A0 /* PObserver.swift in Sources */,
@@ -422,6 +429,7 @@
 				53CD32DA2445B9AC00BDB5A0 /* SettingsViewController.swift in Sources */,
 				53CD32D8243F181800BDB5A0 /* SearchEventViewController.swift in Sources */,
 				539E0DDD24388EB600FB928E /* Event.swift in Sources */,
+				53BE64212463030A007C1B47 /* MyEventsViewController.swift in Sources */,
 				53EED620245983D9003C9410 /* CodableEvent.swift in Sources */,
 				534AA7502462C4A70084D6B5 /* MessageCell.swift in Sources */,
 				53EED61A245034A4003C9410 /* EventStructure.swift in Sources */,

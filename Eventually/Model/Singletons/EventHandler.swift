@@ -49,6 +49,23 @@ class EventHandler: MyObserverForEventList {
         return index
     }
     
+    func getExactEvent(event: Event) -> Event {
+        let index = getExactEventIndex(event: event)
+        return self.events[index]
+    }
+    
+    func getMyEvents() -> [Event] {
+        let creatorId = Profile.shared().getID()
+        var myEvents: [Event] = []
+        
+        for eventInList in self.events {
+            if eventInList.getCreatorID() == creatorId {
+                myEvents.append(eventInList)
+            }
+        }
+        return myEvents
+    }
+    
     func addComment(newComment: Comment, event: Event) {
         events[getExactEventIndex(event: event)].addComment(newComment: newComment)
         notify()

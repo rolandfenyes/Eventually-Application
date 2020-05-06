@@ -78,7 +78,7 @@ class EventManager: MyObserverForEventList {
                                                //TODO
                                                image: UIImage(named: "cinema"),
                                                address: "Füge udvar Budapest",
-                                               creatorID: 0))
+                                               creatorID: 1))
         }
     }
     

@@ -71,7 +71,7 @@
                                                 <rect key="frame" x="250" y="0.0" width="240" height="200"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kayaking" translatesAutoresizingMaskIntoConstraints="NO" id="y79-NC-HPi">
-                                                        <rect key="frame" x="10" y="10" width="220" height="160"/>
+                                                        <rect key="frame" x="10" y="10" width="220" height="160.00000000000011"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="awa-dj-QoJ">
                                                         <rect key="frame" x="8" y="171.5" width="224" height="20.5"/>
@@ -834,9 +834,12 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="kxr-Nq-ZG6"/>
                                         </constraints>
-                                        <state key="normal" title="Jelentkezések">
+                                        <state key="normal" title="Feliratkozásaim">
                                             <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="zIZ-G5-ggQ" kind="show" id="vv0-zb-SBJ"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yE7-wY-Jhe">
                                         <rect key="frame" x="0.0" y="200" width="394" height="50"/>
@@ -1088,10 +1091,10 @@
             </objects>
             <point key="canvasLocation" x="3106" y="-672"/>
         </scene>
-        <!--View Controller-->
+        <!--My Events View Controller-->
         <scene sceneID="1AK-rk-yN0">
             <objects>
-                <viewController id="ETz-7c-NKx" sceneMemberID="viewController">
+                <viewController id="ETz-7c-NKx" customClass="MyEventsViewController" customModule="Eventually" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Pqh-aO-BZQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1112,6 +1115,16 @@
                                 <rect key="frame" x="0.0" y="100" width="414" height="708"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2T8-d8-5bP">
+                                <rect key="frame" x="349" y="35" width="45" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Vissza">
+                                    <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="backButtonPressed:" destination="ETz-7c-NKx" eventType="touchUpInside" id="Xkg-Yy-jSG"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -1126,10 +1139,62 @@
                         <viewLayoutGuide key="safeArea" id="avY-0R-Ypn"/>
                     </view>
                     <navigationItem key="navigationItem" id="QMw-V9-1j0"/>
+                    <connections>
+                        <outlet property="tableView" destination="Xyi-an-EU2" id="Fud-GP-vFB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fFQ-tS-2yb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3764" y="-356"/>
+        </scene>
+        <!--Subscription View Controller-->
+        <scene sceneID="32i-Ia-0dG">
+            <objects>
+                <viewController id="zIZ-G5-ggQ" customClass="SubscriptionViewController" customModule="Eventually" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="WXe-h0-Ogk">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Feliratkozásaim" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OLb-Oe-AGZ">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+                                <color key="backgroundColor" red="0.89090096949999997" green="0.3556731045" blue="0.3216511011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="KWr-ep-Cr3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tAJ-HI-ysn">
+                                <rect key="frame" x="0.0" y="100" width="414" height="708"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ruu-Cd-Aex">
+                                <rect key="frame" x="349" y="35" width="45" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Vissza">
+                                    <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="OLb-Oe-AGZ" firstAttribute="trailing" secondItem="hJB-xv-19w" secondAttribute="trailing" id="BJy-Dn-Sh3"/>
+                            <constraint firstItem="tAJ-HI-ysn" firstAttribute="leading" secondItem="hJB-xv-19w" secondAttribute="leading" id="Bms-z3-0V0"/>
+                            <constraint firstItem="hJB-xv-19w" firstAttribute="bottom" secondItem="tAJ-HI-ysn" secondAttribute="bottom" id="CuE-3O-SYF"/>
+                            <constraint firstItem="OLb-Oe-AGZ" firstAttribute="leading" secondItem="hJB-xv-19w" secondAttribute="leading" id="FFp-SZ-T5b"/>
+                            <constraint firstItem="OLb-Oe-AGZ" firstAttribute="top" secondItem="hJB-xv-19w" secondAttribute="top" id="HLh-8P-bnT"/>
+                            <constraint firstItem="tAJ-HI-ysn" firstAttribute="top" secondItem="OLb-Oe-AGZ" secondAttribute="bottom" id="Mqi-NB-yRT"/>
+                            <constraint firstItem="hJB-xv-19w" firstAttribute="trailing" secondItem="tAJ-HI-ysn" secondAttribute="trailing" id="uFP-9z-hwL"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="hJB-xv-19w"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="nep-zD-X7b"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="00R-IN-2o6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4430" y="-358"/>
         </scene>
         <!--Search-->
         <scene sceneID="wg7-f3-ORb">
