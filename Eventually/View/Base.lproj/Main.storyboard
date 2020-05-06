@@ -692,6 +692,7 @@
                         <viewLayoutGuide key="safeArea" id="SQv-3V-Opp"/>
                     </view>
                     <connections>
+                        <outlet property="closeButton" destination="scg-Eb-X52" id="fun-cN-lZK"/>
                         <outlet property="date" destination="OCp-wR-Jsr" id="BBd-Te-eKk"/>
                         <outlet property="dateEnd" destination="JTe-6M-0jY" id="Hs9-sD-0Xh"/>
                         <outlet property="desc" destination="xhj-ph-j8q" id="U50-jJ-em0"/>
@@ -709,10 +710,10 @@
             </objects>
             <point key="canvasLocation" x="1492.753623188406" y="-671.65178571428567"/>
         </scene>
-        <!--View Controller-->
+        <!--Comments View Controller-->
         <scene sceneID="vta-mv-21i">
             <objects>
-                <viewController id="h6Q-ei-K9Y" sceneMemberID="viewController">
+                <viewController id="h6Q-ei-K9Y" customClass="CommentsViewController" customModule="Eventually" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gug-D1-DFq">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -733,6 +734,10 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="send"/>
                             </textField>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8Zo-KE-923">
+                                <rect key="frame" x="0.0" y="100" width="414" height="664"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -741,10 +746,17 @@
                             <constraint firstItem="lr6-8J-CpT" firstAttribute="leading" secondItem="daE-w8-flc" secondAttribute="leading" id="XMY-9J-EEh"/>
                             <constraint firstItem="MPr-xS-lyD" firstAttribute="leading" secondItem="daE-w8-flc" secondAttribute="leading" constant="10" id="adc-Zv-QVS"/>
                             <constraint firstItem="MPr-xS-lyD" firstAttribute="bottom" secondItem="daE-w8-flc" secondAttribute="bottom" id="c4p-aI-oCf"/>
+                            <constraint firstItem="8Zo-KE-923" firstAttribute="top" secondItem="lr6-8J-CpT" secondAttribute="bottom" id="eyN-NS-siq"/>
                             <constraint firstItem="daE-w8-flc" firstAttribute="trailing" secondItem="MPr-xS-lyD" secondAttribute="trailing" constant="10" id="gFv-Cy-xCp"/>
+                            <constraint firstItem="8Zo-KE-923" firstAttribute="leading" secondItem="daE-w8-flc" secondAttribute="leading" id="iQH-FY-dVz"/>
+                            <constraint firstItem="MPr-xS-lyD" firstAttribute="top" secondItem="8Zo-KE-923" secondAttribute="bottom" constant="10" id="nH1-aP-Jhd"/>
+                            <constraint firstItem="daE-w8-flc" firstAttribute="trailing" secondItem="8Zo-KE-923" secondAttribute="trailing" id="vuG-fq-1qA"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="daE-w8-flc"/>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="8Zo-KE-923" id="4y8-KD-1WS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w9Z-TT-mGE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

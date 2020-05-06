@@ -27,6 +27,7 @@ class EventScreenViewController: UIViewController {
     
     @IBOutlet weak var joinButton: UIButton!
     @IBOutlet weak var editBUtton: UIButton!
+    @IBOutlet weak var closeButton: UIButton!
     
     func setEvent(event: Event) {
         self.event = event
@@ -40,6 +41,7 @@ class EventScreenViewController: UIViewController {
         setParameters()
         setJoinButtonTitle()
         setEditButton()
+        setCornerRadiousForButtons()
         
         EventHandler.shared().attach(observer: self)
     }
@@ -73,6 +75,12 @@ class EventScreenViewController: UIViewController {
     func setParticipants() {
         let part = (((event?.getsubscribedParticipants())!)+"/"+(event?.getParticipants())!)
         participants!.text = part
+    }
+    
+    //MARK: - Set corner radious for buttons
+    func setCornerRadiousForButtons() {
+        joinButton.layer.cornerRadius = 10
+        closeButton.layer.cornerRadius = 10
     }
     
     //MARK: - Join Button
