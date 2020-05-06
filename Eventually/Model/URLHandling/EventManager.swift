@@ -9,8 +9,8 @@
 import Foundation
 import MapKit
 
-class EventManager {
-    
+class EventManager: MyObserverForEventList {
+        
     enum APIError: Error {
         case responseProblem
         case decodingProblem
@@ -22,6 +22,7 @@ class EventManager {
     func downloadEvents() {
         let urlString = "\(eventuallyURL)events"
         performRequest(urlString: urlString)
+        //notify()
     }
     
     func performRequest(urlString: String) {

@@ -27,10 +27,14 @@ class HomeScreenViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    private let eventManager = EventManager()
+    private var isAlreadyDownloaded = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         EventHandler.shared().attach(observer: self)
+        downloadEvents()
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -38,6 +42,19 @@ class HomeScreenViewController: UIViewController {
         createSampleEvents()
         setUpHorizontallyEvents()
         
+        /*
+        if (!self.areEventsDownloaded) {
+            self.eventManager.downloadEvents()
+            self.areEventsDownloaded = true
+        }
+        */
+    }
+    
+    func downloadEvents() {
+        if (!isAlreadyDownloaded) {
+            eventManager.downloadEvents()
+            isAlreadyDownloaded = true
+        }
     }
     
     func createSampleEvents() {
@@ -137,8 +154,10 @@ extension HomeScreenViewController: UITableViewDataSource, UITableViewDelegate {
 extension HomeScreenViewController: PObserver {
     
     func update() {
-        self.tableView.reloadData()
-        setUpHorizontallyEvents()
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+            self.setUpHorizontallyEvents()
+        }
     }
     
 }
