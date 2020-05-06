@@ -16,14 +16,24 @@ class MessageCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
         messageBubble.layer.cornerRadius = messageBubble.frame.size.height / 10
-        // Initialization code
+        personImage.image = Profile.shared().getProfilePicture()
+        setPersonImageRound()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func setPersonImageRound() {
+        personImage.layer.borderWidth = 1
+        personImage.layer.masksToBounds = false
+        personImage.layer.borderColor = UIColor.black.cgColor
+        personImage.layer.cornerRadius = personImage.frame.height/2
+        personImage.clipsToBounds = true
     }
     
 }
