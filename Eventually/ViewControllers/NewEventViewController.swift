@@ -47,6 +47,8 @@ class NewEventViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     @IBOutlet weak var errorMessage: UILabel!
     @IBOutlet weak var eventCreateButton: UIButton!
     
+    @IBOutlet weak var isOnlineSwitch: UISwitch!
+    
     //MARK: - Variables for editing
     private var editedEvent: Event?
     private var isEditModeOn: Bool! = false
@@ -78,6 +80,8 @@ class NewEventViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         LocationSingleton.shared().attach(observer: self)
         map = MapLoader(map: showLocationOnMap)
         
+        isOnlineSwitch.setOn(false, animated: false)
+        
         if (isEditModeOn) {
             setUpEditing()
         }
@@ -91,6 +95,15 @@ class NewEventViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         else {
             cancelButton.isHidden = false
             cancelButton.isEnabled = true
+        }
+    }
+    
+    
+    @IBAction func isOnlineSwitchValueChanged(_ sender: Any) {
+        if isOnlineSwitch.isOn {
+            location.isEnabled = false
+        } else {
+            location.isEnabled = true
         }
     }
     
@@ -140,11 +153,13 @@ class NewEventViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     func checkInputsValidaton() -> Bool {
         if (eventName.text!.count > 3 &&
-            LocationSingleton.shared().getCoordinates() != nil &&
             Int(numOfPeople.text!) ?? -1 > 0 &&
-            shortDesc.text!.count > 10) {
+            shortDesc.text!.count > 10) &&
+            (LocationSingleton.shared().getCoordinates() != nil &&
+            !isOnlineSwitch.isOn ||
+                isOnlineSwitch.isOn){
             return true
-        }else {
+        } else {
             setErrorMessageDependingOnError()
             return false
         }
@@ -197,8 +212,13 @@ class NewEventViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
      }
     
     func createEvent() -> Event {
-        let event = Event(eventName: eventName.text!, eventLocation: LocationSingleton.shared().getCoordinates()!, participants: numOfPeople.text!, subscribedParticipants: "0", shortDescription: shortDesc.text!, startDate: startDate.text!, endDate: endDate.text!, publicity: publicityInput.text!, image: imageView.image, address: LocationSingleton.shared().getText(), creatorID: Profile.shared().getID())
-        event.setJoined(status: true)
+        let event: Event
+        if isOnlineSwitch.isOn {
+            event = Event(eventName: eventName.text!, eventLocation: "online", participants: numOfPeople.text!, subscribedParticipants: "0", shortDescription: shortDesc.text!, startDate: startDate.text!, endDate: endDate.text!, publicity: publicityInput.text!, image: imageView.image, address: "online", creatorID: Profile.shared().getID())
+        } else {
+            event = Event(eventName: eventName.text!, eventLocation: LocationSingleton.shared().getCoordinates()!, participants: numOfPeople.text!, subscribedParticipants: "0", shortDescription: shortDesc.text!, startDate: startDate.text!, endDate: endDate.text!, publicity: publicityInput.text!, image: imageView.image, address: LocationSingleton.shared().getText(), creatorID: Profile.shared().getID())
+            event.setJoined(status: true)
+        }
         return event
     }
     

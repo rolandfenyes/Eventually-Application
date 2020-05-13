@@ -352,7 +352,7 @@
                                 <rect key="frame" x="164" y="531" width="230" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <state key="normal" image="map" catalog="system">
+                                <state key="normal" title="Helyszín hozzáadása" image="map" catalog="system">
                                     <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
@@ -370,19 +370,13 @@
                                 <color key="textColor" red="0.93229508400000005" green="0.1650608039" blue="0.1332686035" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Kategória*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zbP-N1-TlK">
-                                <rect key="frame" x="20" y="501" width="81" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Online esemény?*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zbP-N1-TlK">
+                                <rect key="frame" x="20" y="501" width="138" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aiV-h4-k7d">
-                                <rect key="frame" x="164" y="495" width="230" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IgL-fc-Ei5">
                                 <rect key="frame" x="164" y="378" width="230" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -409,6 +403,13 @@
                                     <action selector="cancelButtonClicked:" destination="N6H-X7-ndm" eventType="touchUpInside" id="yfl-0b-BYh"/>
                                 </connections>
                             </button>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OOc-ld-x5C">
+                                <rect key="frame" x="345" y="496" width="49" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="isOnlineSwitchValueChanged:" destination="N6H-X7-ndm" eventType="valueChanged" id="2bg-IF-KLs"/>
+                                </connections>
+                            </switch>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -429,6 +430,7 @@
                         <outlet property="eventName" destination="GNz-Sl-vfL" id="OG9-1o-Bc7"/>
                         <outlet property="headTitle" destination="zEd-JF-Ked" id="FlS-CY-ZOT"/>
                         <outlet property="imageView" destination="gCx-r5-RbB" id="9SM-ng-65w"/>
+                        <outlet property="isOnlineSwitch" destination="OOc-ld-x5C" id="67t-Pg-wko"/>
                         <outlet property="location" destination="mHP-Oj-Ld6" id="KUj-1t-Wtl"/>
                         <outlet property="numOfPeople" destination="c9a-dF-sVh" id="Eq6-z0-pNm"/>
                         <outlet property="publicityInput" destination="JXp-Zh-CCn" id="ZmD-hK-eao"/>
