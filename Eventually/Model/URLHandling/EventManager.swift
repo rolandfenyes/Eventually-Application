@@ -58,7 +58,6 @@ class EventManager: MyObserverForEventList {
         let eventHandler = EventHandler.shared()
         var partlimit = "0"
         var index = 0
-        let jsonList = json.array
         for event in eventList {
             if event.partlimit != nil {
                 partlimit = String(event.partlimit!)
@@ -79,17 +78,15 @@ class EventManager: MyObserverForEventList {
                                                         startDate: event.starttime!,
                                                         endDate: event.endtime!,
                                                         publicity: event.visibility!,
-                                                        //TODO
                                                         image: UIImage(named: "cinema"),
                                                         address: "",
                                                         creatorID: event.id!,
                                                         eventId: event.id!))
-                    
-                    if let imageUrl = URL(string: photo["path"].stringValue) {
-                        eventHandler.getEvents().last?.setImageUrl(url: photo["path"].stringValue)
-                    }
                 } else {
                     eventHandler.addEvent(event: Event(eventName: event.name!, eventLocation: "online", participants: partlimit, subscribedParticipants: String(event.part!), shortDescription: event.description ?? "Description...", startDate: event.starttime!, endDate: event.endtime!, publicity: event.visibility!, image: UIImage(named: "cinema"), address: "online", creatorID: event.id!, eventId: event.id!))
+                }
+                if let imageUrl = URL(string: photo["path"].stringValue) {
+                    eventHandler.getEvents().last?.setImageUrl(url: photo["path"].stringValue)
                 }
             }
             
@@ -133,7 +130,14 @@ class EventManager: MyObserverForEventList {
             urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
             urlRequest.httpBody = jsonData
             
-            
+            uploadSession(urlRequest: urlRequest, completion: completion)
+        } catch {
+            completion(.failure(.decodingProblem))
+        }
+    }
+    
+    func uploadSession(urlRequest: URLRequest, completion: @escaping(Result<CodableEvent, APIError>) -> Void) {
+        do {
             let dataTask = URLSession.shared.dataTask(with: urlRequest) { data, response, _ in
                 guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200,
                     let jsonData = data else {
@@ -154,7 +158,33 @@ class EventManager: MyObserverForEventList {
         }
     }
     
+    func uploadImage(event: Event, completion: @escaping(Result<CodableEvent, APIError>) -> Void) {
+        /*let resourceURL = URL(string: "\(eventuallyURL)uploadFile")
+        let imageData = event.getImage().jpegData(compressionQuality: 1)
+        
+        var urlRequest = URLRequest(url: resourceURL!)
+        urlRequest.httpMethod = "POST"
+        urlRequest.setValue("Keep-Alive", forHTTPHeaderField: "Connection")
+        
+        var configuration = URLSessionConfiguration.default
+        var session = URLSession(configuration: configuration, delegate: self as! URLSessionDelegate, delegateQueue: OperationQueue.main)
+        
+        var task = session.uploadTask(with: urlRequest, from: imageData!) {data,response,_ in
+            guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200,
+                let imageData = data else {
+                    return
+            }
+            do {
+            }
+        }
+        task.resume()
+ */
+    }
+    
     func createJson(codableEvent: CodableEvent) -> Data {
+        
+        //let index = EventHandler.shared().getEventIndexById(id: codableEvent.id)
+        //uploadImage(event: EventHandler.shared().getEvents()[index])
         
         var visibility: String
         if codableEvent.visibility == "Publikus" {
@@ -176,6 +206,7 @@ class EventManager: MyObserverForEventList {
         eventDict["visibility"] = visibility as AnyObject
         
         var photoDict: [String : AnyObject] = [:]
+        photoDict["path"] = "https://api.eventually.site/downloadFile/" as AnyObject
         
         var dict: [String : AnyObject] = [:]
         dict["event"] = eventDict  as AnyObject

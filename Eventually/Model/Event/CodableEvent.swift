@@ -21,8 +21,9 @@ struct CodableEvent : Codable {
     let lat: Double
     let photo: String?
     let visibility: String
+    let id: Int
     
-    init(name: String, description: String, starttime: String, endtime: String, partlimit: String, part: String, visibility: String, location: CLLocationCoordinate2D) {
+    init(name: String, description: String, starttime: String, endtime: String, partlimit: String, part: String, visibility: String, location: CLLocationCoordinate2D, id: Int) {
         self.name = name
         self.description = description
         self.starttime = starttime
@@ -33,6 +34,7 @@ struct CodableEvent : Codable {
         self.lon = location.longitude
         self.lat = location.latitude
         self.photo = nil
+        self.id = id
     }
     
 }

@@ -31,7 +31,7 @@ class EventHandler: MyObserverForEventList {
     
     func sendToBackEnd(event: Event, httpMethod: String) {
         let postRequest = EventManager()
-        let codableEvent = CodableEvent(name: event.getName(), description: event.getDescription(), starttime: event.getStartDate(), endtime: event.getEndDate(), partlimit: event.getParticipants(), part: event.getsubscribedParticipants(), visibility: event.getPub(), location: event.getEventLocation())
+        let codableEvent = CodableEvent(name: event.getName(), description: event.getDescription(), starttime: event.getStartDate(), endtime: event.getEndDate(), partlimit: event.getParticipants(), part: event.getsubscribedParticipants(), visibility: event.getPub(), location: event.getEventLocation(), id: event.getEventId())
         
         var addToURL = ""
         if httpMethod == "PUT" {
