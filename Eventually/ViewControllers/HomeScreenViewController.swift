@@ -42,6 +42,9 @@ class HomeScreenViewController: UIViewController {
         createSampleEvents()
         setUpHorizontallyEvents()
         
+        tableView.register(UINib(nibName: "EventField", bundle: nil), forCellReuseIdentifier: "EventCell")
+
+        
         /*
         if (!self.areEventsDownloaded) {
             self.eventManager.downloadEvents()
@@ -63,9 +66,9 @@ class HomeScreenViewController: UIViewController {
         
         let event2 = Event(eventName: "Kajakozás", eventLocation: CLLocationCoordinate2D(latitude: 47.73254454163791, longitude: 19.051930750720203), participants: "5", subscribedParticipants: "0", shortDescription: "Kajakozásra fel! A Dunakanyarban lakok, és nemrég nyílt a környéken egy új hely, ahol lehet bérelni kajakot. Olyan emberek jelentkezését várom, akik tudnak úszni, és szeretnének egy jót evezni,", startDate: "Szavazás alapján", endDate: "Szavazás alapján", publicity: "publikus", image: UIImage(named: "kayaking"), address: "Dunakanyar", creatorID: 1)
         
-        let event3 = Event(eventName: "Burgerezés", eventLocation: CLLocationCoordinate2D(latitude: 47.37842513297852, longitude: 18.93373870756477), participants: "8", subscribedParticipants: "0", shortDescription: "Sziasztok! Pár hete nyitott meg itt Érden a Burger King és szeretnék egy jót enni ott, viszont nincs kivel. Gondoltam ha van még valaki aki hasonló cipőben jár mint én, akkor itt majd találkozunk.", startDate: "Péntek este", endDate: "Szombat hajnal", publicity: "publikus", image: UIImage(named: "hamburger"), address: "Burger King Érd", creatorID: 1)
+        let event3 = Event(eventName: "Burgerezés", eventLocation: CLLocationCoordinate2D(latitude: 47.37842513297852, longitude: 18.93373870756477), participants: "8", subscribedParticipants: "0", shortDescription: "Sziasztok! Pár hete nyitott meg itt Érden a Burger King és szeretnék egy jót enni ott, viszont nincs kivel. Gondoltam ha van még valaki aki hasonló cipőben jár mint én, akkor itt majd találkozunk.", startDate: "Péntek este", endDate: "Szombat hajnal", publicity: "publikus", image: UIImage(named: "hamburger"), address: "Burger King Érd", creatorID: 0)
         
-        let event4 = Event(eventName: "Sörözés", eventLocation: CLLocationCoordinate2D(latitude: 47.49810821206292, longitude: 19.066526661626995), participants: "10", subscribedParticipants: "0", shortDescription: "A múltkori buli is jól sikerült, ezért most is meghirdetek egy sörözést a Fügébe péntek este 9-re, aki szeretne jönni jelentkezzen, múltkoriak előnyben!", startDate: "Péntek este 9", endDate: "Szombat hajnal", publicity: "Privát", image: UIImage(named: "beers"), address: "Füge udvar Budapest", creatorID: 1)
+        let event4 = Event(eventName: "Sörözés", eventLocation: CLLocationCoordinate2D(latitude: 47.49810821206292, longitude: 19.066526661626995), participants: "10", subscribedParticipants: "0", shortDescription: "A múltkori buli is jól sikerült, ezért most is meghirdetek egy sörözést a Fügébe péntek este 9-re, aki szeretne jönni jelentkezzen, múltkoriak előnyben!", startDate: "Péntek este 9", endDate: "Szombat hajnal", publicity: "Privát", image: UIImage(named: "beers"), address: "Füge udvar Budapest", creatorID: 0)
         
         EventHandler.shared().addEvent(event: event1)
         EventHandler.shared().addEvent(event: event2)
@@ -133,7 +136,7 @@ extension HomeScreenViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let event = EventHandler.shared().getEvents()[indexPath.row]
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell") as! EventCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! EventCell
         
         cell.setEvent(event: event)
          
@@ -147,6 +150,7 @@ extension HomeScreenViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         presentEventScreen(event: EventHandler.shared().getEvents()[indexPath.row])
     }
+ 
 }
 
 //MARK: - Observer

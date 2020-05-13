@@ -8,6 +8,8 @@
 
 import Foundation
 import MapKit
+import SwiftyJSON
+import Alamofire
 
 class EventManager: MyObserverForEventList {
         
@@ -22,63 +24,67 @@ class EventManager: MyObserverForEventList {
     func downloadEvents() {
         let urlString = "\(eventuallyURL)events"
         performRequest(urlString: urlString)
-        //notify()
     }
     
     func performRequest(urlString: String) {
-        //1. Create URL
-        
-        if let url = URL(string: urlString) {
-            //2. Create a URLSession
-            
-            let session = URLSession(configuration: .default)
-            
-            //3. Give the session a task
-            
-            let task = session.dataTask(with: url) { (data, response, error) in
-                if error != nil {
-                    print(error!)
-                    return
-                }
-                if let safeData = data {
-                    self.parseJSON(events: safeData)
-                }
+        AF.request(urlString).responseJSON { response in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                self.parseJSON(events: json)
+            case .failure(let error):
+                print(error)
             }
-            task.resume()
+            
         }
     }
     
-    func parseJSON(events: Data) {
+    func parseJSON(events: JSON) {
         let decoder = JSONDecoder()
         do {
-            let decodedDatas = try decoder.decode([EventStructure].self, from: events)
-            addEventsToEventHandler(eventList: decodedDatas)
+            let decodedDatas = try decoder.decode([EventStructure].self, from: events.rawData())
+            addEventsToEventHandler(eventList: decodedDatas, json: events)
         } catch {
             print(error)
         }
         
     }
     
-    func addEventsToEventHandler(eventList: [EventStructure]) {
+    func addEventsToEventHandler(eventList: [EventStructure], json: JSON) {
         let eventHandler = EventHandler.shared()
         var partlimit = "0"
+        var index = 0
+        let jsonList = json.array
         for event in eventList {
             if event.partlimit != nil {
                 partlimit = String(event.partlimit!)
             }
-            eventHandler.addEvent(event: Event(eventName: event.name!,
-                                               //TODO
-                                               eventLocation: CLLocationCoordinate2D(latitude: 47.49810821206292, longitude: 19.066526661626995),
-                                               participants: partlimit,
-                                               subscribedParticipants: "0",
-                                               shortDescription: event.description ?? "Description...",
-                                               startDate: event.starttime!,
-                                               endDate: event.endtime!,
-                                               publicity: event.visibility!,
-                                               //TODO
-                                               image: UIImage(named: "cinema"),
-                                               address: "Füge udvar Budapest",
-                                               creatorID: 0))
+            do {
+                print(jsonList![index])
+                let location = json[index]["location"]
+                let organizer = json[index]["organizer"]
+                if location.count != 0 {
+                    let lat = location["lat"].doubleValue
+                    let lon = location["lon"].doubleValue
+                    let locationCoordinates = CLLocationCoordinate2D(latitude: lat, longitude: lon)
+                    eventHandler.addEvent(event: Event(eventName: event.name!,
+                                                         eventLocation: locationCoordinates,
+                                                        participants: partlimit,
+                                                        subscribedParticipants: String(event.part!),
+                                                        shortDescription: event.description ?? "Description...",
+                                                        startDate: event.starttime!,
+                                                        endDate: event.endtime!,
+                                                        publicity: event.visibility!,
+                                                        //TODO
+                                                        image: UIImage(named: "cinema"),
+                                                        address: "",
+                                                        creatorID: organizer["id"].intValue))
+                } else {
+                    eventHandler.addEvent(event: Event(eventName: event.name!, eventLocation: "online", participants: partlimit, subscribedParticipants: String(event.part!), shortDescription: event.description ?? "Description...", startDate: event.starttime!, endDate: event.endtime!, publicity: event.visibility!, image: UIImage(named: "cinema"), address: "online", creatorID: organizer["id"].intValue))
+                }
+            }
+            
+            index += 1
         }
     }
     
