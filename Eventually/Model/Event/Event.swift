@@ -27,6 +27,7 @@ class Event {
     private var creatorID: Int
     private var comments: [Comment]
     private var eventId: Int
+    private var imageUrl: URL?
     
     //MARK: - Init
     init(eventName: String, eventLocation: CLLocationCoordinate2D, participants: String, subscribedParticipants: String, shortDescription: String, startDate: String, endDate: String, publicity: String, image: UIImage?, address: String, creatorID: Int, eventId: Int) {
@@ -59,6 +60,11 @@ class Event {
         self.creatorID = creatorID
         self.eventId = eventId
         comments = []
+    }
+    
+    func setImageUrl(url: String) {
+        self.imageUrl = URL(string: url)
+        setImage(from: url)
     }
     
     func setJoined(status: Bool) {
@@ -157,8 +163,21 @@ class Event {
     func setPub(pub: String) {
         self.publicity = pub
     }
+    func setImage(from url: String) {
+        guard let imageURL = URL(string: url) else { return }
+
+            // just not to cause a deadlock in UI!
+        DispatchQueue.global().async {
+            guard let imageData = try? Data(contentsOf: imageURL) else { return }
+
+            let image = UIImage(data: imageData)
+            DispatchQueue.main.async {
+                self.image = image
+            }
+        }
+    }
     func setImage(image: UIImage) {
-        self.image! = image
+        self.image = image
     }
     func setAddress(address: String) {
         self.address = address

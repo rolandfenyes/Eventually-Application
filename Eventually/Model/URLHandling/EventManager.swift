@@ -65,10 +65,11 @@ class EventManager: MyObserverForEventList {
             }
             do {
                 let location = json[index]["location"]
-                let organizer = json[index]["organizer"]
+                let photo = json[index]["photo"]
                 if location.count != 0 {
                     let lat = location["lat"].doubleValue
                     let lon = location["lon"].doubleValue
+                    
                     let locationCoordinates = CLLocationCoordinate2D(latitude: lat, longitude: lon)
                     eventHandler.addEvent(event: Event(eventName: event.name!,
                                                          eventLocation: locationCoordinates,
@@ -83,7 +84,10 @@ class EventManager: MyObserverForEventList {
                                                         address: "",
                                                         creatorID: event.id!,
                                                         eventId: event.id!))
-                    print(event.id!)
+                    
+                    if let imageUrl = URL(string: photo["path"].stringValue) {
+                        eventHandler.getEvents().last?.setImageUrl(url: photo["path"].stringValue)
+                    }
                 } else {
                     eventHandler.addEvent(event: Event(eventName: event.name!, eventLocation: "online", participants: partlimit, subscribedParticipants: String(event.part!), shortDescription: event.description ?? "Description...", startDate: event.starttime!, endDate: event.endtime!, publicity: event.visibility!, image: UIImage(named: "cinema"), address: "online", creatorID: event.id!, eventId: event.id!))
                 }
