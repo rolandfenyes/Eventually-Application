@@ -3,4 +3,86 @@
    uuid = "4BBA35A2-3F6B-4979-B4C6-52AEBBF91FB4"
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F538E9EF-25A2-456B-B21C-0CC0F94F3C8D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Eventually/Model/URLHandling/UserManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "parseJSON(json:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "F538E9EF-25A2-456B-B21C-0CC0F94F3C8D - f21f2a57b7527bd1"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Eventually.UserManager.parseJSON(json: SwiftyJSON.JSON) -&gt; ()"
+                  moduleName = "Eventually"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/fenyesroland/Desktop/Eventually/Eventually/Eventually/Model/URLHandling/UserManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "41"
+                  endingLineNumber = "41"
+                  offsetFromSymbolStart = "1321">
+               </Location>
+               <Location
+                  uuid = "F538E9EF-25A2-456B-B21C-0CC0F94F3C8D - f21f2a57b7527bd1"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Eventually.UserManager.parseJSON(json: SwiftyJSON.JSON) -&gt; ()"
+                  moduleName = "Eventually"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/fenyesroland/Desktop/Eventually/Eventually/Eventually/Model/URLHandling/UserManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "41"
+                  endingLineNumber = "41"
+                  offsetFromSymbolStart = "1445">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6C6255D2-1F0E-4336-B293-3E0E05E887D0"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Eventually/ViewControllers/LoginPageViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "login(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "66A2284B-7132-4396-9939-DDFE4C30F701"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Eventually/Model/URLHandling/UserManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "performRequest(urlString:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

@@ -52,7 +52,7 @@ class Profile : MyObserverForProfileEditing {
     
     //MARK: - Change Profile
     
-    func changeProfile(nickname: String, birthDate: Date, email: String, password: String, profilePicture: UIImage) {
+    func changeProfile(nickname: String, birthDate: Date, email: String, password: String, profilePicture: UIImage?) {
         
         self.nickname = nickname
         self.birthDate = birthDate

@@ -35,7 +35,6 @@ class EventManager: MyObserverForEventList {
             case .failure(let error):
                 print(error)
             }
-            
         }
     }
     

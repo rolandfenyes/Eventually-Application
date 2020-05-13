@@ -26,8 +26,6 @@ class RegistrationViewController: UIViewController {
         self.datePicker = DatePicker(viewController: self)
         
         birthDateChanged()
-
-        // Do any additional setup after loading the view.
     }
     
     func setUpFormatter() {
@@ -63,6 +61,8 @@ class RegistrationViewController: UIViewController {
     }
     
     @IBAction func registerButtonClicked(_ sender: UIButton) {
+        let homeScreen = self.storyboard?.instantiateViewController(withIdentifier: "startPage") as! UITabBarController
+        self.navigationController?.pushViewController(homeScreen, animated: true)
     }
 
 }

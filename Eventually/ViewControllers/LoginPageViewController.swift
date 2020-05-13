@@ -10,14 +10,25 @@ import UIKit
 
 class LoginPageViewController: UIViewController {
 
+    @IBOutlet weak var emailAddress: UITextField!
+    @IBOutlet weak var password: UITextField!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
+    
+    
     @IBAction func login(_ sender: UIButton) {
-        let homeScreen = self.storyboard?.instantiateViewController(withIdentifier: "startPage") as! UITabBarController
-        self.navigationController?.pushViewController(homeScreen, animated: true)
-        //self.present(homeScreen, animated: true, completion: nil)
+        let userManager = UserManager()
+        userManager.downloadUsers()
+        print("hmm")
+        if userManager.auth(email: emailAddress.text!, password: password.text!) {
+            let homeScreen = self.storyboard?.instantiateViewController(withIdentifier: "startPage") as! UITabBarController
+            self.navigationController?.pushViewController(homeScreen, animated: true)
+            print("hell yeah")
+        }
     }
     
 

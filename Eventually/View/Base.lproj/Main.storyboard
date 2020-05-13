@@ -71,7 +71,7 @@
                                                 <rect key="frame" x="250" y="0.0" width="240" height="200"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kayaking" translatesAutoresizingMaskIntoConstraints="NO" id="y79-NC-HPi">
-                                                        <rect key="frame" x="10" y="10" width="220" height="160.00000000000011"/>
+                                                        <rect key="frame" x="10" y="10" width="220" height="160"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="awa-dj-QoJ">
                                                         <rect key="frame" x="8" y="171.5" width="224" height="20.5"/>
@@ -1537,6 +1537,10 @@
                         <viewLayoutGuide key="safeArea" id="2fY-2H-SSa"/>
                     </view>
                     <navigationItem key="navigationItem" id="06S-w7-dJg"/>
+                    <connections>
+                        <outlet property="emailAddress" destination="Vs7-pR-mou" id="yFl-BU-zw8"/>
+                        <outlet property="password" destination="zoR-Nd-bgY" id="pld-tG-lLM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vn7-Dc-0yK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

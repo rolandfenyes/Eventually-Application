@@ -35,6 +35,9 @@
 		53BD6D0E246C1C9C0088730C /* LoginPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53BD6D0D246C1C9C0088730C /* LoginPageViewController.swift */; };
 		53BD6D10246C1D6F0088730C /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53BD6D0F246C1D6F0088730C /* TabBarController.swift */; };
 		53BD6D12246C27EF0088730C /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53BD6D11246C27EF0088730C /* RegistrationViewController.swift */; };
+		53BD6D14246C2FE20088730C /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53BD6D13246C2FE20088730C /* UserManager.swift */; };
+		53BD6D16246C30DD0088730C /* UserStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53BD6D15246C30DD0088730C /* UserStructure.swift */; };
+		53BD6D1A246C3B770088730C /* UsersList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53BD6D19246C3B770088730C /* UsersList.swift */; };
 		53BE64212463030A007C1B47 /* MyEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53BE64202463030A007C1B47 /* MyEventsViewController.swift */; };
 		53BE64232463091C007C1B47 /* SubscriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53BE64222463091C007C1B47 /* SubscriptionViewController.swift */; };
 		53CD32D8243F181800BDB5A0 /* SearchEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53CD32D7243F181800BDB5A0 /* SearchEventViewController.swift */; };
@@ -106,6 +109,9 @@
 		53BD6D0D246C1C9C0088730C /* LoginPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPageViewController.swift; sourceTree = "<group>"; };
 		53BD6D0F246C1D6F0088730C /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		53BD6D11246C27EF0088730C /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		53BD6D13246C2FE20088730C /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		53BD6D15246C30DD0088730C /* UserStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStructure.swift; sourceTree = "<group>"; };
+		53BD6D19246C3B770088730C /* UsersList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersList.swift; sourceTree = "<group>"; };
 		53BE64202463030A007C1B47 /* MyEventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyEventsViewController.swift; sourceTree = "<group>"; };
 		53BE64222463091C007C1B47 /* SubscriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionViewController.swift; sourceTree = "<group>"; };
 		53CD32D7243F181800BDB5A0 /* SearchEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEventViewController.swift; sourceTree = "<group>"; };
@@ -199,6 +205,7 @@
 				539E0DE224388EF100FB928E /* EventHandler.swift */,
 				539E0DDE24388EBD00FB928E /* LocationSingleton.swift */,
 				53CD32DB2445BA1C00BDB5A0 /* Profile.swift */,
+				53BD6D19246C3B770088730C /* UsersList.swift */,
 			);
 			path = Singletons;
 			sourceTree = "<group>";
@@ -261,6 +268,8 @@
 			children = (
 				53EED61724503313003C9410 /* EventManager.swift */,
 				53EED619245034A4003C9410 /* EventStructure.swift */,
+				53BD6D13246C2FE20088730C /* UserManager.swift */,
+				53BD6D15246C30DD0088730C /* UserStructure.swift */,
 			);
 			path = URLHandling;
 			sourceTree = "<group>";
@@ -577,6 +586,7 @@
 				53CD32EB2447253F00BDB5A0 /* MyObserverForProfileEditing.swift in Sources */,
 				539E0DE124388ECA00FB928E /* NewEventViewController.swift in Sources */,
 				539E0DCC24388DA900FB928E /* MyObserverForAddress.swift in Sources */,
+				53BD6D1A246C3B770088730C /* UsersList.swift in Sources */,
 				53BD6D0E246C1C9C0088730C /* LoginPageViewController.swift in Sources */,
 				53BE64232463091C007C1B47 /* SubscriptionViewController.swift in Sources */,
 				539E0DE524388F5B00FB928E /* MapLoader.swift in Sources */,
@@ -585,6 +595,8 @@
 				539E0DDF24388EBD00FB928E /* LocationSingleton.swift in Sources */,
 				539E0DD224388E1A00FB928E /* EventCell.swift in Sources */,
 				53CD32E02446F67300BDB5A0 /* DatePicker.swift in Sources */,
+				53BD6D16246C30DD0088730C /* UserStructure.swift in Sources */,
+				53BD6D14246C2FE20088730C /* UserManager.swift in Sources */,
 				539E0DD524388E1A00FB928E /* LocationSearchViewController.swift in Sources */,
 				53CD32DA2445B9AC00BDB5A0 /* SettingsViewController.swift in Sources */,
 				53CD32D8243F181800BDB5A0 /* SearchEventViewController.swift in Sources */,
