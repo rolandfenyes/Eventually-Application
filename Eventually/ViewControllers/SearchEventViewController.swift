@@ -10,11 +10,16 @@ import UIKit
 
 //MARK: - Main
 class SearchEventViewController: UIViewController {
+    
+    private var searchResult: [Event] = []
 
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(UINib(nibName: "EventField", bundle: nil), forCellReuseIdentifier: "EventCell")
     }
     
 }
@@ -24,7 +29,21 @@ class SearchEventViewController: UIViewController {
 extension SearchEventViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        //to be continued...
+        searchBar.delegate = self
+        searchBar.resignFirstResponder()
+        dismiss(animated: true, completion: nil)
+        activeSearch(search: searchBar.text ?? "")
+    }
+    
+    func activeSearch(search: String) {
+        searchResult.removeAll()
+        let events = EventHandler.shared().getEvents()
+        for event in events {
+            if ((event.getName().uppercased()).contains(search.uppercased())) {
+                searchResult.append(event)
+            }
+        }
+        tableView.reloadData()
     }
 }
 
@@ -32,7 +51,7 @@ extension SearchEventViewController: UISearchBarDelegate {
 extension SearchEventViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let event = EventHandler.shared().getEvents()[indexPath.row]
+        let event = searchResult[indexPath.row]
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell") as! EventCell
         
@@ -42,11 +61,11 @@ extension SearchEventViewController: UITableViewDataSource, UITableViewDelegate 
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return EventHandler.shared().getEvents().count
+        return searchResult.count
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        presentEventScreen(event: EventHandler.shared().getEvents()[indexPath.row])
+        presentEventScreen(event: EventHandler.shared().getExactEvent(event: searchResult[indexPath.row]))
     }
     
     private func presentEventScreen(event: Event) {
