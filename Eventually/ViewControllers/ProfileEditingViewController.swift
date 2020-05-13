@@ -110,7 +110,7 @@ class ProfileEditingViewController: UIViewController, UIImagePickerControllerDel
     }
     
     func saveProfileDetails() {
-        self.profile.changeProfile(nickname: self.profileName.text!, birthDate: dateFormatter(date: self.birthDate.text!)!, email: self.emailAddress.text!, password: self.password.text!, profilePicture: self.profilePicture.image!)
+        self.profile.changeProfile(id: self.profile.getID(), nickname: self.profileName.text!, birthDate: dateFormatter(date: self.birthDate.text!)!, email: self.emailAddress.text!, password: self.password.text!, profilePicture: self.profilePicture.image!)
     }
     
     func disappearScreen() {

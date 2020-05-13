@@ -45,10 +45,9 @@ class UserManager {
     
     func auth(email: String, password: String) -> Bool {
         let userList = UsersList.shared().getUsers()
-        print(userList)
         for user in userList {
             if (user.email == email && user.pw == password) {
-                Profile.shared().changeProfile(nickname: user.username!, birthDate: stringToDate(string: user.birthdate!), email: user.email!, password: user.pw!, profilePicture: nil)
+                Profile.shared().changeProfile(id: user.id!, nickname: user.username!, birthDate: stringToDate(string: user.birthdate!), email: user.email!, password: user.pw!, profilePicture: nil)
                 return true
             }
         }
