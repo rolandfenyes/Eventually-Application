@@ -132,7 +132,6 @@ class Event {
     //MARK: - Setters
     func setCreatorId(id: Int) {
         self.creatorID = id
-        self.shortDescription = "userid: \(Profile.shared().getID()) - eventUserId: \(self.creatorID)"
     }
     func setEventName(name: String) {
         self.eventName = name
