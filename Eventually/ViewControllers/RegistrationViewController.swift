@@ -66,7 +66,6 @@ class RegistrationViewController: UIViewController {
         postRequest.register(user, completion: { result in
             switch result {
             case .success(let message):
-                print("siker")
                 let homeScreen = self.storyboard?.instantiateViewController(withIdentifier: "startPage") as! UITabBarController
                 self.navigationController?.pushViewController(homeScreen, animated: true)
             case .failure(let error):

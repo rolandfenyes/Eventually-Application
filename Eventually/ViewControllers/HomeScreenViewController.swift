@@ -43,14 +43,6 @@ class HomeScreenViewController: UIViewController {
         setUpHorizontallyEvents()
         
         tableView.register(UINib(nibName: "EventField", bundle: nil), forCellReuseIdentifier: "EventCell")
-
-        
-        /*
-        if (!self.areEventsDownloaded) {
-            self.eventManager.downloadEvents()
-            self.areEventsDownloaded = true
-        }
-        */
     }
     
     func downloadEvents() {
@@ -62,6 +54,7 @@ class HomeScreenViewController: UIViewController {
     
     func createSampleEvents() {
         //MARK: - Sample events
+        /*
         let event1 = Event(eventName: "Mozizás", eventLocation: CLLocationCoordinate2D(latitude: 47.474838443055546, longitude: 19.049048381857574), participants: "3", subscribedParticipants: "0", shortDescription: "Szeretnék mozizni menni pár emberrel.", startDate: "holnap", endDate: "valamikor", publicity: "Privát", image: UIImage(named: "cinema"), address: "Allee", creatorID: 1)
         
         let event2 = Event(eventName: "Kajakozás", eventLocation: CLLocationCoordinate2D(latitude: 47.73254454163791, longitude: 19.051930750720203), participants: "5", subscribedParticipants: "0", shortDescription: "Kajakozásra fel! A Dunakanyarban lakok, és nemrég nyílt a környéken egy új hely, ahol lehet bérelni kajakot. Olyan emberek jelentkezését várom, akik tudnak úszni, és szeretnének egy jót evezni,", startDate: "Szavazás alapján", endDate: "Szavazás alapján", publicity: "publikus", image: UIImage(named: "kayaking"), address: "Dunakanyar", creatorID: 1)
@@ -70,11 +63,12 @@ class HomeScreenViewController: UIViewController {
         
         let event4 = Event(eventName: "Sörözés", eventLocation: CLLocationCoordinate2D(latitude: 47.49810821206292, longitude: 19.066526661626995), participants: "10", subscribedParticipants: "0", shortDescription: "A múltkori buli is jól sikerült, ezért most is meghirdetek egy sörözést a Fügébe péntek este 9-re, aki szeretne jönni jelentkezzen, múltkoriak előnyben!", startDate: "Péntek este 9", endDate: "Szombat hajnal", publicity: "Privát", image: UIImage(named: "beers"), address: "Füge udvar Budapest", creatorID: 0)
         
+        
         EventHandler.shared().addEvent(event: event1)
         EventHandler.shared().addEvent(event: event2)
         EventHandler.shared().addEvent(event: event3)
         EventHandler.shared().addEvent(event: event4)
-                
+            */
         /*
          mozi: (latitude: 47.474838443055546, longitude: 19.049048381857574)
          kajak: (latitude: 47.73254454163791, longitude: 19.051930750720203)

@@ -46,6 +46,10 @@ class EventHandler: MyObserverForEventList {
         events[index].setJoined(status: status)
         notify()
     }
+    func setCreatorIdForAnEvent(id: Int, index: Int) {
+        events[index].setCreatorId(id: id)
+        notify()
+    }
     
     func getEvents() -> [Event] {
         return events
@@ -60,6 +64,16 @@ class EventHandler: MyObserverForEventList {
             index += 1
         }
         return index
+    }
+    
+    func getEventIndexById(id: Int) -> Int {
+        var eventToReturn: Event = events.first!
+        for event in events {
+            if event.getCreatorID() == id {
+                eventToReturn = event
+            }
+        }
+        return getExactEventIndex(event: eventToReturn)
     }
     
     func getExactEvent(event: Event) -> Event {

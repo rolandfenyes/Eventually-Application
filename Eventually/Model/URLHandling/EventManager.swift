@@ -20,6 +20,11 @@ class EventManager: MyObserverForEventList {
     }
     
     let eventuallyURL = "https://api.eventually.site/"
+    var organizerId: Int = 0
+    
+    func setOrganizerId(id: Int) {
+        self.organizerId = id
+    }
     
     func downloadEvents() {
         let urlString = "\(eventuallyURL)events"
@@ -59,7 +64,6 @@ class EventManager: MyObserverForEventList {
                 partlimit = String(event.partlimit!)
             }
             do {
-                print(jsonList![index])
                 let location = json[index]["location"]
                 let organizer = json[index]["organizer"]
                 if location.count != 0 {
@@ -77,37 +81,40 @@ class EventManager: MyObserverForEventList {
                                                         //TODO
                                                         image: UIImage(named: "cinema"),
                                                         address: "",
-                                                        creatorID: organizer["id"].intValue))
+                                                        creatorID: event.id!,
+                                                        eventId: 0))
+                    print("organizer: \(organizerId)")
                 } else {
-                    eventHandler.addEvent(event: Event(eventName: event.name!, eventLocation: "online", participants: partlimit, subscribedParticipants: String(event.part!), shortDescription: event.description ?? "Description...", startDate: event.starttime!, endDate: event.endtime!, publicity: event.visibility!, image: UIImage(named: "cinema"), address: "online", creatorID: organizer["id"].intValue))
+                    eventHandler.addEvent(event: Event(eventName: event.name!, eventLocation: "online", participants: partlimit, subscribedParticipants: String(event.part!), shortDescription: event.description ?? "Description...", startDate: event.starttime!, endDate: event.endtime!, publicity: event.visibility!, image: UIImage(named: "cinema"), address: "online", creatorID: event.id!, eventId: 0))
                 }
             }
             
             index += 1
         }
+        for event in EventHandler.shared().getEvents() {
+            getOrgainzerId(eventId: event.getCreatorID())
+        }
     }
     
-    func saveEvent(_ event: CodableEvent, completion: @escaping(Result<CodableEvent, APIError>) -> Void) {
-  
-        guard let resourceURL = URL(string: eventuallyURL) else { return }
-        
-        let finalBody = createJson(codableEvent: event)
-        
-        var urlRequest = URLRequest(url: resourceURL)
-        
-        urlRequest.httpMethod = "POST"
-        urlRequest.httpBody = finalBody
-        urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        URLSession.shared.dataTask(with: urlRequest) { (data, respons, error) in
-            
-            guard let data = data else { return }
-            
-            let finalData =  try! JSONDecoder().decode(CodableEvent.self, from: data)
-            
-            print(finalData)
-        }.resume()
-        
+    func getOrgainzerId(eventId: Int) {
+        let urlString = "\(eventuallyURL)events/\(eventId)/organizers"
+        AF.request(urlString).responseJSON { response in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                let decoder = JSONDecoder()
+                do {
+                    let decodedDatas = try decoder.decode(OrganizersStructure.self, from: json.rawData())
+                    let index = EventHandler.shared().getEventIndexById(id: eventId)
+                    EventHandler.shared().setCreatorIdForAnEvent(id: decodedDatas.userid, index: index)
+                } catch {
+                    print(error)
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+
     }
     
     func register(_ codableEvent: CodableEvent, completion: @escaping(Result<CodableEvent, APIError>) -> Void) {
@@ -124,7 +131,6 @@ class EventManager: MyObserverForEventList {
                 guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200,
                     let jsonData = data else {
                         completion(.failure(.responseProblem))
-                        print("register")
                         return
                 }
                 
@@ -168,7 +174,7 @@ class EventManager: MyObserverForEventList {
         dict["event"] = eventDict  as AnyObject
         dict["location"] = locationDict  as AnyObject
         dict["photo"] = photoDict as AnyObject
-        dict["userid"] = 1 as AnyObject //Profile.shared().getID() as AnyObject
+        dict["userid"] = Profile.shared().getID() as AnyObject
         
         do {
             let jsonData = try JSONSerialization.data(withJSONObject: dict, options: .prettyPrinted)

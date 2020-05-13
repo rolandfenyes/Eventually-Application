@@ -198,6 +198,7 @@ class NewEventViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
             if (isEditModeOn) {
                 let modifiedEvent = createEvent()
                 editEvent(modifiedEvent: modifiedEvent)
+                EventHandler.shared().sendToBackEnd(event: modifiedEvent)
                 disappearScreen()
             }
             else {
@@ -216,9 +217,9 @@ class NewEventViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     func createEvent() -> Event {
         let event: Event
         if isOnlineSwitch.isOn {
-            event = Event(eventName: eventName.text!, eventLocation: "online", participants: numOfPeople.text!, subscribedParticipants: "0", shortDescription: shortDesc.text!, startDate: startDate.text!, endDate: endDate.text!, publicity: publicityInput.text!, image: imageView.image, address: "online", creatorID: Profile.shared().getID())
+            event = Event(eventName: eventName.text!, eventLocation: "online", participants: numOfPeople.text!, subscribedParticipants: "0", shortDescription: shortDesc.text!, startDate: startDate.text!, endDate: endDate.text!, publicity: publicityInput.text!, image: imageView.image, address: "online", creatorID: Profile.shared().getID(), eventId: 0)
         } else {
-            event = Event(eventName: eventName.text!, eventLocation: LocationSingleton.shared().getCoordinates()!, participants: numOfPeople.text!, subscribedParticipants: "0", shortDescription: shortDesc.text!, startDate: startDate.text!, endDate: endDate.text!, publicity: publicityInput.text!, image: imageView.image, address: LocationSingleton.shared().getText(), creatorID: Profile.shared().getID())
+            event = Event(eventName: eventName.text!, eventLocation: LocationSingleton.shared().getCoordinates()!, participants: numOfPeople.text!, subscribedParticipants: "0", shortDescription: shortDesc.text!, startDate: startDate.text!, endDate: endDate.text!, publicity: publicityInput.text!, image: imageView.image, address: LocationSingleton.shared().getText(), creatorID: Profile.shared().getID(), eventId: 0)
             event.setJoined(status: true)
         }
         return event

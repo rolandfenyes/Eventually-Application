@@ -26,9 +26,10 @@ class Event {
     private var joined: Bool! = false
     private var creatorID: Int
     private var comments: [Comment]
+    private var eventId: Int
     
     //MARK: - Init
-    init(eventName: String, eventLocation: CLLocationCoordinate2D, participants: String, subscribedParticipants: String, shortDescription: String, startDate: String, endDate: String, publicity: String, image: UIImage?, address: String, creatorID: Int) {
+    init(eventName: String, eventLocation: CLLocationCoordinate2D, participants: String, subscribedParticipants: String, shortDescription: String, startDate: String, endDate: String, publicity: String, image: UIImage?, address: String, creatorID: Int, eventId: Int) {
         self.eventName = eventName
         self.eventLocation = eventLocation
         self.participants = participants
@@ -40,10 +41,11 @@ class Event {
         self.image = image
         self.address = address
         self.creatorID = creatorID
+        self.eventId = eventId
         comments = []
     }
     
-    init(eventName: String, eventLocation: String, participants: String, subscribedParticipants: String, shortDescription: String, startDate: String, endDate: String, publicity: String, image: UIImage?, address: String, creatorID: Int) {
+    init(eventName: String, eventLocation: String, participants: String, subscribedParticipants: String, shortDescription: String, startDate: String, endDate: String, publicity: String, image: UIImage?, address: String, creatorID: Int, eventId: Int) {
         self.eventName = eventName
         self.eventLocation = CLLocationCoordinate2D(latitude: 0, longitude: 0)
         self.participants = participants
@@ -55,6 +57,7 @@ class Event {
         self.image = image
         self.address = address
         self.creatorID = creatorID
+        self.eventId = eventId
         comments = []
     }
     
@@ -65,17 +68,6 @@ class Event {
         } else {
             self.subscribedParticipants = String(Int(subscribedParticipants)! - 1)
         }
-        //TODO
-        /*
-        let eventManager = EventManager()
-        let codableEvent = CodableEvent(name: self.eventName, description: self.shortDescription, starttime: self.startDate, endtime: self.endDate, partlimit: self.participants, part: self.subscribedParticipants, visibility: self.publicity)
-        eventManager.saveEvent(codableEvent, completion: { result in
-            switch result {
-            case .success(let message) : print("Success!")
-            case .failure(let error) : print("An error occured \(error)")
-            }
-        })
-         */
     }
     
     func addComment(newComment: Comment) {
@@ -83,6 +75,9 @@ class Event {
     }
     
     //MARK: - Getters
+    func getEventId() -> Int {
+        return self.eventId
+    }
     func getComments() -> [Comment] {
         return comments
     }
@@ -135,7 +130,10 @@ class Event {
     }
     
     //MARK: - Setters
-    
+    func setCreatorId(id: Int) {
+        self.creatorID = id
+        self.shortDescription = "userid: \(Profile.shared().getID()) - eventUserId: \(self.creatorID)"
+    }
     func setEventName(name: String) {
         self.eventName = name
     }
