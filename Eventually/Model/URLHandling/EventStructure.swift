@@ -8,15 +8,17 @@
 
 import Foundation
 import UIKit
+import SwiftyJSON
 
 struct EventStructure: Decodable {
     var id: Int?
     var name: String?
+    var description: String?
     var starttime: String?
     var endtime: String?
     var partlimit: Int?
-    var description: String?
-    //var photo: UIImage
+    var part: Int?
+    var status: String?
     var visibility: String?
-    //var location: ???
+    var organizer: OrganizerStructure?
 }

@@ -25,7 +25,6 @@ class SubscriptionViewController: UIViewController {
     }
     
     private func setMyEvents() {
-        myEvents = []
         myEvents = EventHandler.shared().getSubscribedEvents()
     }
     

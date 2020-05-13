@@ -43,6 +43,21 @@ class Event {
         comments = []
     }
     
+    init(eventName: String, eventLocation: String, participants: String, subscribedParticipants: String, shortDescription: String, startDate: String, endDate: String, publicity: String, image: UIImage?, address: String, creatorID: Int) {
+        self.eventName = eventName
+        self.eventLocation = CLLocationCoordinate2D(latitude: 0, longitude: 0)
+        self.participants = participants
+        self.subscribedParticipants = subscribedParticipants
+        self.shortDescription = shortDescription
+        self.startDate = startDate
+        self.endDate = endDate
+        self.publicity = publicity
+        self.image = image
+        self.address = address
+        self.creatorID = creatorID
+        comments = []
+    }
+    
     func setJoined(status: Bool) {
         self.joined = status
         if (self.joined) {
