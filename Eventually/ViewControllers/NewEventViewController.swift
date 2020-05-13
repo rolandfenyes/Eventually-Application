@@ -208,6 +208,7 @@ class NewEventViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
             
             eventCreateButton.setTitle(buttonMessage, for: .normal)
             eventCreateButton.isEnabled = false
+            clearScreen()
         }
      }
     
@@ -232,6 +233,24 @@ class NewEventViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     func disappearScreen() {
         dismiss(animated: true, completion: nil)
+    }
+    
+    func clearScreen() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3)) {
+            self.eventName.text = ""
+            self.numOfPeople.text = ""
+            self.startDate.text = ""
+            self.endDate.text = ""
+            self.isEndDateEnabled = false
+            self.startDatePicking()
+            self.shortDesc.text = ""
+            self.isOnlineSwitch.setOn(false, animated: false)
+            self.location.setTitle("Helyszín hozzáadása", for: .normal)
+            self.eventCreateButton.setTitle("Esemény létrehozása", for: .normal)
+            self.eventCreateButton.isEnabled = true
+            self.location.isEnabled = true
+            self.imageView.image = UIImage(systemName: "photo")
+        }
     }
     
     //MARK: - Image Picker
