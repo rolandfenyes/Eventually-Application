@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import MapKit
 
 struct CodableEvent : Codable {
     
@@ -16,9 +17,11 @@ struct CodableEvent : Codable {
     let endtime: String
     let partlimit: String
     let part: String
+    let location: [Double]
+    let photo: String?
     let visibility: String
     
-    init(name: String, description: String, starttime: String, endtime: String, partlimit: String, part: String, visibility: String) {
+    init(name: String, description: String, starttime: String, endtime: String, partlimit: String, part: String, visibility: String, location: CLLocationCoordinate2D) {
         self.name = name
         self.description = description
         self.starttime = starttime
@@ -26,7 +29,8 @@ struct CodableEvent : Codable {
         self.partlimit = partlimit
         self.part = part
         self.visibility = visibility
-        
+        self.location = [location.longitude, location.latitude]
+        self.photo = nil
     }
     
 }

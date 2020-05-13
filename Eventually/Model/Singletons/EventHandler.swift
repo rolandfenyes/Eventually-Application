@@ -26,6 +26,16 @@ class EventHandler: MyObserverForEventList {
     
     func addEvent(event: Event) {
         events.append(event)
+        let postRequest = EventManager()
+        let codableEvent = CodableEvent(name: event.getName(), description: event.getDescription(), starttime: event.getStartDate(), endtime: event.getEndDate(), partlimit: event.getParticipants(), part: event.getsubscribedParticipants(), visibility: event.getPub(), location: event.getEventLocation())
+        postRequest.register(codableEvent, completion: { result in
+            switch result {
+            case .success(let codableEvent):
+                print(codableEvent.name)
+            case .failure(let error):
+                print(error)
+            }
+        })
         notify()
     }
     

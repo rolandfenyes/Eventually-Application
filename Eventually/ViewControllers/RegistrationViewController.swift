@@ -61,8 +61,20 @@ class RegistrationViewController: UIViewController {
     }
     
     @IBAction func registerButtonClicked(_ sender: UIButton) {
-        let homeScreen = self.storyboard?.instantiateViewController(withIdentifier: "startPage") as! UITabBarController
-        self.navigationController?.pushViewController(homeScreen, animated: true)
+        let postRequest = UserManager()
+        let user = UserStructure(id: 0, email: emailAddress.text, username: nickname.text, birthdate: birthday.text, pw: password.text)
+        postRequest.register(user, completion: { result in
+            switch result {
+            case .success(let message):
+                print("siker")
+                let homeScreen = self.storyboard?.instantiateViewController(withIdentifier: "startPage") as! UITabBarController
+                self.navigationController?.pushViewController(homeScreen, animated: true)
+            case .failure(let error):
+                print(error)
+            }
+        })
+        
+        
     }
 
 }

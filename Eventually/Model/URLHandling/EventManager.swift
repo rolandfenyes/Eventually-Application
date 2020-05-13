@@ -112,4 +112,33 @@ class EventManager: MyObserverForEventList {
         
     }
     
+    func register(_ userToRegister: CodableEvent, completion: @escaping(Result<CodableEvent, APIError>) -> Void) {
+        do {
+            let resourceURL = URL(string: "\(eventuallyURL)events")
+            var urlRequest = URLRequest(url: resourceURL!)
+            urlRequest.httpMethod = "POST"
+            urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            urlRequest.httpBody = try! JSONEncoder().encode(userToRegister)
+            
+            let dataTask = URLSession.shared.dataTask(with: urlRequest) { data, response, _ in
+                guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200,
+                    let jsonData = data else {
+                        print(urlRequest.httpBody)
+                        completion(.failure(.responseProblem))
+                        return
+                }
+                
+                do {
+                    let messageData = try JSONDecoder().decode(CodableEvent.self, from: jsonData)
+                    completion(.success(messageData))
+                } catch {
+                    completion(.failure(.decodingProblem))
+                }
+            }
+            dataTask.resume()
+        } catch {
+            completion(.failure(.encodingProblem))
+        }
+    }
+    
 }

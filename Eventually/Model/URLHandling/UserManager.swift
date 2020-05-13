@@ -12,6 +12,12 @@ import Alamofire
 
 class UserManager {
     
+    enum APIError: Error {
+        case responseProblem
+        case decodingProblem
+        case encodingProblem
+    }
+    
     let eventuallyURL = "https://api.eventually.site/"
     
     func downloadUsers() {
@@ -60,6 +66,34 @@ class UserManager {
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
         let date = dateFormatter.date(from:string)!
         return date
+    }
+    
+    func register(_ userToRegister: UserStructure, completion: @escaping(Result<UserStructure, APIError>) -> Void) {
+        do {
+            let resourceURL = URL(string: "\(eventuallyURL)users")
+            var urlRequest = URLRequest(url: resourceURL!)
+            urlRequest.httpMethod = "POST"
+            urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            urlRequest.httpBody = try! JSONEncoder().encode(userToRegister)
+            
+            let dataTask = URLSession.shared.dataTask(with: urlRequest) { data, response, _ in
+                guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200,
+                    let jsonData = data else {
+                        completion(.failure(.responseProblem))
+                        return
+                }
+                
+                do {
+                    let messageData = try JSONDecoder().decode(UserStructure.self, from: jsonData)
+                    completion(.success(messageData))
+                } catch {
+                    completion(.failure(.decodingProblem))
+                }
+            }
+            dataTask.resume()
+        } catch {
+            completion(.failure(.encodingProblem))
+        } 
     }
     
 }

@@ -9,7 +9,7 @@
 import Foundation
 import SwiftyJSON
 
-struct UserStructure: Decodable {
+struct UserStructure: Codable {
     var id: Int?
     var email: String?
     var username: String?
