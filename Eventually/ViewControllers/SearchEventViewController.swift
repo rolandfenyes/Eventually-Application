@@ -20,6 +20,7 @@ class SearchEventViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "EventField", bundle: nil), forCellReuseIdentifier: "EventCell")
+        EventHandler.shared().attach(observer: self)
     }
     
 }
@@ -72,5 +73,12 @@ extension SearchEventViewController: UITableViewDataSource, UITableViewDelegate 
         let eventScreen = self.storyboard?.instantiateViewController(withIdentifier: "eventScreen") as! EventScreenViewController
         eventScreen.setEvent(event: event)
         self.present(eventScreen, animated: true, completion: nil)
+    }
+}
+
+//MARK: - Observer
+extension SearchEventViewController: PObserver {
+    func update() {
+        tableView.reloadData()
     }
 }
