@@ -82,10 +82,10 @@ class EventManager: MyObserverForEventList {
                                                         image: UIImage(named: "cinema"),
                                                         address: "",
                                                         creatorID: event.id!,
-                                                        eventId: 0))
-                    print("organizer: \(organizerId)")
+                                                        eventId: event.id!))
+                    print(event.id!)
                 } else {
-                    eventHandler.addEvent(event: Event(eventName: event.name!, eventLocation: "online", participants: partlimit, subscribedParticipants: String(event.part!), shortDescription: event.description ?? "Description...", startDate: event.starttime!, endDate: event.endtime!, publicity: event.visibility!, image: UIImage(named: "cinema"), address: "online", creatorID: event.id!, eventId: 0))
+                    eventHandler.addEvent(event: Event(eventName: event.name!, eventLocation: "online", participants: partlimit, subscribedParticipants: String(event.part!), shortDescription: event.description ?? "Description...", startDate: event.starttime!, endDate: event.endtime!, publicity: event.visibility!, image: UIImage(named: "cinema"), address: "online", creatorID: event.id!, eventId: event.id!))
                 }
             }
             
@@ -117,15 +117,18 @@ class EventManager: MyObserverForEventList {
 
     }
     
-    func register(_ codableEvent: CodableEvent, completion: @escaping(Result<CodableEvent, APIError>) -> Void) {
+    func register(_ codableEvent: CodableEvent, httpMethod: String, addToURL: String, completion: @escaping(Result<CodableEvent, APIError>) -> Void) {
         do {
             let jsonData = createJson(codableEvent: codableEvent)
             
-            let resourceURL = URL(string: "\(eventuallyURL)events")
+            var resourceURL = URL(string: "\(eventuallyURL)events\(addToURL)")
+            
             var urlRequest = URLRequest(url: resourceURL!)
-            urlRequest.httpMethod = "POST"
+            urlRequest.httpMethod = httpMethod
+            
             urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
             urlRequest.httpBody = jsonData
+            
             
             let dataTask = URLSession.shared.dataTask(with: urlRequest) { data, response, _ in
                 guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200,

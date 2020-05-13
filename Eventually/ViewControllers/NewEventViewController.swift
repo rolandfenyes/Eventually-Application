@@ -198,13 +198,13 @@ class NewEventViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
             if (isEditModeOn) {
                 let modifiedEvent = createEvent()
                 editEvent(modifiedEvent: modifiedEvent)
-                EventHandler.shared().sendToBackEnd(event: modifiedEvent)
+                EventHandler.shared().sendToBackEnd(event: modifiedEvent, httpMethod: "PUT")
                 disappearScreen()
             }
             else {
                 let newEvent = createEvent()
                 EventHandler.shared().addEvent(event: newEvent)
-                EventHandler.shared().sendToBackEnd(event: newEvent)
+                EventHandler.shared().sendToBackEnd(event: newEvent, httpMethod: "POST")
                 buttonMessage = "Létrehozva"
             }
             
@@ -216,10 +216,16 @@ class NewEventViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     func createEvent() -> Event {
         let event: Event
+        var eventId = 0
+        
+        if isEditModeOn {
+            eventId = self.editedEvent!.getEventId()
+        }
+        
         if isOnlineSwitch.isOn {
-            event = Event(eventName: eventName.text!, eventLocation: "online", participants: numOfPeople.text!, subscribedParticipants: "0", shortDescription: shortDesc.text!, startDate: startDate.text!, endDate: endDate.text!, publicity: publicityInput.text!, image: imageView.image, address: "online", creatorID: Profile.shared().getID(), eventId: 0)
+            event = Event(eventName: eventName.text!, eventLocation: "online", participants: numOfPeople.text!, subscribedParticipants: "0", shortDescription: shortDesc.text!, startDate: startDate.text!, endDate: endDate.text!, publicity: publicityInput.text!, image: imageView.image, address: "online", creatorID: Profile.shared().getID(), eventId: eventId)
         } else {
-            event = Event(eventName: eventName.text!, eventLocation: LocationSingleton.shared().getCoordinates()!, participants: numOfPeople.text!, subscribedParticipants: "0", shortDescription: shortDesc.text!, startDate: startDate.text!, endDate: endDate.text!, publicity: publicityInput.text!, image: imageView.image, address: LocationSingleton.shared().getText(), creatorID: Profile.shared().getID(), eventId: 0)
+            event = Event(eventName: eventName.text!, eventLocation: LocationSingleton.shared().getCoordinates()!, participants: numOfPeople.text!, subscribedParticipants: "0", shortDescription: shortDesc.text!, startDate: startDate.text!, endDate: endDate.text!, publicity: publicityInput.text!, image: imageView.image, address: LocationSingleton.shared().getText(), creatorID: Profile.shared().getID(), eventId: eventId)
             event.setJoined(status: true)
         }
         return event

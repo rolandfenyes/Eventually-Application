@@ -29,10 +29,17 @@ class EventHandler: MyObserverForEventList {
         notify()
     }
     
-    func sendToBackEnd(event: Event) {
+    func sendToBackEnd(event: Event, httpMethod: String) {
         let postRequest = EventManager()
         let codableEvent = CodableEvent(name: event.getName(), description: event.getDescription(), starttime: event.getStartDate(), endtime: event.getEndDate(), partlimit: event.getParticipants(), part: event.getsubscribedParticipants(), visibility: event.getPub(), location: event.getEventLocation())
-        postRequest.register(codableEvent, completion: { result in
+        
+        var addToURL = ""
+        if httpMethod == "PUT" {
+            addToURL = "/\(event.getEventId())"
+            print(addToURL)
+        }
+        
+        postRequest.register(codableEvent, httpMethod: httpMethod, addToURL: addToURL, completion: { result in
             switch result {
             case .success(let codableEvent):
                 print(codableEvent.name)
