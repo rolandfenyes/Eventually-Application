@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -32,8 +32,6 @@
 		53B00A1823FF164500F915D5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53B00A1623FF164500F915D5 /* LaunchScreen.storyboard */; };
 		53B00A2323FF164500F915D5 /* EventuallyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B00A2223FF164500F915D5 /* EventuallyTests.swift */; };
 		53B00A2E23FF164500F915D5 /* EventuallyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B00A2D23FF164500F915D5 /* EventuallyUITests.swift */; };
-		53BD6D0A246BEDD90088730C /* LocationStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53BD6D09246BEDD90088730C /* LocationStructure.swift */; };
-		53BD6D0C246BEF050088730C /* OrganizerStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53BD6D0B246BEF050088730C /* OrganizerStructure.swift */; };
 		53BE64212463030A007C1B47 /* MyEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53BE64202463030A007C1B47 /* MyEventsViewController.swift */; };
 		53BE64232463091C007C1B47 /* SubscriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53BE64222463091C007C1B47 /* SubscriptionViewController.swift */; };
 		53CD32D8243F181800BDB5A0 /* SearchEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53CD32D7243F181800BDB5A0 /* SearchEventViewController.swift */; };
@@ -102,8 +100,6 @@
 		53B00A2923FF164500F915D5 /* EventuallyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EventuallyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		53B00A2D23FF164500F915D5 /* EventuallyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventuallyUITests.swift; sourceTree = "<group>"; };
 		53B00A2F23FF164500F915D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		53BD6D09246BEDD90088730C /* LocationStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationStructure.swift; sourceTree = "<group>"; };
-		53BD6D0B246BEF050088730C /* OrganizerStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizerStructure.swift; sourceTree = "<group>"; };
 		53BE64202463030A007C1B47 /* MyEventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyEventsViewController.swift; sourceTree = "<group>"; };
 		53BE64222463091C007C1B47 /* SubscriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionViewController.swift; sourceTree = "<group>"; };
 		53CD32D7243F181800BDB5A0 /* SearchEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEventViewController.swift; sourceTree = "<group>"; };
@@ -259,8 +255,6 @@
 			children = (
 				53EED61724503313003C9410 /* EventManager.swift */,
 				53EED619245034A4003C9410 /* EventStructure.swift */,
-				53BD6D09246BEDD90088730C /* LocationStructure.swift */,
-				53BD6D0B246BEF050088730C /* OrganizerStructure.swift */,
 			);
 			path = URLHandling;
 			sourceTree = "<group>";
@@ -322,7 +316,6 @@
 				02EE4027BF55190A61CBB19D /* Pods-EventuallyTests.debug.xcconfig */,
 				917DFC6684C1F2C6EC43B8A5 /* Pods-EventuallyTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -583,12 +576,10 @@
 				539E0DD524388E1A00FB928E /* LocationSearchViewController.swift in Sources */,
 				53CD32DA2445B9AC00BDB5A0 /* SettingsViewController.swift in Sources */,
 				53CD32D8243F181800BDB5A0 /* SearchEventViewController.swift in Sources */,
-				53BD6D0A246BEDD90088730C /* LocationStructure.swift in Sources */,
 				539E0DDD24388EB600FB928E /* Event.swift in Sources */,
 				53BE64212463030A007C1B47 /* MyEventsViewController.swift in Sources */,
 				53EED620245983D9003C9410 /* CodableEvent.swift in Sources */,
 				534AA7502462C4A70084D6B5 /* MessageCell.swift in Sources */,
-				53BD6D0C246BEF050088730C /* OrganizerStructure.swift in Sources */,
 				53EED61A245034A4003C9410 /* EventStructure.swift in Sources */,
 				539E0DD424388E1A00FB928E /* HomeScreenViewController.swift in Sources */,
 				539E0DE324388EF100FB928E /* EventHandler.swift in Sources */,

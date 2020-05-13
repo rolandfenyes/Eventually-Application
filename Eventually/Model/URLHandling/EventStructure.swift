@@ -20,5 +20,4 @@ struct EventStructure: Decodable {
     var part: Int?
     var status: String?
     var visibility: String?
-    var organizer: OrganizerStructure?
 }

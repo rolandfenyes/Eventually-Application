@@ -62,6 +62,7 @@ class EventManager: MyObserverForEventList {
             do {
                 print(jsonList![index])
                 let location = json[index]["location"]
+                let organizer = json[index]["organizer"]
                 if location.count != 0 {
                     let lat = location["lat"].doubleValue
                     let lon = location["lon"].doubleValue
@@ -77,12 +78,10 @@ class EventManager: MyObserverForEventList {
                                                         //TODO
                                                         image: UIImage(named: "cinema"),
                                                         address: "",
-                                                        creatorID: event.organizer?.id ?? 0))
+                                                        creatorID: organizer["id"].intValue))
                 } else {
-                    eventHandler.addEvent(event: Event(eventName: event.name!, eventLocation: "online", participants: partlimit, subscribedParticipants: "0", shortDescription: event.description ?? "Description...", startDate: event.starttime!, endDate: event.endtime!, publicity: event.visibility!, image: UIImage(named: "cinema"), address: "online", creatorID: 1))
+                    eventHandler.addEvent(event: Event(eventName: event.name!, eventLocation: "online", participants: partlimit, subscribedParticipants: String(event.part!), shortDescription: event.description ?? "Description...", startDate: event.starttime!, endDate: event.endtime!, publicity: event.visibility!, image: UIImage(named: "cinema"), address: "online", creatorID: organizer["id"].intValue))
                 }
-            } catch {
-                print(error)
             }
             
             index += 1
