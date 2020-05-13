@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Comment {
-    var sender: String
+struct Comment: Codable {
+    var userid: String
     var body: String
 }

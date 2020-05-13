@@ -88,6 +88,10 @@ class EventManager: MyObserverForEventList {
                 if let imageUrl = URL(string: photo["path"].stringValue) {
                     eventHandler.getEvents().last?.setImageUrl(url: photo["path"].stringValue)
                 }
+                let comments = json[index]["comments"].arrayValue
+                for comment in comments {
+                    eventHandler.addComment(newComment: Comment(userid: String(comment["userid"].intValue), body: comment["text"].stringValue), event: eventHandler.getEvents().last!)
+                }
             }
             
             index += 1
