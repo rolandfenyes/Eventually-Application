@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KiF-xc-Ezf">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
@@ -1332,10 +1332,161 @@
             </objects>
             <point key="canvasLocation" x="749.27536231884062" y="359.59821428571428"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="vaG-nH-IvC">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="36n-6Y-0hQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <navigationController id="KiF-xc-Ezf" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Pbb-Gy-up4">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="hv7-Qk-ft3" kind="relationship" relationship="rootViewController" id="kaI-ep-WUa"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="-2975" y="0.0"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="XmF-Iq-px7">
+            <objects>
+                <viewController id="hv7-Qk-ft3" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DMv-8z-Wws">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="calendar" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="iQz-7t-SwM">
+                                <rect key="frame" x="129" y="316" width="156" height="166"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="156" id="Mvl-e6-PMB"/>
+                                    <constraint firstAttribute="height" constant="168.5" id="Nkz-MY-San"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cia-kp-Fjx">
+                                <rect key="frame" x="0.0" y="804" width="414" height="48"/>
+                                <color key="backgroundColor" red="0.93229508400000005" green="0.1650608039" blue="0.1332686035" alpha="0.90355413732394363" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="30"/>
+                                <state key="normal" title="Belépés">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <segue destination="2Bs-nd-i0U" kind="show" id="kgK-kX-NMa"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RqN-9F-MJj">
+                                <rect key="frame" x="0.0" y="746" width="414" height="48"/>
+                                <color key="backgroundColor" red="0.93229508400000005" green="0.1650608039" blue="0.1332686035" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="30"/>
+                                <state key="normal" title="Regisztráció">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <segue destination="r3S-Wk-4ET" kind="show" id="6u6-ZM-DLN"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Eventually" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qZx-KF-Hle">
+                                <rect key="frame" x="103" y="258" width="208" height="57"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="48"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.89090096949999997" green="0.3556731045" blue="0.3216511011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="iQz-7t-SwM" firstAttribute="top" secondItem="qZx-KF-Hle" secondAttribute="bottom" id="4x6-BW-dYu"/>
+                            <constraint firstItem="RqN-9F-MJj" firstAttribute="leading" secondItem="wk1-xQ-6me" secondAttribute="leading" id="9ba-ML-Zjq"/>
+                            <constraint firstItem="wk1-xQ-6me" firstAttribute="trailing" secondItem="iQz-7t-SwM" secondAttribute="trailing" constant="129" id="LV2-DZ-ZfS"/>
+                            <constraint firstItem="wk1-xQ-6me" firstAttribute="bottom" secondItem="Cia-kp-Fjx" secondAttribute="bottom" constant="10" id="MQE-F6-KaB"/>
+                            <constraint firstItem="wk1-xQ-6me" firstAttribute="trailing" secondItem="qZx-KF-Hle" secondAttribute="trailing" constant="103" id="Pok-HY-KAr"/>
+                            <constraint firstItem="qZx-KF-Hle" firstAttribute="leading" secondItem="wk1-xQ-6me" secondAttribute="leading" constant="103" id="Una-Aa-MYb"/>
+                            <constraint firstItem="wk1-xQ-6me" firstAttribute="trailing" secondItem="RqN-9F-MJj" secondAttribute="trailing" id="Zkz-KZ-7ia"/>
+                            <constraint firstItem="Cia-kp-Fjx" firstAttribute="top" secondItem="RqN-9F-MJj" secondAttribute="bottom" constant="10" id="bW6-K7-m7G"/>
+                            <constraint firstItem="qZx-KF-Hle" firstAttribute="top" secondItem="wk1-xQ-6me" secondAttribute="top" constant="170" id="f1n-WM-KM4"/>
+                            <constraint firstItem="Cia-kp-Fjx" firstAttribute="leading" secondItem="wk1-xQ-6me" secondAttribute="leading" id="mNH-Yw-A8h"/>
+                            <constraint firstItem="iQz-7t-SwM" firstAttribute="leading" secondItem="wk1-xQ-6me" secondAttribute="leading" constant="129" id="q6N-nk-IJq"/>
+                            <constraint firstItem="wk1-xQ-6me" firstAttribute="trailing" secondItem="Cia-kp-Fjx" secondAttribute="trailing" id="uJc-eB-Ccs"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="wk1-xQ-6me"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Dkg-cr-JkW"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Arp-KG-KMW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2191.304347826087" y="0.0"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="rWY-Xe-KOw">
+            <objects>
+                <viewController id="r3S-Wk-4ET" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dTv-0f-oBm">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="122-oy-xag"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="YDp-O3-88c"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uWM-6S-ruu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1286" y="-283"/>
+        </scene>
+        <!--Login Page View Controller-->
+        <scene sceneID="Egi-1z-dfg">
+            <objects>
+                <viewController id="2Bs-nd-i0U" customClass="LoginPageViewController" customModule="Eventually" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JvD-gN-rAf">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="Email" borderStyle="roundedRect" textAlignment="center" minimumFontSize="19" translatesAutoresizingMaskIntoConstraints="NO" id="Vs7-pR-mou">
+                                <rect key="frame" x="20" y="148" width="374" height="34"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" textContentType="email"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Jelszó" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zoR-Nd-bgY">
+                                <rect key="frame" x="20" y="192" width="374" height="34"/>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" textContentType="password"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bzx-Vd-dFe">
+                                <rect key="frame" x="150" y="236" width="114" height="42"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="25"/>
+                                <state key="normal" title="Belépés">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="login:" destination="2Bs-nd-i0U" eventType="touchUpInside" id="alM-AL-uFy"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.89090096949999997" green="0.3556731045" blue="0.3216511011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Bzx-Vd-dFe" firstAttribute="leading" secondItem="2fY-2H-SSa" secondAttribute="leading" constant="150" id="5c7-B7-NAc"/>
+                            <constraint firstItem="2fY-2H-SSa" firstAttribute="trailing" secondItem="zoR-Nd-bgY" secondAttribute="trailing" constant="20" id="5wF-ld-WLq"/>
+                            <constraint firstItem="zoR-Nd-bgY" firstAttribute="top" secondItem="Vs7-pR-mou" secondAttribute="bottom" constant="10" id="I9i-N2-sQo"/>
+                            <constraint firstItem="Vs7-pR-mou" firstAttribute="top" secondItem="2fY-2H-SSa" secondAttribute="top" constant="60" id="Nb5-l7-0We"/>
+                            <constraint firstItem="Vs7-pR-mou" firstAttribute="leading" secondItem="2fY-2H-SSa" secondAttribute="leading" constant="20" id="O74-u4-jvH"/>
+                            <constraint firstItem="2fY-2H-SSa" firstAttribute="trailing" secondItem="Vs7-pR-mou" secondAttribute="trailing" constant="20" id="SZ9-n9-xlC"/>
+                            <constraint firstItem="2fY-2H-SSa" firstAttribute="trailing" secondItem="Bzx-Vd-dFe" secondAttribute="trailing" constant="150" id="b6y-aD-qIG"/>
+                            <constraint firstItem="Bzx-Vd-dFe" firstAttribute="top" secondItem="zoR-Nd-bgY" secondAttribute="bottom" constant="10" id="qZR-S7-hXC"/>
+                            <constraint firstItem="zoR-Nd-bgY" firstAttribute="leading" secondItem="2fY-2H-SSa" secondAttribute="leading" constant="20" id="xhG-eG-DHu"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="2fY-2H-SSa"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="06S-w7-dJg"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vn7-Dc-0yK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1286" y="421"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
-                <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="startPage" id="49e-Tb-3d3" customClass="TabBarController" customModule="Eventually" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -1357,6 +1508,7 @@
     </scenes>
     <resources>
         <image name="beers" width="600" height="418"/>
+        <image name="calendar" catalog="system" width="64" height="52"/>
         <image name="checkmark" catalog="system" width="64" height="56"/>
         <image name="cinema" width="600" height="603"/>
         <image name="gear" catalog="system" width="64" height="58"/>
