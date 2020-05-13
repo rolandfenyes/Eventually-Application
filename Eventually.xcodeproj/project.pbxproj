@@ -34,6 +34,7 @@
 		53B00A2E23FF164500F915D5 /* EventuallyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B00A2D23FF164500F915D5 /* EventuallyUITests.swift */; };
 		53BD6D0E246C1C9C0088730C /* LoginPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53BD6D0D246C1C9C0088730C /* LoginPageViewController.swift */; };
 		53BD6D10246C1D6F0088730C /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53BD6D0F246C1D6F0088730C /* TabBarController.swift */; };
+		53BD6D12246C27EF0088730C /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53BD6D11246C27EF0088730C /* RegistrationViewController.swift */; };
 		53BE64212463030A007C1B47 /* MyEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53BE64202463030A007C1B47 /* MyEventsViewController.swift */; };
 		53BE64232463091C007C1B47 /* SubscriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53BE64222463091C007C1B47 /* SubscriptionViewController.swift */; };
 		53CD32D8243F181800BDB5A0 /* SearchEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53CD32D7243F181800BDB5A0 /* SearchEventViewController.swift */; };
@@ -104,6 +105,7 @@
 		53B00A2F23FF164500F915D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		53BD6D0D246C1C9C0088730C /* LoginPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPageViewController.swift; sourceTree = "<group>"; };
 		53BD6D0F246C1D6F0088730C /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		53BD6D11246C27EF0088730C /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		53BE64202463030A007C1B47 /* MyEventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyEventsViewController.swift; sourceTree = "<group>"; };
 		53BE64222463091C007C1B47 /* SubscriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionViewController.swift; sourceTree = "<group>"; };
 		53CD32D7243F181800BDB5A0 /* SearchEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEventViewController.swift; sourceTree = "<group>"; };
@@ -279,6 +281,7 @@
 				53BE64222463091C007C1B47 /* SubscriptionViewController.swift */,
 				53BD6D0D246C1C9C0088730C /* LoginPageViewController.swift */,
 				53BD6D0F246C1D6F0088730C /* TabBarController.swift */,
+				53BD6D11246C27EF0088730C /* RegistrationViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -569,6 +572,7 @@
 				53CD32DC2445BA1C00BDB5A0 /* Profile.swift in Sources */,
 				53BD6D10246C1D6F0088730C /* TabBarController.swift in Sources */,
 				53B00A0A23FF163F00F915D5 /* AppDelegate.swift in Sources */,
+				53BD6D12246C27EF0088730C /* RegistrationViewController.swift in Sources */,
 				53EED61824503313003C9410 /* EventManager.swift in Sources */,
 				53CD32EB2447253F00BDB5A0 /* MyObserverForProfileEditing.swift in Sources */,
 				539E0DE124388ECA00FB928E /* NewEventViewController.swift in Sources */,
