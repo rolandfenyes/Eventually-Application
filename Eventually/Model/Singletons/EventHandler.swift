@@ -26,6 +26,10 @@ class EventHandler: MyObserverForEventList {
     
     func addEvent(event: Event) {
         events.append(event)
+        notify()
+    }
+    
+    func sendToBackEnd(event: Event) {
         let postRequest = EventManager()
         let codableEvent = CodableEvent(name: event.getName(), description: event.getDescription(), starttime: event.getStartDate(), endtime: event.getEndDate(), partlimit: event.getParticipants(), part: event.getsubscribedParticipants(), visibility: event.getPub(), location: event.getEventLocation())
         postRequest.register(codableEvent, completion: { result in
@@ -36,7 +40,6 @@ class EventHandler: MyObserverForEventList {
                 print(error)
             }
         })
-        notify()
     }
     
     func setJoinForAnEvent(status: Bool, index: Int) {

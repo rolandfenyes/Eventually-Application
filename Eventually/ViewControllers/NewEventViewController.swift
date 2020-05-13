@@ -203,6 +203,7 @@ class NewEventViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
             else {
                 let newEvent = createEvent()
                 EventHandler.shared().addEvent(event: newEvent)
+                EventHandler.shared().sendToBackEnd(event: newEvent)
                 buttonMessage = "Létrehozva"
             }
             

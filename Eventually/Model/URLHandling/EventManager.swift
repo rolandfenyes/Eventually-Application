@@ -124,6 +124,7 @@ class EventManager: MyObserverForEventList {
                 guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200,
                     let jsonData = data else {
                         completion(.failure(.responseProblem))
+                        print("register")
                         return
                 }
                 
@@ -167,7 +168,7 @@ class EventManager: MyObserverForEventList {
         dict["event"] = eventDict  as AnyObject
         dict["location"] = locationDict  as AnyObject
         dict["photo"] = photoDict as AnyObject
-        dict["userid"] = Profile.shared().getID() as AnyObject
+        dict["userid"] = 1 as AnyObject //Profile.shared().getID() as AnyObject
         
         do {
             let jsonData = try JSONSerialization.data(withJSONObject: dict, options: .prettyPrinted)
