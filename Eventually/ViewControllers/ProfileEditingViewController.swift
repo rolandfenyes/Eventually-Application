@@ -50,7 +50,7 @@ class ProfileEditingViewController: UIViewController, UIImagePickerControllerDel
     }
     
     func setUpFormatter() {
-        formatter.dateFormat = "yyyy/MM/dd"
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
     }
     
     func dateFormatter(date: Date) -> String? {
@@ -72,7 +72,7 @@ class ProfileEditingViewController: UIViewController, UIImagePickerControllerDel
         self.datePicker!.setSelectedDate(date: datePicker.date)
         
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "YYYY/MM/dd"
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
         
         self.datePicker!.getTextField().text! = dateFormatter.string(from: datePicker.date)
     }
@@ -93,7 +93,24 @@ class ProfileEditingViewController: UIViewController, UIImagePickerControllerDel
     
     @IBAction func save(_ sender: UIButton) {
         saveProfileDetails()
+        let userManager = UserManager()
+        let userStructure = UserStructure(id: profile.getID(), email: profile.getEmailAddress(), username: profile.getNickname(), birthdate: dateToString(), pw: profile.getPassword())
+        print("userID:\(Int(userStructure.id!))")
+        userManager.register(userStructure, httpMethod: "PUT", addToURL: "/\(Int(userStructure.id!))", completion:  { result in
+                   switch result {
+                   case .success(let message):
+                       print(message)
+                   case .failure(let error):
+                       print(error)
+                   }
+               })
         disappearScreen()
+    }
+    
+    func dateToString() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        return formatter.string(from: profile.getBirthDate())
     }
     
     //MARK: - Service functions

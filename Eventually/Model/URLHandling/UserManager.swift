@@ -68,13 +68,17 @@ class UserManager {
         return date
     }
     
-    func register(_ userToRegister: UserStructure, completion: @escaping(Result<UserStructure, APIError>) -> Void) {
+    func register(_ userToRegister: UserStructure, httpMethod: String, addToURL: String, completion: @escaping(Result<UserStructure, APIError>) -> Void) {
         do {
-            let resourceURL = URL(string: "\(eventuallyURL)users")
+            let jsonData = createJson(user: userToRegister)
+            
+            let resourceURL = URL(string: "\(eventuallyURL)users\(addToURL)")
+            
             var urlRequest = URLRequest(url: resourceURL!)
-            urlRequest.httpMethod = "POST"
+            urlRequest.httpMethod = httpMethod
+            
             urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
-            urlRequest.httpBody = try! JSONEncoder().encode(userToRegister)
+            urlRequest.httpBody = jsonData
             
             let dataTask = URLSession.shared.dataTask(with: urlRequest) { data, response, _ in
                 guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200,
@@ -94,6 +98,32 @@ class UserManager {
         } catch {
             completion(.failure(.encodingProblem))
         } 
+    }
+    
+    func createJson(user: UserStructure) -> Data {
+        var userDict: [String: AnyObject] = [:]
+        var userdetailsDict: [String: AnyObject] = [:]
+        userdetailsDict["username"] = user.username as AnyObject
+        userdetailsDict["birthdate"] = user.birthdate as AnyObject
+        userdetailsDict["email"] = user.email as AnyObject
+        userdetailsDict["pw"] = user.pw as AnyObject
+        var userPhotoDict: [String: AnyObject] = [:]
+        userDict["user"] = userdetailsDict as AnyObject
+        userDict["photo"] = userPhotoDict as AnyObject
+        
+        do {
+            let jsonData = try JSONSerialization.data(withJSONObject: userDict, options: .prettyPrinted)
+            let fileManager = FileManager.default
+            let url = try fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+            let jsonUrl = url.appendingPathComponent("user.json")
+            print(jsonUrl)
+            try jsonData.write(to: jsonUrl)
+
+            return jsonData
+        } catch {
+            
+        }
+        return Data()
     }
     
 }

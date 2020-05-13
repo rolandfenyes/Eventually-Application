@@ -51,7 +51,7 @@ class RegistrationViewController: UIViewController {
         self.datePicker!.setSelectedDate(date: datePicker.date)
         
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "YYYY/MM/dd"
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
         
         self.datePicker!.getTextField().text! = dateFormatter.string(from: datePicker.date)
     }
@@ -63,16 +63,23 @@ class RegistrationViewController: UIViewController {
     @IBAction func registerButtonClicked(_ sender: UIButton) {
         let postRequest = UserManager()
         let user = UserStructure(id: 0, email: emailAddress.text, username: nickname.text, birthdate: birthday.text, pw: password.text)
-        postRequest.register(user, completion: { result in
+        postRequest.register(user, httpMethod: "POST", addToURL: "", completion: { result in
             switch result {
             case .success(let message):
-                let homeScreen = self.storyboard?.instantiateViewController(withIdentifier: "startPage") as! UITabBarController
-                self.navigationController?.pushViewController(homeScreen, animated: true)
+                self.openLogin()
             case .failure(let error):
-                print(error)
+                if error == .decodingProblem {
+                    self.openLogin()
+                }
             }
         })
-        
+    }
+    
+    func openLogin() {
+        DispatchQueue.main.async {
+            let loginScreen = self.storyboard?.instantiateViewController(identifier: "login") as! LoginPageViewController
+            self.navigationController?.pushViewController(loginScreen, animated: true)
+        }
         
     }
 
