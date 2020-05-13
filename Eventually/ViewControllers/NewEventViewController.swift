@@ -317,9 +317,7 @@ class NewEventViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         self.datePicker.setSelectedDate(date: datePicker.date)
         
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MM/dd '-' hh:mm a"
-        dateFormatter.amSymbol = "AM"
-        dateFormatter.pmSymbol = "PM"
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
         
         self.datePicker.getTextField().text! = dateFormatter.string(from: datePicker.date)
         

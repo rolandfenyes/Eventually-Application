@@ -91,9 +91,7 @@ class EventManager: MyObserverForEventList {
   
         guard let resourceURL = URL(string: eventuallyURL) else { return }
         
-        let body: [String: String] = ["name": event.name, "description": event.description, "starttime": event.starttime, "endtime": event.endtime, "partlimit": String(event.partlimit), "part": String(event.part), "visibility": event.visibility]
-        
-        let finalBody = try! JSONSerialization.data(withJSONObject: body)
+        let finalBody = createJson(codableEvent: event)
         
         var urlRequest = URLRequest(url: resourceURL)
         
@@ -112,18 +110,19 @@ class EventManager: MyObserverForEventList {
         
     }
     
-    func register(_ userToRegister: CodableEvent, completion: @escaping(Result<CodableEvent, APIError>) -> Void) {
+    func register(_ codableEvent: CodableEvent, completion: @escaping(Result<CodableEvent, APIError>) -> Void) {
         do {
+            let jsonData = createJson(codableEvent: codableEvent)
+            
             let resourceURL = URL(string: "\(eventuallyURL)events")
             var urlRequest = URLRequest(url: resourceURL!)
             urlRequest.httpMethod = "POST"
             urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
-            urlRequest.httpBody = try! JSONEncoder().encode(userToRegister)
+            urlRequest.httpBody = jsonData
             
             let dataTask = URLSession.shared.dataTask(with: urlRequest) { data, response, _ in
                 guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200,
                     let jsonData = data else {
-                        print(urlRequest.httpBody)
                         completion(.failure(.responseProblem))
                         return
                 }
@@ -139,6 +138,56 @@ class EventManager: MyObserverForEventList {
         } catch {
             completion(.failure(.encodingProblem))
         }
+    }
+    
+    func createJson(codableEvent: CodableEvent) -> Data {
+        
+        var visibility: String
+        if codableEvent.visibility == "Publikus" {
+            visibility = "PUBLIC"
+        } else {
+            visibility = "PRIVATE"
+        }
+        
+        var locationDict: [String : Double] = [:]
+        locationDict["lon"] = codableEvent.lon
+        locationDict["lat"] = codableEvent.lat
+        
+        var eventDict: [String : AnyObject] = [:]
+        eventDict["name"] = codableEvent.name as AnyObject
+        eventDict["description"] = codableEvent.description as AnyObject
+        eventDict["starttime"] = codableEvent.starttime as AnyObject
+        eventDict["endtime"] = codableEvent.endtime as AnyObject
+        eventDict["partlimit"] = codableEvent.partlimit as AnyObject
+        eventDict["visibility"] = visibility as AnyObject
+        
+        var photoDict: [String : AnyObject] = [:]
+        
+        var dict: [String : AnyObject] = [:]
+        dict["event"] = eventDict  as AnyObject
+        dict["location"] = locationDict  as AnyObject
+        dict["photo"] = photoDict as AnyObject
+        dict["userid"] = Profile.shared().getID() as AnyObject
+        
+        do {
+            let jsonData = try JSONSerialization.data(withJSONObject: dict, options: .prettyPrinted)
+            let fileManager = FileManager.default
+            let url = try fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+            let jsonUrl = url.appendingPathComponent("event.json")
+            print(jsonUrl)
+            try jsonData.write(to: jsonUrl)
+
+            return jsonData
+        } catch {
+            
+        }
+        return Data()
+    }
+    
+    func stringToDate(string: String) -> Date {
+        let formatter = DateFormatter()
+        let date = formatter.date(from: string)!
+        return date
     }
     
 }

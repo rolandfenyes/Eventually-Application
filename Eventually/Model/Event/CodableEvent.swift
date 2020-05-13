@@ -17,7 +17,8 @@ struct CodableEvent : Codable {
     let endtime: String
     let partlimit: String
     let part: String
-    let location: [Double]
+    let lon: Double
+    let lat: Double
     let photo: String?
     let visibility: String
     
@@ -29,7 +30,8 @@ struct CodableEvent : Codable {
         self.partlimit = partlimit
         self.part = part
         self.visibility = visibility
-        self.location = [location.longitude, location.latitude]
+        self.lon = location.longitude
+        self.lat = location.latitude
         self.photo = nil
     }
     

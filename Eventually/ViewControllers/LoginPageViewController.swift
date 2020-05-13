@@ -27,6 +27,8 @@ class LoginPageViewController: UIViewController {
             let homeScreen = self.storyboard?.instantiateViewController(withIdentifier: "startPage") as! UITabBarController
             self.navigationController?.pushViewController(homeScreen, animated: true)
         }
+        let homeScreen = self.storyboard?.instantiateViewController(withIdentifier: "startPage") as! UITabBarController
+        self.navigationController?.pushViewController(homeScreen, animated: true)
     }
     
 
