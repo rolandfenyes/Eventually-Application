@@ -39,6 +39,7 @@
 		53BD6D16246C30DD0088730C /* UserStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53BD6D15246C30DD0088730C /* UserStructure.swift */; };
 		53BD6D1A246C3B770088730C /* UsersList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53BD6D19246C3B770088730C /* UsersList.swift */; };
 		53BD6D1C246C75A70088730C /* OrganizersStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53BD6D1B246C75A70088730C /* OrganizersStructure.swift */; };
+		53BD6D1E246D42450088730C /* StartScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53BD6D1D246D42440088730C /* StartScreenViewController.swift */; };
 		53BE64212463030A007C1B47 /* MyEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53BE64202463030A007C1B47 /* MyEventsViewController.swift */; };
 		53BE64232463091C007C1B47 /* SubscriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53BE64222463091C007C1B47 /* SubscriptionViewController.swift */; };
 		53CD32D8243F181800BDB5A0 /* SearchEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53CD32D7243F181800BDB5A0 /* SearchEventViewController.swift */; };
@@ -114,6 +115,7 @@
 		53BD6D15246C30DD0088730C /* UserStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStructure.swift; sourceTree = "<group>"; };
 		53BD6D19246C3B770088730C /* UsersList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersList.swift; sourceTree = "<group>"; };
 		53BD6D1B246C75A70088730C /* OrganizersStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizersStructure.swift; sourceTree = "<group>"; };
+		53BD6D1D246D42440088730C /* StartScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScreenViewController.swift; sourceTree = "<group>"; };
 		53BE64202463030A007C1B47 /* MyEventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyEventsViewController.swift; sourceTree = "<group>"; };
 		53BE64222463091C007C1B47 /* SubscriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionViewController.swift; sourceTree = "<group>"; };
 		53CD32D7243F181800BDB5A0 /* SearchEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEventViewController.swift; sourceTree = "<group>"; };
@@ -294,6 +296,7 @@
 				53BD6D0D246C1C9C0088730C /* LoginPageViewController.swift */,
 				53BD6D0F246C1D6F0088730C /* TabBarController.swift */,
 				53BD6D11246C27EF0088730C /* RegistrationViewController.swift */,
+				53BD6D1D246D42440088730C /* StartScreenViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -614,6 +617,7 @@
 				53B00A0C23FF163F00F915D5 /* SceneDelegate.swift in Sources */,
 				53CD32E2244717D700BDB5A0 /* ImagePicker.swift in Sources */,
 				539E0DCD24388DA900FB928E /* MyObserverForEventList.swift in Sources */,
+				53BD6D1E246D42450088730C /* StartScreenViewController.swift in Sources */,
 				534AA7492462C3DD0084D6B5 /* CommentsViewController.swift in Sources */,
 				534AA7692462F1220084D6B5 /* EventField.swift in Sources */,
 				534AA7542462C7A20084D6B5 /* Comment.swift in Sources */,

@@ -1351,10 +1351,10 @@
             </objects>
             <point key="canvasLocation" x="-2975" y="0.0"/>
         </scene>
-        <!--View Controller-->
+        <!--Start Screen View Controller-->
         <scene sceneID="XmF-Iq-px7">
             <objects>
-                <viewController id="hv7-Qk-ft3" sceneMemberID="viewController">
+                <viewController id="hv7-Qk-ft3" customClass="StartScreenViewController" customModule="Eventually" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DMv-8z-Wws">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1414,6 +1414,9 @@
                         <viewLayoutGuide key="safeArea" id="wk1-xQ-6me"/>
                     </view>
                     <navigationItem key="navigationItem" id="Dkg-cr-JkW"/>
+                    <connections>
+                        <outlet property="titleLabel" destination="qZx-KF-Hle" id="A6w-KO-V5A"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Arp-KG-KMW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
