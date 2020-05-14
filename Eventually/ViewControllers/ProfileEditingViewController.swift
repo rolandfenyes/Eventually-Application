@@ -19,6 +19,7 @@ class ProfileEditingViewController: UIViewController, UIImagePickerControllerDel
     @IBOutlet weak var profileDescription: UITextField!
     @IBOutlet weak var profilePicture: UIImageView!
     
+    private var correctDate: Date?
     private var datePicker: DatePicker?
     private let profile = Profile.shared()
     private let formatter: DateFormatter = DateFormatter()
@@ -50,7 +51,7 @@ class ProfileEditingViewController: UIViewController, UIImagePickerControllerDel
     }
     
     func setUpFormatter() {
-        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        formatter.dateFormat = "yyyy-MM-dd"
     }
     
     func dateFormatter(date: Date) -> String? {
@@ -74,7 +75,8 @@ class ProfileEditingViewController: UIViewController, UIImagePickerControllerDel
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
         
-        self.datePicker!.getTextField().text! = dateFormatter.string(from: datePicker.date)
+        self.correctDate = dateFormatter.date(from: dateFormatter.string(from: datePicker.date))
+        self.datePicker!.getTextField().text! = self.dateFormatter(date: correctDate!)!
     }
     
     @objc func DoneButtonPressed(sender: UIBarButtonItem) {
@@ -110,7 +112,7 @@ class ProfileEditingViewController: UIViewController, UIImagePickerControllerDel
     func dateToString() -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
-        return formatter.string(from: profile.getBirthDate())
+        return formatter.string(from: correctDate!)
     }
     
     //MARK: - Service functions

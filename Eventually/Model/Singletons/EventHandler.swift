@@ -62,6 +62,10 @@ class EventHandler: MyObserverForEventList {
         })
     }
     
+    func clear() {
+        events.removeAll()
+    }
+    
     func setJoinForAnEvent(status: Bool, index: Int) {
         events[index].setJoined(status: status)
         notify()

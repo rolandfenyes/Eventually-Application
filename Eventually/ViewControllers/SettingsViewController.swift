@@ -41,6 +41,7 @@ class SettingsViewController: UIViewController, PObserver{
     }
 
     @IBAction func logOutButtonPressed(_ sender: UIButton) {
+        EventHandler.shared().clear()
         navigationController?.setNavigationBarHidden(false, animated: true)
         navigationController?.popToRootViewController(animated: true)
     }
