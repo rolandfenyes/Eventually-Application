@@ -50,9 +50,9 @@ class EventScreenViewController: UIViewController {
         //let eventImage =
         image?.image = self.event.getImage()
         eventName?.text = self.event.getName()
-        date?.text = self.event.getStartDate()
-        dateEnd?.text = self.event.getEndDate()
-        publicity?.text = self.event.getPub()
+        setDateLabel(dateToString: self.event.getStartDate(), date: date!)
+        setDateLabel(dateToString: self.event.getEndDate(), date: dateEnd!)
+        setPublicityLabel()
         desc?.text = self.event.getDescription()
         location?.text = self.event.getAddress()
         
@@ -70,6 +70,24 @@ class EventScreenViewController: UIViewController {
         self.map?.setRegion(region, animated: false)
         
         setParticipants()
+    }
+    
+    func setPublicityLabel() {
+        if self.event.isPublic() {
+            publicity?.text = "Publikus"
+        } else {
+            publicity?.text = "Privát"
+        }
+    }
+    
+    func setDateLabel(dateToString: String, date: UILabel) {
+        let toDateFormatter = DateFormatter()
+        toDateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        let exactDate = toDateFormatter.date(from: dateToString)
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM/dd '-' hh:mm"
+        date.text = formatter.string(from: exactDate!)
     }
     
     func setParticipants() {

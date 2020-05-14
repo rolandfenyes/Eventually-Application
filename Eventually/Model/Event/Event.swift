@@ -127,7 +127,7 @@ class Event {
         return self.creatorID
     }
     func isPublic() -> Bool {
-        if (self.publicity == "Privát") {
+        if (self.publicity == "PRIVATE" || self.publicity == "Privát") {
             return false
         }
         else {
