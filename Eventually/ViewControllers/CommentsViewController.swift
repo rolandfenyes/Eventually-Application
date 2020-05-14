@@ -27,7 +27,7 @@ class CommentsViewController: UIViewController {
         tableView.register(UINib(nibName: "MessageCell", bundle: nil), forCellReuseIdentifier: "ReusableCell")
     }
     @IBAction func sendButtonPressed(_ sender: UIButton) {
-        let comment = Comment(userid: Profile.shared().getNickname(), body: messageTextField.text!)
+        let comment = Comment(userid: Profile.shared().getID(), eventid: currentEvent.getEventId(), body: messageTextField.text!)
         comments.append(comment)
         EventHandler.shared().addComment(newComment: comment, event: currentEvent)
         tableView.reloadData()

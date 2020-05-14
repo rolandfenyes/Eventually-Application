@@ -9,6 +9,7 @@
 import Foundation
 
 struct Comment: Codable {
-    var userid: String
+    var userid: Int
+    var eventid: Int
     var body: String
 }

@@ -31,7 +31,7 @@ class EventHandler: MyObserverForEventList {
     
     func sendToBackEnd(event: Event, httpMethod: String) {
         let postRequest = EventManager()
-        let codableEvent = CodableEvent(name: event.getName(), description: event.getDescription(), starttime: event.getStartDate(), endtime: event.getEndDate(), partlimit: event.getParticipants(), part: event.getsubscribedParticipants(), visibility: event.getPub(), location: event.getEventLocation(), id: event.getEventId())
+        let codableEvent = CodableEvent(name: event.getName(), description: event.getDescription(), starttime: event.getStartDate(), endtime: event.getEndDate(), partlimit: event.getParticipants(), part: event.getsubscribedParticipants(), visibility: event.getPub(), location: event.getEventLocation(), id: event.getEventId(), comments: event.getComments())
         
         var addToURL = ""
         if httpMethod == "PUT" {
@@ -46,6 +46,19 @@ class EventHandler: MyObserverForEventList {
             case .failure(let error):
                 print(error)
             }
+        })
+    }
+    
+    func sendComment(message: Comment) {
+        let postRequest = EventManager()
+        postRequest.sendComment(message, httpMethod: "POST", completion: {result in
+            switch result {
+            case .success(let message):
+                print(message)
+            case .failure(let error):
+                print(error)
+            }
+            
         })
     }
     
@@ -113,6 +126,7 @@ class EventHandler: MyObserverForEventList {
     
     func addComment(newComment: Comment, event: Event) {
         events[getExactEventIndex(event: event)].addComment(newComment: newComment)
+        sendComment(message: newComment)
         notify()
     }
     

@@ -90,7 +90,7 @@ class EventManager: MyObserverForEventList {
                 }
                 let comments = json[index]["comments"].arrayValue
                 for comment in comments {
-                    eventHandler.addComment(newComment: Comment(userid: String(comment["userid"].intValue), body: comment["text"].stringValue), event: eventHandler.getEvents().last!)
+                    eventHandler.addComment(newComment: Comment(userid: comment["userid"].intValue, eventid: comment["eventid"].intValue, body: comment["text"].stringValue), event: eventHandler.getEvents().last!)
                 }
             }
             
@@ -185,6 +185,33 @@ class EventManager: MyObserverForEventList {
  */
     }
     
+    func sendComment(_ message: Comment, httpMethod: String, completion: @escaping(Result<CodableEvent, APIError>) -> Void) {
+        
+        let jsonData = createCommentJson(message: message)
+        
+        print("eventid: \(message.eventid)")
+        let resourceURL = URL(string: "\(eventuallyURL)comments")
+        var urlRequest = URLRequest(url: resourceURL!)
+        urlRequest.httpMethod = httpMethod
+        
+        urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        urlRequest.httpBody = jsonData
+        
+        uploadSession(urlRequest: urlRequest, completion: completion)
+    }
+    
+    func createCommentJson(message: Comment) -> Data {
+        var commentsDict: [String : AnyObject] = [:]
+        var commentDict: [String : AnyObject] = [:]
+        commentDict["text"] = message.body as AnyObject
+        commentDict["status"] = "ACTIVE" as AnyObject
+        commentsDict["comment"] = commentDict as AnyObject
+        commentsDict["eventid"] = message.eventid as AnyObject
+        commentsDict["userid"] = message.userid as AnyObject
+        
+        return jsonToData(dict: commentsDict)
+    }
+    
     func createJson(codableEvent: CodableEvent) -> Data {
         
         //let index = EventHandler.shared().getEventIndexById(id: codableEvent.id)
@@ -218,6 +245,22 @@ class EventManager: MyObserverForEventList {
         dict["photo"] = photoDict as AnyObject
         dict["userid"] = Profile.shared().getID() as AnyObject
         
+        do {
+            let jsonData = try JSONSerialization.data(withJSONObject: dict, options: .prettyPrinted)
+            let fileManager = FileManager.default
+            let url = try fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+            let jsonUrl = url.appendingPathComponent("event.json")
+            print(jsonUrl)
+            try jsonData.write(to: jsonUrl)
+
+            return jsonData
+        } catch {
+            
+        }
+        return Data()
+    }
+    
+    func jsonToData(dict: Dictionary<String, Any>) -> Data {
         do {
             let jsonData = try JSONSerialization.data(withJSONObject: dict, options: .prettyPrinted)
             let fileManager = FileManager.default
