@@ -15,6 +15,7 @@ class RegistrationViewController: UIViewController {
     @IBOutlet weak var emailAddress: UITextField!
     @IBOutlet weak var password: UITextField!
     
+    private var correctDate: Date?
     private var datePicker: DatePicker?
     private let formatter: DateFormatter = DateFormatter()
     
@@ -40,6 +41,17 @@ class RegistrationViewController: UIViewController {
         return formatter.date(from: date)
     }
     
+    func correctDateFormatter() -> DateFormatter {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        return dateFormatter
+    }
+    
+    func correctDateToString() -> String {
+        let formatter = correctDateFormatter()
+        return formatter.string(from: correctDate!)
+    }
+    
     //MARK: - BirthDate Changed
     
     func birthDateChanged() {
@@ -53,7 +65,8 @@ class RegistrationViewController: UIViewController {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
         
-        self.datePicker!.getTextField().text! = dateFormatter.string(from: datePicker.date)
+        self.correctDate = dateFormatter.date(from: dateFormatter.string(from: datePicker.date))
+        self.datePicker!.getTextField().text! = self.dateFormatter(date: correctDate!)!
     }
     
     @objc func DoneButtonPressed(sender: UIBarButtonItem) {
@@ -62,7 +75,7 @@ class RegistrationViewController: UIViewController {
     
     @IBAction func registerButtonClicked(_ sender: UIButton) {
         let postRequest = UserManager()
-        let user = UserStructure(id: 0, email: emailAddress.text, username: nickname.text, birthdate: birthday.text, pw: password.text)
+        let user = UserStructure(id: 0, email: emailAddress.text, username: nickname.text, birthdate: self.correctDateToString(), pw: password.text)
         postRequest.register(user, httpMethod: "POST", addToURL: "", completion: { result in
             switch result {
             case .success(let message):

@@ -62,6 +62,17 @@ class ProfileEditingViewController: UIViewController, UIImagePickerControllerDel
         return formatter.date(from: date)
     }
     
+    func correctDateFormatter() -> DateFormatter {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        return dateFormatter
+    }
+    
+    func correctDateToString() -> String {
+        let formatter = correctDateFormatter()
+        return formatter.string(from: correctDate!)
+    }
+    
     //MARK: - BirthDate Changed
     
     func birthDateChanged() {
@@ -72,8 +83,7 @@ class ProfileEditingViewController: UIViewController, UIImagePickerControllerDel
     @objc func dateChanged(datePicker: UIDatePicker) {
         self.datePicker!.setSelectedDate(date: datePicker.date)
         
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        let dateFormatter = correctDateFormatter()
         
         self.correctDate = dateFormatter.date(from: dateFormatter.string(from: datePicker.date))
         self.datePicker!.getTextField().text! = self.dateFormatter(date: correctDate!)!
