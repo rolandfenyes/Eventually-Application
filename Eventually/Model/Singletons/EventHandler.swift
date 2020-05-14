@@ -36,7 +36,6 @@ class EventHandler: MyObserverForEventList {
         var addToURL = ""
         if httpMethod == "PUT" {
             addToURL = "/\(event.getEventId())"
-            print(addToURL)
         }
         
         postRequest.register(codableEvent, httpMethod: httpMethod, addToURL: addToURL, completion: { result in

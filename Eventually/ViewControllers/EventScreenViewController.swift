@@ -81,13 +81,13 @@ class EventScreenViewController: UIViewController {
     }
     
     func setDateLabel(dateToString: String, date: UILabel) {
-        let toDateFormatter = DateFormatter()
-        toDateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
-        let exactDate = toDateFormatter.date(from: dateToString)
+        //let toDateFormatter = DateFormatter()
+        //toDateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        //var exactDate = toDateFormatter.date(from: dateToString)
         
-        let formatter = DateFormatter()
-        formatter.dateFormat = "MM/dd '-' hh:mm"
-        date.text = formatter.string(from: exactDate!)
+        //let formatter = DateFormatter()
+        //formatter.dateFormat = "MM/dd '-' hh:mm"
+        date.text = dateToString
     }
     
     func setParticipants() {

@@ -21,6 +21,7 @@ class StartScreenViewController: UIViewController {
         for letter in titleText {
             Timer.scheduledTimer(withTimeInterval: 0.1 * charIndex, repeats: false) { (timer) in
                 self.titleLabel.text?.append(letter)
+                
             }
             charIndex += 1
         }

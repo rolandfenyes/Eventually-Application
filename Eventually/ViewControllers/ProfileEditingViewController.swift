@@ -107,7 +107,6 @@ class ProfileEditingViewController: UIViewController, UIImagePickerControllerDel
         saveProfileDetails()
         let userManager = UserManager()
         let userStructure = UserStructure(id: profile.getID(), email: profile.getEmailAddress(), username: profile.getNickname(), birthdate: dateToString(), pw: profile.getPassword())
-        print("userID:\(Int(userStructure.id!))")
         userManager.register(userStructure, httpMethod: "PUT", addToURL: "/\(Int(userStructure.id!))", completion:  { result in
                    switch result {
                    case .success(let message):

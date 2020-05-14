@@ -26,7 +26,6 @@ class UsersList {
     
     func addUser(user: UserStructure) {
         users.append(user)
-        print(user)
     }
     
     func getUsers() -> [UserStructure] {

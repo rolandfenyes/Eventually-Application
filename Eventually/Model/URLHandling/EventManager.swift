@@ -189,7 +189,6 @@ class EventManager: MyObserverForEventList {
         
         let jsonData = createCommentJson(message: message)
         
-        print("eventid: \(message.eventid)")
         let resourceURL = URL(string: "\(eventuallyURL)comments")
         var urlRequest = URLRequest(url: resourceURL!)
         urlRequest.httpMethod = httpMethod
