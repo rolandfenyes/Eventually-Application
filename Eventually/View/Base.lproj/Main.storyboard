@@ -874,6 +874,9 @@
                                 <state key="normal" title="Felhasználó váltás">
                                     <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="logOutButtonPressed:" destination="ayT-uL-8AL" eventType="touchUpInside" id="8lY-Ap-7l7"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>

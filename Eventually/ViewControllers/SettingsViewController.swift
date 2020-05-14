@@ -40,5 +40,9 @@ class SettingsViewController: UIViewController, PObserver{
         profilePicture.clipsToBounds = true
     }
 
-
+    @IBAction func logOutButtonPressed(_ sender: UIButton) {
+        navigationController?.setNavigationBarHidden(false, animated: true)
+        navigationController?.popToRootViewController(animated: true)
+    }
+    
 }
