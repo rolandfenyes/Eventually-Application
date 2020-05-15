@@ -25,7 +25,7 @@ class EventHandler: MyObserverForEventList {
     }
     
     func addEvent(event: Event) {
-        events.append(event)
+        events.insert(event, at: 0)
         notify()
     }
     
