@@ -27,7 +27,8 @@ class NewEventViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     //variables for the date
     
-    private var datePicker: DatePicker!
+    var datePicker: DatePicker!
+    var datePicker2: DatePicker!
     private var isEndDateEnabled: Bool!
     
     @IBOutlet weak var startDate: UITextField!
@@ -72,6 +73,7 @@ class NewEventViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         publicityInput.text = dataSourceOfPubPicker[0]
 
         self.datePicker = DatePicker(viewController: self)
+        self.datePicker2 = DatePicker(viewController: self)
         
         startDatePicking()
         isEndDateEnabled = false
@@ -85,6 +87,13 @@ class NewEventViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         if (isEditModeOn) {
             setUpEditing()
         }
+        setDoneButtonToKeyboards()
+    }
+    
+    func setDoneButtonToKeyboards() {
+        eventName.addDoneButtonToKeyboard()
+        numOfPeople.addDoneButtonToKeyboard()
+        shortDesc.addDoneButtonToKeyboard()
     }
     
     func modifyCancelButtonDependingOnEditMode() {
@@ -312,22 +321,30 @@ class NewEventViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     func startDatePicking() {
         let currentDate = UIDatePicker().date
         
-        self.datePicker!.setDatePicker(mode: .dateAndTime, textField: self.startDate, minimumDate: currentDate).addTarget(self, action: #selector(dateChanged(datePicker:)), for: .valueChanged)
+        self.datePicker!.setDatePicker(mode: .dateAndTime, textField: self.startDate, minimumDate: currentDate).addTarget(self, action: #selector(startDatePicker(datePicker:)), for: .valueChanged)
         }
     
     func endDatePicking() {
         let currentDate = self.datePicker.getSelectedDate()
         
-        self.datePicker!.setDatePicker(mode: .dateAndTime, textField: self.endDate, minimumDate: currentDate).addTarget(self, action: #selector(dateChanged(datePicker:)), for: .valueChanged)
+        self.datePicker2!.setDatePicker(mode: .dateAndTime, textField: self.endDate, minimumDate: currentDate).addTarget(self, action: #selector(endDatePicker(datePicker:)), for: .valueChanged)
     }
     
-    @objc func dateChanged(datePicker: UIDatePicker) {
+    @objc func startDatePicker(datePicker: UIDatePicker) {
         self.datePicker.setSelectedDate(date: datePicker.date)
+        dateChanged(datePicker: self.datePicker, uiDatePicker: datePicker)
+    }
+    @objc func endDatePicker(datePicker: UIDatePicker) {
+        self.datePicker2.setSelectedDate(date: datePicker.date)
+        dateChanged(datePicker: self.datePicker2, uiDatePicker: datePicker)
+    }
+    
+    func dateChanged(datePicker: DatePicker, uiDatePicker: UIDatePicker) {
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
         
-        self.datePicker.getTextField().text! = dateFormatter.string(from: datePicker.date)
+        datePicker.getTextField().text! = dateFormatter.string(from: uiDatePicker.date)
         
         if (!self.isEndDateEnabled) {
             self.isEndDateEnabled = true
