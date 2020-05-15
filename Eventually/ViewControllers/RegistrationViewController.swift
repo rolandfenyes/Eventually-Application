@@ -27,6 +27,14 @@ class RegistrationViewController: UIViewController {
         self.datePicker = DatePicker(viewController: self)
         
         birthDateChanged()
+        setDoneButtonToKeyboards()
+    }
+    
+    func setDoneButtonToKeyboards() {
+        nickname.addDoneButtonToKeyboard()
+        birthday.addDoneButtonToKeyboard()
+        emailAddress.addDoneButtonToKeyboard()
+        password.addDoneButtonToKeyboard()
     }
     
     func setUpFormatter() {
@@ -97,3 +105,4 @@ class RegistrationViewController: UIViewController {
     }
 
 }
+

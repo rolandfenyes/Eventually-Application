@@ -25,7 +25,13 @@ class CommentsViewController: UIViewController {
         tableView.dataSource = self
 
         tableView.register(UINib(nibName: "MessageCell", bundle: nil), forCellReuseIdentifier: "ReusableCell")
+        setDoneButtonToKeyboards()
     }
+    
+    func setDoneButtonToKeyboards() {
+        messageTextField.addDoneButtonToKeyboard()
+    }
+    
     @IBAction func sendButtonPressed(_ sender: UIButton) {
         let comment = Comment(userid: Profile.shared().getID(), eventid: currentEvent.getEventId(), body: messageTextField.text!)
         comments.append(comment)

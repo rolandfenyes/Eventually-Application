@@ -38,6 +38,14 @@ class ProfileEditingViewController: UIViewController, UIImagePickerControllerDel
         self.imagePicker = ImagePicker(viewController: self)
 
         birthDateChanged()
+        setDoneButtonToKeyboards()
+    }
+    
+    func setDoneButtonToKeyboards() {
+        profileName.addDoneButtonToKeyboard()
+        emailAddress.addDoneButtonToKeyboard()
+        password.addDoneButtonToKeyboard()
+        profileDescription.addDoneButtonToKeyboard()
     }
     
     //MARK: - Load Profile
