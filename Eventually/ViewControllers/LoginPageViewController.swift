@@ -43,9 +43,11 @@ class LoginPageViewController: UIViewController {
     @IBAction func login(_ sender: UIButton) {
         let userManager = UserManager()
         userManager.downloadUsers()
+        print("hahó")
         if userManager.auth(email: emailAddress.text!, password: password.text!) {
             let homeScreen = self.storyboard?.instantiateViewController(withIdentifier: "startPage") as! UITabBarController
             self.navigationController?.pushViewController(homeScreen, animated: true)
+            print("valami")
         }
     }
 }

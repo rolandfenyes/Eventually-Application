@@ -13,14 +13,19 @@ import Alamofire
 
 class EventManager: MyObserverForEventList {
         
+    //MARK: - APIError enum
+    
     enum APIError: Error {
         case responseProblem
         case decodingProblem
         case encodingProblem
     }
     
+    //MARK: - Variables
+    
     let eventuallyURL = "https://api.eventually.site/"
     var organizerId: Int = 0
+    var imageResponseUrl: URL? = nil
     
     func setOrganizerId(id: Int) {
         self.organizerId = id
@@ -42,6 +47,8 @@ class EventManager: MyObserverForEventList {
             }
         }
     }
+    
+    //MARK: - Parse Json and add to EventHandler
     
     func parseJSON(events: JSON) {
         let decoder = JSONDecoder()
@@ -122,6 +129,8 @@ class EventManager: MyObserverForEventList {
 
     }
     
+    //MARK: - Send Event
+    
     func register(_ codableEvent: CodableEvent, httpMethod: String, addToURL: String, completion: @escaping(Result<CodableEvent, APIError>) -> Void) {
         do {
             let jsonData = createJson(codableEvent: codableEvent)
@@ -162,28 +171,14 @@ class EventManager: MyObserverForEventList {
         }
     }
     
+    //MARK: - Send Image
+    
     func uploadImage(event: Event, completion: @escaping(Result<CodableEvent, APIError>) -> Void) {
-        /*let resourceURL = URL(string: "\(eventuallyURL)uploadFile")
-        let imageData = event.getImage().jpegData(compressionQuality: 1)
         
-        var urlRequest = URLRequest(url: resourceURL!)
-        urlRequest.httpMethod = "POST"
-        urlRequest.setValue("Keep-Alive", forHTTPHeaderField: "Connection")
-        
-        var configuration = URLSessionConfiguration.default
-        var session = URLSession(configuration: configuration, delegate: self as! URLSessionDelegate, delegateQueue: OperationQueue.main)
-        
-        var task = session.uploadTask(with: urlRequest, from: imageData!) {data,response,_ in
-            guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200,
-                let imageData = data else {
-                    return
-            }
-            do {
-            }
-        }
-        task.resume()
- */
     }
+        
+    
+    //MARK: - Send Comment
     
     func sendComment(_ message: Comment, httpMethod: String, completion: @escaping(Result<CodableEvent, APIError>) -> Void) {
         
@@ -199,6 +194,8 @@ class EventManager: MyObserverForEventList {
         uploadSession(urlRequest: urlRequest, completion: completion)
     }
     
+    //MARK: - Create Jsons
+    
     func createCommentJson(message: Comment) -> Data {
         var commentsDict: [String : AnyObject] = [:]
         var commentDict: [String : AnyObject] = [:]
@@ -213,8 +210,15 @@ class EventManager: MyObserverForEventList {
     
     func createJson(codableEvent: CodableEvent) -> Data {
         
-        //let index = EventHandler.shared().getEventIndexById(id: codableEvent.id)
-        //uploadImage(event: EventHandler.shared().getEvents()[index])
+        let index = EventHandler.shared().getEventIndexById(id: codableEvent.id)
+        uploadImage(event: EventHandler.shared().getEvents()[index], completion: { result in
+            switch result {
+            case .success(let codableEvent):
+                print(codableEvent.name)
+            case .failure(let error):
+                print(error)
+            }
+        })
         
         var visibility: String
         if codableEvent.visibility == "Publikus" {
@@ -236,7 +240,7 @@ class EventManager: MyObserverForEventList {
         eventDict["visibility"] = visibility as AnyObject
         
         var photoDict: [String : AnyObject] = [:]
-        photoDict["path"] = "https://api.eventually.site/downloadFile/" as AnyObject
+        photoDict["path"] = self.imageResponseUrl as AnyObject
         
         var dict: [String : AnyObject] = [:]
         dict["event"] = eventDict  as AnyObject
@@ -259,6 +263,8 @@ class EventManager: MyObserverForEventList {
         return Data()
     }
     
+    //MARK: - Json to Data
+    
     func jsonToData(dict: Dictionary<String, Any>) -> Data {
         do {
             let jsonData = try JSONSerialization.data(withJSONObject: dict, options: .prettyPrinted)
@@ -274,6 +280,8 @@ class EventManager: MyObserverForEventList {
         }
         return Data()
     }
+    
+    //MARK: - String to Date
     
     func stringToDate(string: String) -> Date {
         let formatter = DateFormatter()
