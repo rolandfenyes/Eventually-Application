@@ -10,6 +10,7 @@ import Foundation
 
 class EventHandler: MyObserverForEventList {
     
+    //MARK: - Singleton
     private var events: [Event] = []
     
     class func shared() -> EventHandler {
@@ -24,11 +25,14 @@ class EventHandler: MyObserverForEventList {
     private override init() {
     }
     
+    //MARK: - Add event
+    
     func addEvent(event: Event) {
         events.insert(event, at: 0)
         notify()
     }
     
+    //MARK: - Send data to backend
     func sendToBackEnd(event: Event, httpMethod: String) {
         let postRequest = EventManager()
         let codableEvent = CodableEvent(name: event.getName(), description: event.getDescription(), starttime: event.getStartDate(), endtime: event.getEndDate(), partlimit: event.getParticipants(), part: event.getsubscribedParticipants(), visibility: event.getPub(), location: event.getEventLocation(), id: event.getEventId(), comments: event.getComments())
@@ -60,6 +64,8 @@ class EventHandler: MyObserverForEventList {
             
         })
     }
+    
+    //MARK: - Tools
     
     func clear() {
         events.removeAll()
