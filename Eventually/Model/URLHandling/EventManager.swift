@@ -161,6 +161,8 @@ class EventManager: MyObserverForEventList {
                 do {
                     let messageData = try JSONDecoder().decode(CodableEvent.self, from: jsonData)
                     completion(.success(messageData))
+                    self.imageResponseUrl = httpResponse.url
+                    print(self.imageResponseUrl)
                 } catch {
                     completion(.failure(.decodingProblem))
                 }
@@ -174,6 +176,22 @@ class EventManager: MyObserverForEventList {
     //MARK: - Send Image
     
     func uploadImage(event: Event, completion: @escaping(Result<CodableEvent, APIError>) -> Void) {
+        do {
+            let data = event.getImage().pngData()?.base64EncodedString(options: .lineLength64Characters)
+            var imageDict: [String : AnyObject] = [:]
+            imageDict["file"] = data as AnyObject?
+            
+            let resourceURL = URL(string: "\(eventuallyURL)uploadFile")
+            var urlRequest = URLRequest(url: resourceURL!)
+            urlRequest.httpMethod = "POST"
+            urlRequest.httpBody = jsonToData2(dict: imageDict)
+            urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            
+            uploadSession(urlRequest: urlRequest, completion: completion)
+        } catch {
+            completion(.failure(.decodingProblem))
+        }
+        
         
     }
         
@@ -271,6 +289,22 @@ class EventManager: MyObserverForEventList {
             let fileManager = FileManager.default
             let url = try fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
             let jsonUrl = url.appendingPathComponent("event.json")
+            print(jsonUrl)
+            try jsonData.write(to: jsonUrl)
+
+            return jsonData
+        } catch {
+            
+        }
+        return Data()
+    }
+    
+    func jsonToData2(dict: Dictionary<String, Any>) -> Data {
+        do {
+            let jsonData = try JSONSerialization.data(withJSONObject: dict, options: .prettyPrinted)
+            let fileManager = FileManager.default
+            let url = try fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+            let jsonUrl = url.appendingPathComponent("image.json")
             print(jsonUrl)
             try jsonData.write(to: jsonUrl)
 
